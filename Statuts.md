@@ -132,7 +132,7 @@ L'association "Bug builders" ne souhaite pas définir de réserve statutaire
 
 Un réglement intérieur est établie par les Membres de l'association. Ce document est destiné à fixer les divers points non prévus par les statuts, notamment ceux qui on trait à la gestion interne de l'association. Ce document peut être modifié lors d'une assemblée générale.
 
-Le réglement intérieur peut-être demandé à n'importe quel Membre et est consultable sur le Web sur https://github.com/bug-builders/website/Reglement.md.
+Le réglement intérieur peut-être demandé à n'importe quel Membre et est consultable sur le Web sur https://github.com/bug-builders/website/blob/master/Reglement.md.
 
 # Article 7 : Dissolution
 

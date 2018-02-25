@@ -1,1 +1,8 @@
-theme: jekyll-theme-minimal
+title: Bug builders
+author: Bug builders
+lang: fr
+theme: minima
+repository: bug-builders/website
+github_username: bug-builders
+plugins:
+  - jekyll-feed

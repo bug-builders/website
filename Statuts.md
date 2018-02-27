@@ -1,5 +1,6 @@
 # Statuts
 
+
 "Bug builders" association régie par l'application de la loi du 1er juillet 1901 et du décret du 16 août 1901. Association à activité commerciale non lucrative.
 
 L'association "Bug builders" a pour siège social Bordeaux.
@@ -8,7 +9,7 @@ L'association "Bug builders" a pour siège social Bordeaux.
 
 ## 1.1 Définition
 
-L'association "Bug builders" est un regroupement de passionnés d'outils numériques et multimédias souhaitant mettre leurs connaissances au service du Bien Commun via la réalisation de projets facilitant l'accès et l'utilisation de l'information.
+L'association "Bug builders" est un regroupement de passionnés d'outils numériques et multimédias souhaitant mettre leurs connaissances au service du Bien Commun à travers la réalisation de projets facilitant l'accès et l'utilisation de l'information.
 
 ## 1.2 Mise en oeuvre
 
@@ -65,6 +66,9 @@ Se référer au réglement intérieur afin de connaître la liste à jour des au
 - Le Président ne peut démissionner sans l'accord de la majorité des membres. Il organise une Assemblée Générale Extraordinaire à cet effet où un nouveau Président est choisi aléatoirement.
 - Le Président n'existe qu'à des fins de représentation administrative et ne possède aucun pouvoir particulier.
 
+**Note** : La source d'aléa proviendra du service https://api.random.org/json-rpc/1/
+
+
 ## 3.2 Trésorier
 
 - L'association a un Trésorier d'un mandat équivalent à l'exercice comptable.
@@ -83,6 +87,7 @@ Le quorum est aux deux-tiers des parties prenantes.
 3. En cas d'échec du consensus, la décision sera prise par un vote à la majorité des votes exprimés. Le vote blanc compte comme un vote exprimé.
 5. En cas d'échec du vote, la décision est prise aléatoirement.
 
+**Note** : La source d'aléa proviendra du service https://api.random.org/json-rpc/1/
 
 ### 3.3.2 Documentation et diffusion
 

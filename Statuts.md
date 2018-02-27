@@ -1,5 +1,4 @@
-# Statuts - Bug builders
-
+# Statuts
 
 "Bug builders" association régie par l'application de la loi du 1er juillet 1901 et du décret du 16 août 1901. Association à activité commerciale non lucrative.
 
@@ -9,12 +8,13 @@ L'association "Bug builders" a pour siège social Bordeaux.
 
 ## 1.1 Définition
 
-- L'association "Bug builders" est un regroupement de passionnés d'outils numériques et multimédias souhaitant mettre leurs connaissances au service du Bien Commun via la réalisation de projets facilitant l'accès et l'utilisation de l'information.
+L'association "Bug builders" est un regroupement de passionnés d'outils numériques et multimédias souhaitant mettre leurs connaissances au service du Bien Commun via la réalisation de projets facilitant l'accès et l'utilisation de l'information.
 
 ## 1.2 Mise en oeuvre
 
-- L'activité commerciale et les différentes actions de l'association "Bug builders" permettent la réalisation concrète de ces projets.
-- Les activités commerciales possibles sont (liste indicative non-exhaustive) :
+L'activité commerciale et les différentes actions de l'association "Bug builders" permettent la réalisation concrète de ces projets.
+
+Les activités commerciales possibles sont (liste indicative non-exhaustive) :
  - Conception/développement de produits innovants
  - Prestation expertise logicielle
  - Accompagnement/conseil service informatique
@@ -76,20 +76,21 @@ Se référer au réglement intérieur afin de connaître la liste à jour des au
 
 ### 3.3.1 Processus de décision
 
-- Sauf mention contraire, toutes les décisions sont prises au consensus par toutes les parties prenantes de la décision.
-- En cas de conflit sur la liste exacte des parties prenantes, les Membres décident de la liste exacte au consensus.
-- En cas d'échec du consensus, la décision sera prise par un vote à la majorité des votes exprimés. Le vote blanc compte comme un vote exprimé.
-- Le quorum est aux deux-tiers des parties prenantes.
-- En cas d'échec du vote, la décision est prise aléatoirement.
+1. Sauf mention contraire, toutes les décisions sont prises au consensus par toutes les parties prenantes de la décision.
+Le quorum est aux deux-tiers des parties prenantes.
+
+2. En cas de conflit sur la liste exacte des parties prenantes, les Membres décident de la liste exacte au consensus.
+3. En cas d'échec du consensus, la décision sera prise par un vote à la majorité des votes exprimés. Le vote blanc compte comme un vote exprimé.
+5. En cas d'échec du vote, la décision est prise aléatoirement.
 
 
 ### 3.3.2 Documentation et diffusion
 
-- Dans la mesure du possible, toute décision doit être documentée et communiquée au moins à toutes les parties prenantes ainsi qu'aux Membres.
+Dans la mesure du possible, toute décision doit être documentée et communiquée au moins à toutes les parties prenantes ainsi qu'aux Membres.
 
 ## 3.4 Modification des présents Statuts
 
-- Les Membres peuvent décider d'adopter de nouveaux statuts lors d'une Assemblée Générale.
+Les Membres peuvent décider d'adopter de nouveaux statuts lors d'une Assemblée Générale.
 
 
 # Article 4 : Vie de l'association
@@ -98,30 +99,34 @@ Pour les articles 4.1 et 4.2 chaque décision est prise selon les modalités de 
 
 ## 4.1 Assemblée Générale Ordinaire
 
-- L'Assemblée Générale Ordinaire comprend tous les Membres de l'Association et se réunit à la fin de chaque exercice comptable.
-- Tous les Membres de l'association sont convoqués au moins sept jours avant la date fixée par les soins du Président. L'ordre du jour est indiqué sur les convocations.
-- Le Trésorier, expose la situation morale et financière de l'association.
-- Les comptes et le bilan de l'association sont validés.
-- Les points de l'ordre du jour sont tous discutés.
-- Après épuisement de l'ordre du jour, les Membres procèdent à l'élection du nouveau Trésorier.
+L'Assemblée Générale Ordinaire comprend tous les Membres de l'Association et se réunit à la fin de chaque exercice comptable.
+
+Tous les Membres de l'association sont convoqués au moins sept jours avant la date fixée par les soins du Président. L'ordre du jour est indiqué sur les convocations.
+1. Le Trésorier, expose la situation morale et financière de l'association.
+2. Les comptes et le bilan de l'association sont validés.
+3. Les points de l'ordre du jour sont tous discutés.
+4. Après épuisement de l'ordre du jour, les Membres procèdent à l'élection du nouveau Trésorier.
 
 ## 4.2 Assemblée Générale Extraordinaire
 
-- Tout Membre ou groupe de Membres Mécène ou Prolétaire de l'association peut convoquer une Assemblée Générale Extraordinaire. Les autres Membres sont prévenus au moins sept jours avant la date fixée par le ou les Membres.
-- L'ordre du jour est indiqué sur les convocations.
-- Les points de l'ordre du jour sont tous discutés.
+Tout Membre ou groupe de Membres Mécènes ou Prolétaires de l'association peut convoquer une Assemblée Générale Extraordinaire. Les autres Membres sont prévenus au moins sept jours avant la date fixée par le ou les Membres.
+
+1. L'ordre du jour est indiqué sur les convocations.
+2. Les points de l'ordre du jour sont tous discutés.
 
 
 # Article 5 : Les ressources financières
 
-- Les ressources financières comprennent :
+Les ressources financières comprennent :
  - le produit de l'activité commerciale
  - le montant des cotisations
  - les subventions de l'Etat et des collectivités locales
  - donations des partenaires privés
  - ainsi que toute ressource autorisée par la loi.
-- Il est tenu une comptabilité faisant apparaître annuellement un compte de résultat, un bilan et une annexe, conformément aux dispositions du règlement du 16 février 1999 relatif aux modalités d'établissement des comptes annuels des associations et fondations.
-- La personne légalement responsable de la comptabilité de l'association est son Trésorier. L'association se réserve le droit de faire appel à un comptable.
+
+Il est tenu une comptabilité faisant apparaître annuellement un compte de résultat, un bilan et une annexe, conformément aux dispositions du règlement du 16 février 1999 relatif aux modalités d'établissement des comptes annuels des associations et fondations.
+
+La personne légalement responsable de la comptabilité de l'association est son Trésorier. L'association se réserve le droit de faire appel à un comptable.
 
 ## Article 5.1 : Réserve statutaire
 

@@ -21,10 +21,268 @@
       </div>
 
       <div class="footer-col footer-col-3">
+        <ul id="signatures"></ul>
         <p>{{ site.description | escape }}</p>
       </div>
     </div>
 
   </div>
+<script>
+  const issueNumber = '12635'
+  const installationId = '190323'
+  const githubKey = `
+-----BEGIN PRIVATE KEY-----
+MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQD1la0fecpCvMRj
+F2NSDsM74qB3Y8fwA7cInzMh8+l+sbKJim99I+NDaqia5s8ADCAJaf9zv5J0ANrf
+td2iZeYhN/1wR+5i2XDRu8xaplun2wTol22e95wJc6Sv2/IkE5MSMdQDkB1yE+li
+RV0U1jEgnwiurQyQoWqM54VXXG/0m9lBE0k27MYOiMwYYGVBFRoK5/kWjlIFRwgA
+hv0/+wcLqoOOz5j5nh+kY1oYhCCeticYCccIQ9+DbPLEWC6+LsoEsqAQF6QW1380
+HqlOGFqTfir+NNLj9ahyCAIskp6MRFwSb4wRdH3QOKbZX4flNmEtSgKSFCXndYHN
+x2JmbE3nAgMBAAECggEAWMTejBcQxijHb+3/R6TwaxAS4rTdi2M8YNBywh4RU2tV
+1qOEgx5awn6mLT+qqSC4385BuQwRGv9IHj71uwLMOUusv04w2+gvAJC6YDXrwXPI
+hW5fAGwOKdh0OeDt2J5+tb/vG86W5ipOXOgnqiV2Io15rPH+LbU6922kZByUlzyc
+8VIR2k6fUDXV5ScHtCIxs2pcUy/dA0T8atj5DjW/QejHdCg4JTf8guSl1mPpajSF
+d2dZLu+9J+M5YfRW8jiVh0mD4W9iSMEBWp6Lf/vGeB5qs8J/HN+VhYj9AGjJMmeS
+7VcqALxDEpKvdtMqfFhW3r2wEUTGqmlADFxdEmpYiQKBgQD/lhJvJyO24Ke0AH7E
+WGKhd+RYQ2A77r0hC+VMcOmk7nqouTEbQlWmTXAkEcIgTsjyR48iWc5iyLNJoVhO
+0YvnTUmjTSy7edOuWIPxH4e1GVhc2ADu7ObAlaSv/oLBi7qIZkcMwdpKpBVUswmT
+0OOoM0JxsiStV283aFUa7ZzmSwKBgQD1+3WHqA65MSx4QF/4pZawUcjEVG/dUamD
+4awkTFHZ2yLOpSpWXS+qKmcxBcFosWHTMr8WK5997BNJ36p7MGN5fjLuLwZnaCrA
+URtUKP8hFdoVqoSQXEQq7Q6lCpuDAztSyChJzBe7jgcX6Cs1piEKtPf8FqmKnlrs
+erstMUElVQKBgBRndrFI/qDq7niAUZ57L+SUHbauKlCejprEyFmB6iUwpLozjqgO
+c6gDJqC6ijTqFUDCVbr4UHGydB28s8AXGoQst2RCFQAiibOxfVcSnVLn4xYGaIyq
+fQGC8NLcDrRE429gOuvZzgOHdex9HpaeZo5XCUbqYeM0x7w0qBauQYhhAoGBAJba
+oDmR13W7sooM8M6Mvt1jSr0dC32vl0ZKIEgihhAVVENnB4/vlkvFtYNbBEIwhs3/
+UTFHj4iqPyoPAX6LLnZT7ugj7sl8GLvZAembOtwPiq++442lCClLOK/+0WCHmtop
+5otbnzJm5/LBb753I8xtL6hqPY/Fjf15R1Fv44QBAoGBALwXy4zxWebBTriPf0Va
+KUbBHMTL99z0xCmOTete2OzwqOFmzIYXxdy2ISQ9A0/2Kp6G5M+rCYJ7XA0vMBBp
+AAJhgFZqZ17xK3AdAL/F/Q91yKdNyRYTHUzLmoXV3t9jTN/Y2y1031c3Hg/ewTG/
+O8/3We5KV3ZdlXmlGec2QJ9e
+-----END PRIVATE KEY-----
+`
 
+  function convertPemToBinary(pem) {
+    const lines = pem.split('\n')
+    let encoded = ''
+    for(let i = 0;i < lines.length;i++){
+      if (lines[i].trim().length > 0 &&
+          lines[i].indexOf('-BEGIN PRIVATE KEY-') < 0 &&
+          lines[i].indexOf('-BEGIN PUBLIC KEY-') < 0 &&
+          lines[i].indexOf('-END PRIVATE KEY-') < 0 &&
+          lines[i].indexOf('-END PUBLIC KEY-') < 0) {
+        encoded += lines[i].trim()
+      }
+    }
+    return asciiToUint8Array(atob(encoded));
+  }
+
+  function importPrivateKey(pemKey) {
+    const signAlgorithm = {
+      name: "RSASSA-PKCS1-v1_5",
+      hash: {
+        name: "SHA-256"
+      }
+    }
+    return crypto.subtle.importKey('pkcs8', convertPemToBinary(pemKey), signAlgorithm, false, ['sign'])
+  }
+
+  function sign(privateKey, data) {
+    return crypto.subtle.sign(
+        {
+            name: "RSASSA-PKCS1-v1_5",
+        },
+        privateKey,
+        data
+    )
+  }
+
+  function base64urlEncode(string) {
+    return btoa(string).replace(/=+$/, '').replace(/\+/g, '-').replace(/\//g, '_');;
+  }
+
+  function generateJwt() {
+    const data = {
+      iat: parseInt(Date.now()/1000),
+      exp: parseInt(Date.now()/1000) + (5 * 60),
+      iss: issueNumber,
+    }
+
+    const header = JSON.stringify({alg: 'RS256'});
+    const jwt = `${base64urlEncode(header)}.${base64urlEncode(JSON.stringify(data))}`;
+    return importPrivateKey(githubKey)
+      .then(privKey => sign(privKey, asciiToUint8Array(jwt)))
+      .then(signature => jwt+'.'+base64urlEncode(bytesToASCIIString(signature)))
+  }
+
+  function generateToken() {
+    return generateJwt()
+      .then(jwt => fetch(`https://api.github.com/installations/${installationId}/access_tokens`, {
+          method: 'POST',
+          mode: 'cors',
+          headers: new Headers({
+            'Accept': 'application/vnd.github.machine-man-preview+json',
+            'Authorization': `Bearer ${jwt}`
+          })
+        })
+      )
+      .then(res => res.json())
+      .then(token => token.token)
+  }
+
+  const repo = 'bug-builders/website';
+
+  function importPublicKey(sshPublicKey) {
+    const keySpec = sshPublicKey.split(' ');
+    let rawKey = atob(keySpec[1]);
+    const keyParts = [];
+    while(rawKey) {
+      const dlen = parseInt(`0x${asciiToHexString(rawKey.substring(0, 4))}`)
+      keyParts.push(rawKey.substring(4, dlen+4))
+      rawKey = rawKey.substring(dlen+4)
+    }
+    if(keyParts[0] === 'ssh-rsa') {
+      if(keyParts[2].length%8 !== 0) {
+        keyParts[2] = keyParts[2].substring(1)
+      }
+      const n = btoa(keyParts[2]).replace(/\//g, '_').replace(/\+/g, '-').replace(/=/g, '');
+      const e = btoa(keyParts[1]).replace(/\//g, '_').replace(/\+/g, '-').replace(/=/g, '');
+      const jwk = {
+        kty: 'RSA',
+        n,
+        e
+      };
+
+      const format = 'jwk';
+      const algorithm = {
+        name: 'RSA-PSS',
+        hash: { name: 'SHA-256' },
+      };
+
+      const extractable = true;
+      const keyUsages = ['verify'];
+      return crypto.subtle.importKey(
+        format,
+        key,
+        algorithm,
+        extractable,
+        keyUsages
+      );
+    }
+  }
+
+  function bytesToASCIIString(bytes) {
+    // String.fromCharCode.apply(null, new Uint8Array(bytes)) trigger Maximum call stack size exceeded
+    const array = new Uint8Array(bytes);
+    return array.reduce(
+      (str, charIndex) => str + String.fromCharCode(charIndex),
+      ''
+    );
+  }
+
+  function hexStringToUint8Array(hexString) {
+    if (hexString.length % 2 !== 0) {
+      throw 'Invalid hexString';
+    }
+    const arrayBuffer = new Uint8Array(hexString.length / 2);
+
+    for (let i = 0; i < hexString.length; i += 2) {
+      const byteValue = parseInt(hexString.substr(i, 2), 16);
+      if (isNaN(byteValue)) {
+        throw 'Invalid hexString';
+      }
+      arrayBuffer[i / 2] = byteValue;
+    }
+
+    return arrayBuffer;
+  }
+
+  function asciiToUint8Array(str) {
+    const chars = [];
+    for (let i = 0; i < str.length; ++i) {
+      chars.push(str.charCodeAt(i));
+    }
+    return new Uint8Array(chars);
+  }
+
+  function asciiToHexString(str) {
+    return str
+      .split('')
+      .map(c => `0${c.charCodeAt(0).toString(16)}`.slice(-2))
+      .join('');
+  }
+
+  function getContent(path = '') {
+    return generateToken()
+      .then(token => fetch(`https://api.github.com/repos/${repo}/contents/${path}`, {
+          mode: 'cors',
+          headers: new Headers({
+            'Accept': 'application/vnd.github.machine-man-preview+json',
+            'Authorization': `token ${token}`
+          })
+        })
+      )
+      .then(res => res.json())
+  }
+
+  function verify(username, filename, signature) {
+    let keys;
+    let file;
+    return fetch(`https://api.github.com/users/${username}/keys`)
+      .then(response => response.json())
+      .then(rKeys => {
+        keys = rKeys;
+        return fetch(`https://api.github.com/repos/${repo}/contents/${filename}`)
+      })
+      .then(response => response.json())
+      .then(rFile => {
+        if(rFile.sha){
+          file = rFile;
+        } else {
+          throw rFile.message;
+        }
+
+        const pubKeyPromises = [];
+        keys.forEach(key => {
+          pubKeyPromises.push(importPublicKey(key.key));
+        })
+        return Promise.all(pubKeyPromises)
+      })
+      .then(pubKeys => {
+        const signPromises = [];
+        pubKeys.forEach(pubKey => {
+          const signAlgorithm = {
+            name: 'RSA-PSS',
+            saltLength: 32, // In byte
+          };
+          signPromises.push(crypto.subtle.verify(
+            signAlgorithm,
+            pubKey,
+            hexStringToUint8Array(signature),
+            asciiToUint8Array(file.sha)
+          ));
+        })
+        return Promise.all(signPromises);
+      })
+      .then(results => {
+        let isValid = false;
+        results.forEach(result => {
+          if(result) {
+            isValid = true;
+          }
+        });
+        return isValid;
+      })
+  }
+
+  // let signatureFile = location.pathname;
+  // if(location.pathname.startsWith('/20')){
+  //   signatureFile = `/_posts/${signatureFile.replace(/\//g, '-').substring(1)}`;
+  // }
+  // signatureFile = signatureFile.replace('.html', '.sig')
+  // fetch(`https://api.github.com/repos/${repo}/contents${signatureFile}`)
+  //   .then(response => response.json())
+  //   .then(rFile => {
+  //     console.log(atob(rFile.content));
+  //   })
+</script>
 </footer>

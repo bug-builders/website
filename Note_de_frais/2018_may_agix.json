@@ -1,0 +1,16 @@
+{
+    "claimant": "agix",
+    "infos": "Première note de frais pour couvrir les achats d'avant ouverture de compte à savoir le nom de domaine bug.builders chez GoDaddy et la publication au JO.",
+    "claims": [
+        {
+            "description": "Go Daddy bug.builders",
+            "price": 44.05,
+            "justificatif": "/justificatifs/agix/2018/may/GoDaddy_DNS.pdf"
+        },
+        {
+            "description": "Go Daddy bug.builders",
+            "price": 44.00,
+            "justificatif": "/justificatifs/agix/2018/may/Publication_JO.jpg"
+        }
+    ]
+}

@@ -4,5 +4,3 @@ lang: fr
 theme: minima
 repository: bug-builders/website
 github_username: bug-builders
-plugins:
-  - jekyll-feed

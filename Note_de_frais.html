@@ -30,14 +30,16 @@ layout: default
     getContent('Note_de_frais')
       .then(ndf => {
         const ndfUl = document.getElementById('ndf');
+        ndfUl.textContent = '';
         ndf.forEach(n => {
-          const nLi = document.createElement('li');
-          const nA = document.createElement('a');
-          nA.href = `#${n.name}`;
-          nA.textContent = n.name;
-          nLi.appendChild(nA);
-          ndfUl.textContent = '';
-          ndfUl.appendChild(nLi);
+          if(n.name.endsWith('.json')) {
+            const nLi = document.createElement('li');
+            const nA = document.createElement('a');
+            nA.href = `#${n.name}`;
+            nA.textContent = n.name;
+            nLi.appendChild(nA);
+            ndfUl.appendChild(nLi);
+          }
         })
         if(location.hash.substr(1) !== '') {
           return loadNdf();

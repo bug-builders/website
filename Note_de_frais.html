@@ -3,4 +3,135 @@ layout: default
 ---
 
 <div class="home">
+  <header class="post-header">
+    <h1 class="post-title">Notes de frais</h1>
+  </header>
+  <ul class="pure-u-1" id="ndf">Loading...</ul>
+  <fieldset style="display:none" id="ndfDetailsFieldset">
+    <legend>Details</legend>
+    <p id="ndfInfosP" class="pure-u-1"></p>
+    <table class="pure-table pure-table-horizontal" style="width:100%; margin-bottom:2em">
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th>Justificatif</th>
+          <th>☑</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody id="ndfClaimsTbody"></tbody>
+    </table>
+    <p class="pure-u-2-5" style="font-style:italic;">À rembourser à <span id="ndfClaimantSpan"></span></p>
+    <ul class="pure-u-2-5" style="list-style-type: none" id="ndfSignaturesUl"></ul>
+  </fieldset>
 </div>
+<script>
+  window.onload = () => {
+    getContent('Note_de_frais')
+      .then(ndf => {
+        const ndfUl = document.getElementById('ndf');
+        ndf.forEach(n => {
+          const nLi = document.createElement('li');
+          const nA = document.createElement('a');
+          nA.href = `#${n.name}`;
+          nA.textContent = n.name;
+          nLi.appendChild(nA);
+          ndfUl.textContent = '';
+          ndfUl.appendChild(nLi);
+        })
+        if(location.hash.substr(1) !== '') {
+          return loadNdf();
+        }
+      })
+  };
+
+  function b64DecodeUnicode(str) {
+      return decodeURIComponent(Array.prototype.map.call(atob(str), function(c) {
+          return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
+      }).join(''))
+  }
+
+  function loadNdf() {
+    const ndf = location.hash.substr(1);
+    let signatures = {};
+    getContent(`Note_de_frais/${ndf}`)
+      .then(n => {
+        const noteDeFrais = JSON.parse(b64DecodeUnicode(n.content));
+        const ndfDetailsFieldset = document.getElementById('ndfDetailsFieldset');
+        ndfDetailsFieldset.style.display = 'block';
+        const ndfInfosP = document.getElementById('ndfInfosP');
+        ndfInfosP.textContent = noteDeFrais.infos
+
+        const ndfClaimsTbody = document.getElementById('ndfClaimsTbody');
+        while (ndfClaimsTbody.firstChild) {
+          ndfClaimsTbody.removeChild(ndfClaimsTbody.firstChild);
+        }
+        let total = 0;
+        noteDeFrais.claims.forEach(claim => {
+          const descriptionTd = document.createElement('td');
+          const priceTd = document.createElement('td');
+          const justificatifTd = document.createElement('td');
+          const signaturesTd = document.createElement('td');
+
+          descriptionTd.textContent = claim.description;
+          priceTd.textContent = `${(claim.price/100).toFixed(2)} €`;
+          const justificatifA = document.createElement('a');
+          const justificatifSplitted = claim.justificatif.split('/');
+          const justificatifName = justificatifSplitted[justificatifSplitted.length-1];
+          justificatifA.textContent = justificatifName;
+          justificatifA.href = claim.justificatif;
+          justificatifTd.appendChild(justificatifA)
+          signaturesTd.textContent = 0;
+
+          const claimTr = document.createElement('tr');
+          claimTr.appendChild(descriptionTd)
+          claimTr.appendChild(justificatifTd)
+          claimTr.appendChild(signaturesTd);
+          claimTr.appendChild(priceTd)
+
+          ndfClaimsTbody.appendChild(claimTr);
+
+          total += claim.price;
+        })
+
+        const claimTotalTr = document.createElement('tr');
+        claimTotalTr.className = 'pure-table-odd';
+
+        const totalTd = document.createElement('td');
+        totalTd.colSpan = 3
+        totalTd.textContent = 'Total'
+
+        const totalNTd = document.createElement('td');
+        totalNTd.textContent = `${(total/100).toFixed(2)} €`;
+
+        claimTotalTr.appendChild(totalTd);
+        claimTotalTr.appendChild(totalNTd);
+
+        ndfClaimsTbody.appendChild(claimTotalTr);
+
+        const ndfClaimantSpan = document.getElementById('ndfClaimantSpan');
+        ndfClaimantSpan.textContent = noteDeFrais.claimant;
+
+        return getContent(`Note_de_frais/${ndf}.sig`)
+      })
+      .then(sigFile => {
+        if(typeof(sigFile.content) !== 'undefined') {
+          signatures = JSON.parse(b64DecodeUnicode(sigFile.content));
+          console.log(signatures);
+        }
+        return getMembers()
+      })
+      .then(members => {
+        const ndfSignaturesUl = document.getElementById('ndfSignaturesUl');
+        let validSignature = 0;
+        members.forEach(member => {
+          const loginLi = document.createElement('li')
+          loginLi.textContent = `Not signed by ${member.login}`;
+          ndfSignaturesUl.appendChild(loginLi);
+        })
+
+      })
+  }
+  window.onhashchange = loadNdf;
+
+</script>

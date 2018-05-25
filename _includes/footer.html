@@ -129,7 +129,8 @@ O8/3We5KV3ZdlXmlGec2QJ9e
       .then(token => token.token)
   }
 
-  const repo = 'bug-builders/website';
+  const org = 'bug-builders'
+  const repo = `${org}/website`;
 
   function importPublicKey(sshPublicKey) {
     const keySpec = sshPublicKey.split(' ');
@@ -214,6 +215,19 @@ O8/3We5KV3ZdlXmlGec2QJ9e
   function getContent(path = '') {
     return generateToken()
       .then(token => fetch(`https://api.github.com/repos/${repo}/contents/${path}`, {
+          mode: 'cors',
+          headers: new Headers({
+            'Accept': 'application/vnd.github.machine-man-preview+json',
+            'Authorization': `token ${token}`
+          })
+        })
+      )
+      .then(res => res.json())
+  }
+
+  function getMembers() {
+    return generateToken()
+      .then(token => fetch(`https://api.github.com/orgs/${org}/members`, {
           mode: 'cors',
           headers: new Headers({
             'Accept': 'application/vnd.github.machine-man-preview+json',

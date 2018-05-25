@@ -4,12 +4,12 @@
     "claims": [
         {
             "description": "Go Daddy bug.builders",
-            "price": 44.05,
+            "price": 4405,
             "justificatif": "/justificatifs/agix/2018/may/GoDaddy_DNS.pdf"
         },
         {
-            "description": "Go Daddy bug.builders",
-            "price": 44.00,
+            "description": "Publicatoin JO",
+            "price": 4400,
             "justificatif": "/justificatifs/agix/2018/may/Publication_JO.jpg"
         }
     ]

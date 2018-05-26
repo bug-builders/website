@@ -28,6 +28,7 @@
 
   </div>
 <script>
+  let token = JSON.parse(localStorage.getItem('BUGBUILDERS_GITHUB_TOKEN'));
   const issueNumber = '12635'
   const installationId = '190323'
   const githubKey = `
@@ -115,6 +116,14 @@ O8/3We5KV3ZdlXmlGec2QJ9e
   }
 
   function generateToken() {
+    const now = new Date();
+    if(token) {
+      const expires_at =  new Date(token.expires_at);
+      if(now < expires_at) {
+        return Promise.resolve(token.token);
+      }
+    }
+
     return generateJwt()
       .then(jwt => fetch(`https://api.github.com/installations/${installationId}/access_tokens`, {
           method: 'POST',
@@ -126,7 +135,11 @@ O8/3We5KV3ZdlXmlGec2QJ9e
         })
       )
       .then(res => res.json())
-      .then(token => token.token)
+      .then(rToken => {
+        token = rToken;
+        localStorage.setItem('BUGBUILDERS_GITHUB_TOKEN', JSON.stringify(token));
+        return token.token
+      })
   }
 
   const org = 'bug-builders'
@@ -291,16 +304,5 @@ O8/3We5KV3ZdlXmlGec2QJ9e
         return isValid;
       })
   }
-
-  // let signatureFile = location.pathname;
-  // if(location.pathname.startsWith('/20')){
-  //   signatureFile = `/_posts/${signatureFile.replace(/\//g, '-').substring(1)}`;
-  // }
-  // signatureFile = signatureFile.replace('.html', '.sig')
-  // fetch(`https://api.github.com/repos/${repo}/contents${signatureFile}`)
-  //   .then(response => response.json())
-  //   .then(rFile => {
-  //     console.log(atob(rFile.content));
-  //   })
 </script>
 </footer>

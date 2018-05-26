@@ -15,7 +15,7 @@ layout: default
         <tr>
           <th>Description</th>
           <th>Justificatif</th>
-          <th>☑</th>
+          <th></th>
           <th>Price</th>
         </tr>
       </thead>
@@ -58,40 +58,59 @@ layout: default
     let signatures = {};
     let members;
     let noteDeFraisSha;
+    let noteDeFrais = {};
     getContent(`Note_de_frais/${ndf}`)
       .then(n => {
         noteDeFraisSha = n.sha;
-        const noteDeFrais = JSON.parse(b64DecodeUnicode(n.content));
+        noteDeFrais = JSON.parse(b64DecodeUnicode(n.content));
         const ndfDetailsFieldset = document.getElementById('ndfDetailsFieldset');
         ndfDetailsFieldset.style.display = 'block';
         const ndfInfosP = document.getElementById('ndfInfosP');
         ndfInfosP.textContent = noteDeFrais.infos
 
+        const justificatifPromises = [];
+        noteDeFrais.claims.forEach(claim => {
+          const justificatifSplitted = claim.justificatif.split('/');
+          const justificatifName = justificatifSplitted[justificatifSplitted.length-1];
+          justificatifSplitted.pop();
+          const justificatifPath = justificatifSplitted.join('/');
+          justificatifPromises.push(getContent(justificatifPath));
+        })
+        return Promise.all(justificatifPromises);
+      })
+      .then(justificatifs => {
         const ndfClaimsTbody = document.getElementById('ndfClaimsTbody');
         while (ndfClaimsTbody.firstChild) {
           ndfClaimsTbody.removeChild(ndfClaimsTbody.firstChild);
         }
+
         let total = 0;
-        noteDeFrais.claims.forEach(claim => {
+        noteDeFrais.claims.forEach((claim, i) => {
+          const justificatifSplitted = claim.justificatif.split('/');
+          const justificatifName = justificatifSplitted[justificatifSplitted.length-1];
+
           const descriptionTd = document.createElement('td');
           const priceTd = document.createElement('td');
           const justificatifTd = document.createElement('td');
-          const signaturesTd = document.createElement('td');
+          const shaTd = document.createElement('td');
 
           descriptionTd.textContent = claim.description;
           priceTd.textContent = `${(claim.price/100).toFixed(2)} €`;
           const justificatifA = document.createElement('a');
-          const justificatifSplitted = claim.justificatif.split('/');
-          const justificatifName = justificatifSplitted[justificatifSplitted.length-1];
           justificatifA.textContent = justificatifName;
           justificatifA.href = claim.justificatif;
           justificatifTd.appendChild(justificatifA)
-          signaturesTd.textContent = 0;
+          if(justificatifs[i].find(justificatif => justificatif.name === justificatifName).sha === claim.sha){
+            shaTd.textContent = '✔';
+          } else {
+            shaTd.textContent = '';
+          }
+
 
           const claimTr = document.createElement('tr');
           claimTr.appendChild(descriptionTd)
           claimTr.appendChild(justificatifTd)
-          claimTr.appendChild(signaturesTd);
+          claimTr.appendChild(shaTd);
           claimTr.appendChild(priceTd)
 
           ndfClaimsTbody.appendChild(claimTr);

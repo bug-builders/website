@@ -168,8 +168,19 @@ layout: default
 
         members.forEach((member, i) => {
           const loginLi = document.createElement('li')
+          loginLi.style['padding'] = '0.5em';
+          loginLi.style['border'] = '1px solid black';
+
           if(verifications[i]) {
-            loginLi.textContent = `Valid signature by ${member.login}`;
+            const signImg = document.createElement('img');
+            signImg.width = 50;
+            signImg.src = `https://avatars.dicebear.com/v2/identicon/${signatures[member.login]}.svg`
+            const signP = document.createElement('p');
+            signP.style.display = 'inline';
+            signP.style['margin-right'] = '2em';
+            signP.textContent = `Valid signature by ${member.login}`;
+            loginLi.appendChild(signP);
+            loginLi.appendChild(signImg);
           } else {
             if(member.login in signatures) {
               loginLi.textContent = `Invalid signature by ${member.login}`;

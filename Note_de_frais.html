@@ -56,8 +56,11 @@ layout: default
   function loadNdf() {
     const ndf = location.hash.substr(1);
     let signatures = {};
+    let members;
+    let noteDeFraisSha;
     getContent(`Note_de_frais/${ndf}`)
       .then(n => {
+        noteDeFraisSha = n.sha;
         const noteDeFrais = JSON.parse(b64DecodeUnicode(n.content));
         const ndfDetailsFieldset = document.getElementById('ndfDetailsFieldset');
         ndfDetailsFieldset.style.display = 'block';
@@ -119,16 +122,43 @@ layout: default
       .then(sigFile => {
         if(typeof(sigFile.content) !== 'undefined') {
           signatures = JSON.parse(b64DecodeUnicode(sigFile.content));
-          console.log(signatures);
         }
         return getMembers()
       })
-      .then(members => {
-        const ndfSignaturesUl = document.getElementById('ndfSignaturesUl');
-        let validSignature = 0;
+      .then(rMembers => {
+        members = rMembers;
+        const keyPromises = [];
         members.forEach(member => {
+          keyPromises.push(getKeys(member.login))
+        })
+        return Promise.all(keyPromises);
+      })
+      .then(keys => {
+        const signaturePromises = [];
+        members.forEach((member, i) => {
+          if(member.login in signatures) {
+            signaturePromises.push(verify(noteDeFraisSha, keys[i], signatures[member.login]));
+          } else {
+            signaturePromises.push(Promise.resolve(false));
+          }
+        })
+        return Promise.all(signaturePromises);
+      })
+      .then(verifications => {
+        const ndfSignaturesUl = document.getElementById('ndfSignaturesUl');
+
+        members.forEach((member, i) => {
           const loginLi = document.createElement('li')
-          loginLi.textContent = `Not signed by ${member.login}`;
+          if(verifications[i]) {
+            loginLi.textContent = `Valid signature by ${member.login}`;
+          } else {
+            if(member.login in signatures) {
+              loginLi.textContent = `Invalid signature by ${member.login}`;
+            }
+            else {
+              loginLi.textContent = `Not signed by ${member.login}`;
+            }
+          }
           ndfSignaturesUl.appendChild(loginLi);
         })
 

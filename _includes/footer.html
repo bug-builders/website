@@ -163,7 +163,7 @@ O8/3We5KV3ZdlXmlGec2QJ9e
       const keyUsages = ['verify'];
       return crypto.subtle.importKey(
         format,
-        key,
+        jwk,
         algorithm,
         extractable,
         keyUsages
@@ -238,32 +238,36 @@ O8/3We5KV3ZdlXmlGec2QJ9e
       .then(res => res.json())
   }
 
-  function verify(username, filename, signature) {
-    let keys;
-    let file;
-    return fetch(`https://api.github.com/users/${username}/keys`)
-      .then(response => response.json())
-      .then(rKeys => {
-        keys = rKeys;
-        return fetch(`https://api.github.com/repos/${repo}/contents/${filename}`)
-      })
-      .then(response => response.json())
-      .then(rFile => {
-        if(rFile.sha){
-          file = rFile;
-        } else {
-          throw rFile.message;
-        }
-
-        const pubKeyPromises = [];
-        keys.forEach(key => {
-          pubKeyPromises.push(importPublicKey(key.key));
+  function getKeys(login) {
+    return generateToken()
+      .then(token => fetch(`https://api.github.com/users/${login}/keys`, {
+        mode: 'cors',
+        headers: new Headers({
+          'Accept': 'application/vnd.github.machine-man-preview+json',
+          'Authorization': `token ${token}`
+          })
         })
-        return Promise.all(pubKeyPromises)
+      )
+      .then(res => res.json())
+      .then(rKeys => {
+        const keys = [];
+        rKeys.forEach(rKey => {
+          keys.push(rKey.key);
+        })
+        return keys;
       })
+  }
+
+
+  function verify(data, keys, signature) {
+    const pubKeyPromises = [];
+    keys.forEach(key => {
+      pubKeyPromises.push(importPublicKey(key));
+    })
+    return Promise.all(pubKeyPromises)
       .then(pubKeys => {
         const signPromises = [];
-        pubKeys.forEach(pubKey => {
+        pubKeys.filter(pubKey => typeof(pubKey) !== 'undefined').forEach(pubKey => {
           const signAlgorithm = {
             name: 'RSA-PSS',
             saltLength: 32, // In byte
@@ -272,7 +276,7 @@ O8/3We5KV3ZdlXmlGec2QJ9e
             signAlgorithm,
             pubKey,
             hexStringToUint8Array(signature),
-            asciiToUint8Array(file.sha)
+            asciiToUint8Array(data)
           ));
         })
         return Promise.all(signPromises);

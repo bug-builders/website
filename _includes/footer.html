@@ -28,6 +28,7 @@
 
   </div>
 <script>
+  const mainUrl = 'https://main.bug.builders';
   let token = JSON.parse(localStorage.getItem('BUGBUILDERS_GITHUB_TOKEN'));
   const issueNumber = '12635'
   const installationId = '190323'
@@ -271,6 +272,15 @@ O8/3We5KV3ZdlXmlGec2QJ9e
       })
   }
 
+  function getInfo() {
+    return fetch(`${mainUrl}/ping`, {
+      method: 'GET',
+      mode: 'cors',
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      })
+    }).then(res => res.json())
+  }
 
   function verify(data, keys, signature) {
     const pubKeyPromises = [];

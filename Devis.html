@@ -1,0 +1,216 @@
+---
+layout: default
+---
+
+<div class="home">
+  <header class="post-header">
+    <h1 class="post-title">Devis</h1>
+  </header>
+  <fieldset>
+    <h1 id="loadingH1">Loading...</h1>
+    <div style="display: none;" id="devisFieldset">
+      <div style="margin-bottom: 30px">
+        <fieldset class="pure-u-2-5">
+          <legend class="titleLegend" id="infosLegend"></legend>
+          <p>
+            <span class="line" id="infosLine1Span"></span>
+            <span class="line" id="infosLine2Span"></span>
+            <span class="line" id="infosCitySpan"></span>
+          </p>
+        </fieldset>
+        <fieldset style="float:right" class="pure-u-2-5">
+          <legend class="titleLegend" id="customerLegend"></legend>
+          <p>
+            <span class="line" id="customerLine1Span"></span>
+            <span class="line" id="customerLine2Span"></span>
+            <span class="line" id="customerCitySpan"></span>
+          </p>
+        </fieldset>
+      </div>
+      <h2 id="nameH2"></h2>
+      <div id="descriptionDiv" class="pure-u-1"></div>
+      <fieldset style="float:right;">
+        <legend class="titleLegend">TJM</legend>
+        <div style="text-align:right;">
+          <span id="tjmSpan" class="line"></span>
+        </div>
+      </fieldset>
+      <div class="pure-u-1">Planification de <input id="planned" type="number" style="width:2.5em" value="0"> jours.</div>
+      <fieldset class="pure-u-1-4" style="float:right;">
+        <legend class="titleLegend">Coût</legend>
+          <span class="line"><span class="pure-u-2-5">Total HT</span><span style="text-align: right;" class="pure-u-7-12" id="totalHTSpan"></span>
+          <span class="line"><span class="pure-u-2-5">Taxes</span><span style="text-align: right;" class="pure-u-7-12" id="taxesSpan"></span>
+          <span class="line" style="font-weight:bold"><span class="pure-u-2-5">Total TTC</span><span style="text-align: right;" class="pure-u-7-12" id="totalTTCSpan"></span>
+      </fieldset>
+    </div>
+    <div class="pure-u-1"><span id="dateDiv"></span><span style="margin-right:1em; margin-left:1em;"></span><input type="text" id="legalNameInput" placeholder="Legal representant"></div>
+    <div class="pure-u-1-2" style="text-align: center; margin-top:150px">
+      <button type="button" id="validateButton" class="pure-button">Validate</button>
+    </div>
+    <fieldset style="float:right;">
+      <legend class="titleLegend">Signature</legend>
+      <canvas></canvas>
+      <img id="signatureImg" style="background-color:rgb(235,235,228)">
+    </fieldset>
+  </fieldset>
+  <div id="error" style="display:none" class="isa_error"></div>
+  <div id="success" style="display:none" class="isa_success">Thank you !</div>
+</div>
+<script>
+function flash(message, error = true) {
+  const errorDiv = document.getElementById('error');
+  errorDiv.style.display = 'block';
+  errorDiv.textContent = message;
+  setTimeout(() => { unflash() }, 2000)
+}
+
+function unflash(){
+  const errorDiv = document.getElementById('error');
+  errorDiv.style.display = 'none';
+  errorDiv.textContent = '';
+}
+
+const canvas = document.querySelector('canvas');
+const signaturePad = new SignaturePad(canvas);
+function resizeCanvas() {
+  const ratio =  Math.max(window.devicePixelRatio || 1, 1);
+  canvas.width = canvas.offsetWidth * ratio;
+  canvas.height = canvas.offsetHeight * ratio;
+  canvas.getContext('2d').scale(ratio, ratio);
+  signaturePad.clear();
+}
+
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+function calcul(tjm) {
+  const planned = parseInt(document.getElementById('planned').value);
+  const totalHT = planned * tjm;
+  const totalHTSpan = document.getElementById('totalHTSpan');
+  totalHTSpan.textContent = `${totalHT/100} €`
+
+  const taxes = totalHT * 0.2;
+  const taxesSpan = document.getElementById('taxesSpan');
+  taxesSpan.textContent = `${taxes/100} €`
+
+  const totalTTCSpan = document.getElementById('totalTTCSpan');
+  totalTTCSpan.textContent = `${(totalHT + taxes)/100} €`
+}
+
+calcul(0)
+
+function loadDevis(){
+  let info;
+  getInfo()
+    .then(rInfo => {
+      info = rInfo;
+      return fetch(`${mainUrl}/customer/devis/${location.hash.substr(1)}`, {
+        method: 'GET',
+        mode: 'cors',
+        headers: new Headers({
+          'Content-Type': 'application/json'
+        })
+      })
+    })
+    .then(res => res.json())
+    .then(res => {
+      const infosLegend = document.getElementById('infosLegend');
+      infosLegend.textContent = info.name;
+
+      const infosLine1Span = document.getElementById('infosLine1Span');
+      infosLine1Span.textContent = info.address.line1;
+
+      const infosLine2Span = document.getElementById('infosLine2Span');
+      infosLine2Span.textContent = info.address.line2;
+
+      const infosCitySpan = document.getElementById('infosCitySpan');
+      infosCitySpan.textContent = `${info.address.postal_code} ${info.address.city}`;
+
+      const customerLegend = document.getElementById('customerLegend');
+      customerLegend.textContent = res.customer.name;
+
+      const customerLine1Span = document.getElementById('customerLine1Span');
+      customerLine1Span.textContent = res.customer.address.line1;
+
+      const customerLine2Span = document.getElementById('customerLine2Span');
+      customerLine2Span.textContent = res.customer.address.line2;
+
+      const customerCitySpan = document.getElementById('customerCitySpan');
+      customerCitySpan.textContent = `${res.customer.address.postal_code} ${res.customer.address.city}`;
+
+      const nameH2 = document.getElementById('nameH2');
+      nameH2.textContent = res.name;
+
+      const descriptionDiv = document.getElementById('descriptionDiv');
+      descriptionDiv.textContent = res.metadata.description;
+
+      const tjmSpan = document.getElementById('tjmSpan');
+      tjmSpan.textContent = `${res.amount/100} €`;
+
+      const plannedInput = document.getElementById('planned');
+      const legalNameInput =  document.getElementById('legalNameInput');
+      const validateButton = document.getElementById('validateButton')
+      const dateDiv = document.getElementById('dateDiv');
+
+      if(location.hash.startsWith('#sub_')) {
+        validateButton.style.display = 'none';
+        plannedInput.value = res.planned;
+        legalNameInput.value = res.legalName;
+        plannedInput.disabled = true;
+        legalNameInput.disabled = true;
+        const signedDate = new Date(res.created*1000);
+        dateDiv.textContent = signedDate.toDateString();
+        calcul(res.amount);
+        document.getElementById('signatureImg').src = res.signature;
+        canvas.style.display = 'none';
+      } else {
+        const now = new Date();
+        dateDiv.textContent = now.toDateString();
+        plannedInput.addEventListener('change', () => { calcul(res.amount) })
+        plannedInput.addEventListener('keyup', () => { calcul(res.amount) })
+        plannedInput.addEventListener('mouseup', () => { calcul(res.amount) })
+
+        validateButton.addEventListener('click', () => {
+          const legalName = legalNameInput.value;
+          const planned = parseInt(plannedInput.value);
+          const signature = signaturePad.toDataURL('image/svg+xml');
+
+          const toSend = {
+            signature,
+            legalName,
+            planned
+          }
+
+          fetch(`${mainUrl}/customer/devis/${location.hash.substr(1)}`, {
+            method: 'PUT',
+            mode: 'cors',
+            headers: new Headers({
+              'Content-Type': 'application/json'
+            }),
+            body: JSON.stringify(toSend)
+          })
+          .then(res => res.json())
+          .then(res => {
+            if(res.error) {
+              flash(res.error);
+            } else {
+              document.getElementById('success').style.display = 'block';
+              document.location = `${document.location.href.split('#')[0]}#${res.id}`;
+            }
+          })
+        });
+      }
+
+      document.getElementById('devisFieldset').style.display = 'block';
+      document.getElementById('loadingH1').style.display = 'none';
+    })
+}
+
+window.addEventListener('resize', resizeCanvas);
+window.onload = () => {
+  loadDevis();
+};
+
+window.onhashchange = loadDevis;
+
+</script>

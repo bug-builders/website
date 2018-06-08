@@ -40,5 +40,23 @@ $base-font-family: 'Open Sans', sans-serif;
 }
 
 .titleLegend {
-    font-weight: bold
+    font-weight: bold;
+}
+
+.amount {
+    text-align: right;
+    font-weight: 600;
+}
+
+.positif {
+    color: #77ce44;
+}
+
+#balance {
+    margin-bottom: 2em;
+    text-align: center;
+}
+
+#totalSpan {
+    font-weight: 600;
 }

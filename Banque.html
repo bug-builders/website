@@ -1,0 +1,67 @@
+---
+layout: default
+---
+
+<div class="home">
+  <fieldset id="balance" class="pure-u-1-5">
+    <legend>Solde du compte</legend>
+    <span id="totalSpan"></span>
+  </fieldset>
+  <table class="pure-table pure-table-horizontal" style="width:100%; margin-bottom:2em">
+    <thead>
+      <tr>
+        <th>Correspondant</th>
+        <th>Date</th>
+        <th class="amount">Montant</th>
+      </tr>
+    </thead>
+    <tbody id="bankTbody"></tbody>
+  </table>
+</div>
+<script>
+  const currency = {currency:'EUR', style: 'currency'};
+  window.onload = () => {
+    fetch(`${mainUrl}/bank`, {
+      method: 'GET',
+      mode: 'cors'
+    })
+    .then(res => res.json())
+    .then(res => {
+      console.log(res);
+      const totalSpan = document.getElementById('totalSpan');
+      const total = res.balance/100;
+      totalSpan.textContent = total.toLocaleString('fr', currency)
+
+      const bankTbody = document.getElementById('bankTbody');
+      res.transactions.forEach(transaction => {
+        const dateTd = document.createElement('td');
+        const correspondantTd = document.createElement('td');
+        const montantTd = document.createElement('td');
+
+        const date = new Date(transaction.date);
+        dateTd.textContent = date.toLocaleDateString('fr');
+
+        let type;
+        if(transaction.type === 'debit') {
+          correspondantTd.textContent = transaction.label;
+          type = '-';
+          montantTd.className = 'amount';
+        } else {
+          correspondantTd.textContent = 'Identité protégée';
+          type = '+';
+          montantTd.className = 'amount positif';
+        }
+
+        const amount = transaction.amount/100;
+        montantTd.textContent = `${type} ${amount.toLocaleString('fr', currency)} `
+
+        const bankTr = document.createElement('tr');
+        bankTr.appendChild(correspondantTd)
+        bankTr.appendChild(dateTd)
+        bankTr.appendChild(montantTd);
+
+        bankTbody.appendChild(bankTr);
+      })
+    })
+  };
+</script>

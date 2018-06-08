@@ -22,7 +22,7 @@ layout: default
       <tbody id="ndfClaimsTbody"></tbody>
     </table>
     <p class="pure-u-2-5" style="font-style:italic;">À rembourser à <span id="ndfClaimantSpan"></span></p>
-    <ul class="pure-u-2-5" style="list-style-type: none" id="ndfSignaturesUl"></ul>
+    <ul class="pure-u-7-12" style="list-style-type: none; margin-left:0px" id="ndfSignaturesUl"></ul>
   </fieldset>
 </div>
 <script>
@@ -165,25 +165,28 @@ layout: default
       })
       .then(verifications => {
         const ndfSignaturesUl = document.getElementById('ndfSignaturesUl');
-
+        ndfSignaturesUl.style['border'] = '1px solid black';
         members.forEach((member, i) => {
           const loginLi = document.createElement('li')
+          loginLi.className = 'pure-u-1';
           loginLi.style['padding'] = '0.5em';
-          loginLi.style['border'] = '1px solid black';
+          loginLi.style['line-height'] = '60px';
+          loginLi.style['font-weight'] = '600';
 
           if(verifications[i]) {
             const signImg = document.createElement('img');
             signImg.width = 50;
             signImg.src = `https://avatars.dicebear.com/v2/identicon/${signatures[member.login]}.svg`
-            const signP = document.createElement('p');
-            signP.style.display = 'inline';
-            signP.style['margin-right'] = '2em';
+            const signP = document.createElement('span');
+            signP.className = 'pure-u-4-5';
             signP.textContent = `Valid signature by ${member.login}`;
+            loginLi.style.color = '#77ce44';
             loginLi.appendChild(signP);
             loginLi.appendChild(signImg);
           } else {
             if(member.login in signatures) {
               loginLi.textContent = `Invalid signature by ${member.login}`;
+              loginLi.style.color = '#f95e5e';
             }
             else {
               loginLi.textContent = `Not signed by ${member.login}`;

@@ -26,6 +26,7 @@ layout: default
   </fieldset>
 </div>
 <script>
+  const avatars = new Avatars(Avatars.sprites.identicon);
   window.onload = () => {
     getContent('Note_de_frais')
       .then(ndf => {
@@ -176,7 +177,10 @@ layout: default
           if(verifications[i]) {
             const signImg = document.createElement('img');
             signImg.width = 50;
-            signImg.src = `https://avatars.dicebear.com/v2/identicon/${signatures[member.login]}.svg`
+
+            const svg = avatars.create(signatures[member.login]);
+            const svgUri = `data:image/svg+xml;base64,${btoa(svg)}`;
+            signImg.src = svgUri;
             const signP = document.createElement('span');
             signP.className = 'pure-u-4-5';
             signP.textContent = `Valid signature by ${member.login}`;

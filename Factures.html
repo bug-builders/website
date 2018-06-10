@@ -39,6 +39,9 @@ layout: default
     .then(res => res.json())
     .then(invoices => {
       const invoicesTbody = document.getElementById('invoicesTbody');
+      while (invoicesTbody.firstChild) {
+        invoicesTbody.removeChild(invoicesTbody.firstChild);
+      }
       invoices.forEach(invoice => {
         const idTd = document.createElement('td')
         const organizationTd = document.createElement('td')

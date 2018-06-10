@@ -19,7 +19,6 @@ layout: default
   </table>
 </div>
 <script>
-  const currency = {currency:'EUR', style: 'currency'};
   window.onload = () => {
     fetch(`${mainUrl}/bank`, {
       method: 'GET',
@@ -36,7 +35,7 @@ layout: default
       res.transactions.forEach(transaction => {
         const dateTd = document.createElement('td');
         const correspondantTd = document.createElement('td');
-        const montantTd = document.createElement('td');
+        const amountTd = document.createElement('td');
 
         const date = new Date(transaction.date);
         dateTd.textContent = date.toLocaleDateString('fr');
@@ -45,20 +44,20 @@ layout: default
         if(transaction.type === 'debit') {
           correspondantTd.textContent = transaction.label;
           type = '-';
-          montantTd.className = 'amount';
+          amountTd.className = 'amount';
         } else {
           correspondantTd.textContent = 'Identité protégée';
           type = '+';
-          montantTd.className = 'amount positif';
+          amountTd.className = 'amount positif';
         }
 
         const amount = transaction.amount/100;
-        montantTd.textContent = `${type} ${amount.toLocaleString('fr', currency)} `
+        amountTd.textContent = `${type} ${amount.toLocaleString('fr', currency)} `
 
         const bankTr = document.createElement('tr');
         bankTr.appendChild(correspondantTd)
         bankTr.appendChild(dateTd)
-        bankTr.appendChild(montantTd);
+        bankTr.appendChild(amountTd);
 
         bankTbody.appendChild(bankTr);
       })

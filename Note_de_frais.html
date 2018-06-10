@@ -16,7 +16,7 @@ layout: default
           <th>Description</th>
           <th>Justificatif</th>
           <th></th>
-          <th>Price</th>
+          <th class="amount">Price</th>
         </tr>
       </thead>
       <tbody id="ndfClaimsTbody"></tbody>
@@ -96,7 +96,9 @@ layout: default
           const shaTd = document.createElement('td');
 
           descriptionTd.textContent = claim.description;
-          priceTd.textContent = `${(claim.price/100).toFixed(2)} €`;
+          const price = claim.price/100;
+          priceTd.textContent = price.toLocaleString('fr', currency)
+          priceTd.className = 'amount';
           const justificatifA = document.createElement('a');
           justificatifA.textContent = justificatifName;
           justificatifA.href = claim.justificatif;
@@ -127,7 +129,8 @@ layout: default
         totalTd.textContent = 'Total'
 
         const totalNTd = document.createElement('td');
-        totalNTd.textContent = `${(total/100).toFixed(2)} €`;
+        total = total/100;
+        totalNTd.textContent = total.toLocaleString('fr', currency);
 
         claimTotalTr.appendChild(totalTd);
         claimTotalTr.appendChild(totalNTd);

@@ -130,6 +130,7 @@ layout: default
 
         const totalNTd = document.createElement('td');
         total = total/100;
+        totalNTd.className = 'amount';
         totalNTd.textContent = total.toLocaleString('fr', currency);
 
         claimTotalTr.appendChild(totalTd);

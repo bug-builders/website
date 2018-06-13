@@ -15,15 +15,15 @@ layout: default
       <div class="pure-u-1">
         <p class="pure-u-1-3">Brut : <span id="salaryGrossSpan"></span></p>
         <p class="pure-u-1-3">Net : <span id="salarySpan"></span></p>
-        <p class="pure-u-7-24">Super Brut : <span id="salarySGrossSpan"></span></p>
+        <p class="pure-u-7-24" style="text-align:right">Super Brut : <span id="salarySGrossSpan"></span></p>
       </div>
       <div class="pure-u-1">
         <p class="pure-u-1-2">Mutuelle et prévoyance : <span id="insuranceSpan"></span></p>
-        <p class="pure-u-11-24">Charge de fonctionnement : <span id="taxSpan"></span></p>
+        <p class="pure-u-11-24" style="text-align:right">Charge de fonctionnement : <span id="taxSpan"></span></p>
       </div>
       <div class="pure-u-1">
         <p class="pure-u-2-3">Durée : <span id="timeSpan"></span></p>
-        <p class="pure-u-7-24">Total : <span id="totalSpan"></span></p>
+        <p class="pure-u-7-24" style="text-align:right">Total : <span class="amount" id="totalSpan"></span></p>
       </div>
     </fieldset>
     <p class="pure-u-2-5" style="font-style:italic;">Demandé par <span id="contractClaimantSpan"></span></p>
@@ -96,6 +96,30 @@ layout: default
         const salaryGross = contract.salary/100;
         salaryGrossSpan.textContent = salaryGross.toLocaleString('fr', currency);
 
+        const salarySpan = document.getElementById('salarySpan');
+        const salary = (contract.salary * (1 - 0.22)) / 100;
+        salarySpan.textContent = salary.toLocaleString('fr', currency);
+
+        const salarySGrossSpan = document.getElementById('salarySGrossSpan');
+        const salarySGross = (contract.salary * (1 + 0.42)) / 100;
+        salarySGrossSpan.textContent = salarySGross.toLocaleString('fr', currency);
+
+        const insuranceSpan = document.getElementById('insuranceSpan');
+        insurance = 50;
+        insuranceSpan.textContent = insurance.toLocaleString('fr', currency);
+
+        const taxSpan = document.getElementById('taxSpan');
+        tax = 14;
+        taxSpan.textContent = tax.toLocaleString('fr', currency);
+
+        const timeSpan = document.getElementById('timeSpan');
+        const time = monthDiff(fromDate, toDate);
+        timeSpan.textContent = `${time} mois`;
+
+        const totalSpan = document.getElementById('totalSpan');
+        const margin = 10/100;
+        const total = (salarySGross * time) * (1 + margin)
+        totalSpan.textContent = total.toLocaleString('fr', currency);
         return getContent(`Contrats/${contractName}.sig`)
       })
       .then(sigFile => {

@@ -97,11 +97,11 @@ layout: default
         salaryGrossSpan.textContent = salaryGross.toLocaleString('fr', currency);
 
         const salarySpan = document.getElementById('salarySpan');
-        const salary = (contract.salary * (1 - 0.22)) / 100;
+        const salary = contract.salary * (1 - 0.22) / 100;
         salarySpan.textContent = salary.toLocaleString('fr', currency);
 
         const salarySGrossSpan = document.getElementById('salarySGrossSpan');
-        const salarySGross = (contract.salary * (1 + 0.42)) / 100;
+        const salarySGross = contract.salary * (1 + 0.43) / 100;
         salarySGrossSpan.textContent = salarySGross.toLocaleString('fr', currency);
 
         const insuranceSpan = document.getElementById('insuranceSpan');
@@ -118,7 +118,8 @@ layout: default
 
         const totalSpan = document.getElementById('totalSpan');
         const margin = 10/100;
-        const total = (salarySGross * time) * (1 + margin)
+        const precarite = 10/100;
+        const total = salarySGross * time * (1 + precarite) * (1 + margin)
         totalSpan.textContent = total.toLocaleString('fr', currency);
         return getContent(`Contrats/${contractName}.sig`)
       })

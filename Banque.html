@@ -7,6 +7,15 @@ layout: default
     <legend>Solde du compte</legend>
     <span id="totalSpan"></span>
   </fieldset>
+  <div class="pure-u-1-2" style="float:right">
+    <fieldset>
+      <legend>Solde membre</legend>
+      <div class="pure-u-1">
+        <input type="text" id="memberNameInput" placeholder="Member name">
+        <div style="float:right"><span id="memberTotalSpan" style="line-height:28px; text-align:right"></span></div>
+      </div>
+    </fieldset>
+  </div>
   <table class="pure-table pure-table-horizontal" style="width:100%; margin-bottom:2em">
     <thead>
       <tr>
@@ -20,13 +29,30 @@ layout: default
 </div>
 <script>
   window.onload = () => {
+    let memberTimer = null;
+    const memberNameInput = document.getElementById('memberNameInput');
+    memberNameInput.addEventListener('keydown', () => {
+      const memberTotalSpan = document.getElementById('memberTotalSpan');
+      clearTimeout(memberTimer);
+      memberTimer = setTimeout(() => {
+        fetch(`${mainUrl}/bank/${memberNameInput.value}`, {
+          method: 'GET',
+          mode: 'cors'
+        })
+        .then(res => res.json())
+        .then(res => {
+          const memberTotal = res.total/100;
+          memberTotalSpan.textContent = memberTotal.toLocaleString('fr', currency);
+        })
+      }, 1000)
+    })
+
     fetch(`${mainUrl}/bank`, {
       method: 'GET',
       mode: 'cors'
     })
     .then(res => res.json())
     .then(res => {
-      console.log(res);
       const totalSpan = document.getElementById('totalSpan');
       const total = res.balance/100;
       totalSpan.textContent = total.toLocaleString('fr', currency)
@@ -46,7 +72,7 @@ layout: default
           type = '-';
           amountTd.className = 'amount';
         } else {
-          correspondantTd.textContent = 'Identité protégée';
+          correspondantTd.textContent = transaction.label.substr(0, 20);
           type = '+';
           amountTd.className = 'amount positif';
         }

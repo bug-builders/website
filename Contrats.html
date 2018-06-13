@@ -1,0 +1,132 @@
+---
+layout: default
+---
+
+<div class="home">
+  <header class="post-header">
+    <h1 class="post-title">Notes de frais</h1>
+  </header>
+  <ul class="pure-u-1" id="contractUl">Loading...</ul>
+  <fieldset style="display:none" id="contractDetailsFieldset">
+    <legend>Details</legend>
+    <p class="pure-u-2-5" style="font-style:italic;">Demandé par <span id="contractClaimantSpan"></span></p>
+    <ul class="pure-u-7-12" style="list-style-type: none; margin-left:0px" id="contractSignaturesUl"></ul>
+  </fieldset>
+</div>
+<script>
+  function monthDiff(d1, d2) {
+    var months;
+    months = (d2.getFullYear() - d1.getFullYear()) * 12;
+    months -= d1.getMonth() + 1;
+    months += d2.getMonth();
+    return (months <= 0 ? 0 : months) + 2;
+  }
+  const avatars = new Avatars(Avatars.sprites.identicon);
+  window.onload = () => {
+    getContent('Contrats')
+      .then(contrat => {
+        const contractUl = document.getElementById('contractUl');
+        contractUl.textContent = '';
+        contractUl.forEach(c => {
+          if(c.name.endsWith('.json')) {
+            const cLi = document.createElement('li');
+            const cA = document.createElement('a');
+            cA.href = `#${c.name}`;
+            cA.textContent = c.name;
+            cLi.appendChild(cA);
+            contractUl.appendChild(cLi);
+          }
+        })
+        if(location.hash.substr(1) !== '') {
+          return loadContract();
+        }
+      })
+  };
+
+  function b64DecodeUnicode(str) {
+    return decodeURIComponent(Array.prototype.map.call(atob(str), function(c) {
+      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
+    }).join(''))
+  }
+
+  function loadContract() {
+    const contractName = location.hash.substr(1);
+    let signatures = {};
+    let members;
+    let contractSha;
+    let contract = {};
+    getContent(`Contrats/${contractName}`)
+      .then(c => {
+        contractSha = c.sha;
+        contract = JSON.parse(b64DecodeUnicode(c.content));
+        const contractDetailsFieldset = document.getElementById('contractDetailsFieldset');
+        contractDetailsFieldset.style.display = 'block';
+        const contractClaimantSpan = document.getElementById('contractClaimantSpan');
+        contractClaimantSpan.textContent = contract.claimant;
+        return getContent(`Contrats/${contractName}.sig`)
+      })
+      .then(sigFile => {
+        if(typeof(sigFile.content) !== 'undefined') {
+          signatures = JSON.parse(b64DecodeUnicode(sigFile.content));
+        }
+        return getMembers()
+      })
+      .then(rMembers => {
+        members = rMembers;
+        const keyPromises = [];
+        members.forEach(member => {
+          keyPromises.push(getKeys(member.login))
+        })
+        return Promise.all(keyPromises);
+      })
+      .then(keys => {
+        const signaturePromises = [];
+        members.forEach((member, i) => {
+          if(member.login in signatures) {
+            signaturePromises.push(verify(contractSha, keys[i], signatures[member.login]));
+          } else {
+            signaturePromises.push(Promise.resolve(false));
+          }
+        })
+        return Promise.all(signaturePromises);
+      })
+      .then(verifications => {
+        const contractSignaturesUl = document.getElementById('contractSignaturesUl');
+        contractSignaturesUl.style['border'] = '1px solid black';
+        members.forEach((member, i) => {
+          const loginLi = document.createElement('li')
+          loginLi.className = 'pure-u-1';
+          loginLi.style['padding'] = '0.5em';
+          loginLi.style['line-height'] = '60px';
+          loginLi.style['font-weight'] = '600';
+
+          if(verifications[i]) {
+            const signImg = document.createElement('img');
+            signImg.width = 50;
+
+            const svg = avatars.create(signatures[member.login]);
+            const svgUri = `data:image/svg+xml;base64,${btoa(svg)}`;
+            signImg.src = svgUri;
+            const signP = document.createElement('span');
+            signP.className = 'pure-u-4-5';
+            signP.textContent = `Valid signature by ${member.login}`;
+            loginLi.style.color = '#77ce44';
+            loginLi.appendChild(signP);
+            loginLi.appendChild(signImg);
+          } else {
+            if(member.login in signatures) {
+              loginLi.textContent = `Invalid signature by ${member.login}`;
+              loginLi.style.color = '#f95e5e';
+            }
+            else {
+              loginLi.textContent = `Not signed by ${member.login}`;
+            }
+          }
+          contractSignaturesUl.appendChild(loginLi);
+        })
+
+      })
+  }
+  window.onhashchange = loadContract;
+
+</script>

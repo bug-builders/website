@@ -4,11 +4,28 @@ layout: default
 
 <div class="home">
   <header class="post-header">
-    <h1 class="post-title">Notes de frais</h1>
+    <h1 class="post-title">Contrats</h1>
   </header>
   <ul class="pure-u-1" id="contractUl">Loading...</ul>
-  <fieldset style="display:none" id="contractDetailsFieldset">
+  <fieldset id="contractDetailsFieldset">
     <legend>Details</legend>
+    <p class="pure-u-1"><span id="contractTypeSpan"></span> du <span id="contractFromSpan"></span> au <span id="contractToSpan"></span></p>
+    <fieldset style="margin-bottom:1em;">
+      <legend>Salaire</legend>
+      <div class="pure-u-1">
+        <p class="pure-u-1-3">Brut : <span id="salaryGrossSpan"></span></p>
+        <p class="pure-u-1-3">Net : <span id="salarySpan"></span></p>
+        <p class="pure-u-7-24">Super Brut : <span id="salarySGrossSpan"></span></p>
+      </div>
+      <div class="pure-u-1">
+        <p class="pure-u-1-2">Mutuelle et prévoyance : <span id="insuranceSpan"></span></p>
+        <p class="pure-u-11-24">Charge de fonctionnement : <span id="taxSpan"></span></p>
+      </div>
+      <div class="pure-u-1">
+        <p class="pure-u-2-3">Durée : <span id="timeSpan"></span></p>
+        <p class="pure-u-7-24">Total : <span id="totalSpan"></span></p>
+      </div>
+    </fieldset>
     <p class="pure-u-2-5" style="font-style:italic;">Demandé par <span id="contractClaimantSpan"></span></p>
     <ul class="pure-u-7-12" style="list-style-type: none; margin-left:0px" id="contractSignaturesUl"></ul>
   </fieldset>
@@ -24,10 +41,10 @@ layout: default
   const avatars = new Avatars(Avatars.sprites.identicon);
   window.onload = () => {
     getContent('Contrats')
-      .then(contrat => {
+      .then(contract => {
         const contractUl = document.getElementById('contractUl');
         contractUl.textContent = '';
-        contractUl.forEach(c => {
+        contract.forEach(c => {
           if(c.name.endsWith('.json')) {
             const cLi = document.createElement('li');
             const cA = document.createElement('a');
@@ -63,6 +80,22 @@ layout: default
         contractDetailsFieldset.style.display = 'block';
         const contractClaimantSpan = document.getElementById('contractClaimantSpan');
         contractClaimantSpan.textContent = contract.claimant;
+
+        const contractTypeSpan = document.getElementById('contractTypeSpan');
+        contractTypeSpan.textContent = contract.type;
+
+        const contractFromSpan = document.getElementById('contractFromSpan');
+        const fromDate = new Date(contract.from);
+        contractFromSpan.textContent = fromDate.toLocaleDateString('fr');
+
+        const contractToSpan = document.getElementById('contractToSpan');
+        const toDate = new Date(contract.to);
+        contractToSpan.textContent = toDate.toLocaleDateString('fr');
+
+        const salaryGrossSpan = document.getElementById('salaryGrossSpan');
+        const salaryGross = contract.salary/100;
+        salaryGrossSpan.textContent = salaryGross.toLocaleString('fr', currency);
+
         return getContent(`Contrats/${contractName}.sig`)
       })
       .then(sigFile => {

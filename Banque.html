@@ -31,20 +31,26 @@ layout: default
   window.onload = () => {
     let memberTimer = null;
     const memberNameInput = document.getElementById('memberNameInput');
-    memberNameInput.addEventListener('keydown', () => {
+    memberNameInput.addEventListener('input', () => {
       const memberTotalSpan = document.getElementById('memberTotalSpan');
+      memberTotalSpan.textContent = '';
       clearTimeout(memberTimer);
-      memberTimer = setTimeout(() => {
-        fetch(`${mainUrl}/bank/${memberNameInput.value}`, {
-          method: 'GET',
-          mode: 'cors'
-        })
-        .then(res => res.json())
-        .then(res => {
-          const memberTotal = res.total/100;
-          memberTotalSpan.textContent = memberTotal.toLocaleString('fr', currency);
-        })
-      }, 1000)
+      console.log(memberNameInput.value);
+      if(memberNameInput.value !== '') {
+        memberTimer = setTimeout(() => {
+          memberTotalSpan.textContent = '...';
+          fetch(`${mainUrl}/bank/${memberNameInput.value}`, {
+            method: 'GET',
+            mode: 'cors'
+          })
+          .then(res => res.json())
+          .then(res => {
+            const memberTotal = res.total/100;
+            memberTotalSpan.textContent = memberTotal.toLocaleString('fr', currency);
+          })
+        }, 1000)
+      }
+
     })
 
     fetch(`${mainUrl}/bank`, {

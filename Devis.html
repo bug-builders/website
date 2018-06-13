@@ -85,19 +85,18 @@ resizeCanvas();
 
 function calcul(tjm) {
   const planned = parseInt(document.getElementById('planned').value);
-  const totalHT = planned * tjm;
+  const totalHT = (planned * tjm) / 100;
   const totalHTSpan = document.getElementById('totalHTSpan');
-  totalHTSpan.textContent = `${totalHT/100} €`
+  totalHTSpan.textContent = totalHT.toLocaleString('fr', currency)
 
   const taxes = totalHT * 0.2;
   const taxesSpan = document.getElementById('taxesSpan');
-  taxesSpan.textContent = `${taxes/100} €`
+  taxesSpan.textContent = taxes.toLocaleString('fr', currency);
 
   const totalTTCSpan = document.getElementById('totalTTCSpan');
-  totalTTCSpan.textContent = `${(totalHT + taxes)/100} €`
+  const totalTTC = (totalHT + taxes)
+  totalTTCSpan.textContent = totalTTC.toLocaleString('fr', currency);
 }
-
-calcul(0)
 
 function loadDevis(){
   let info;
@@ -145,7 +144,8 @@ function loadDevis(){
       descriptionDiv.textContent = res.metadata.description;
 
       const tjmSpan = document.getElementById('tjmSpan');
-      tjmSpan.textContent = `${res.amount/100} €`;
+      const tjm = res.amount/100
+      tjmSpan.textContent = tjm.toLocaleString('fr', currency);
 
       const plannedInput = document.getElementById('planned');
       const legalNameInput =  document.getElementById('legalNameInput');
@@ -159,13 +159,13 @@ function loadDevis(){
         plannedInput.disabled = true;
         legalNameInput.disabled = true;
         const signedDate = new Date(res.created*1000);
-        dateDiv.textContent = signedDate.toDateString();
+        dateDiv.textContent = signedDate.toLocaleDateString('fr');
         calcul(res.amount);
         document.getElementById('signatureImg').src = res.signature;
         canvas.style.display = 'none';
       } else {
         const now = new Date();
-        dateDiv.textContent = now.toDateString();
+        dateDiv.textContent = now.toLocaleDateString('fr');
         plannedInput.addEventListener('change', () => { calcul(res.amount) })
         plannedInput.addEventListener('keyup', () => { calcul(res.amount) })
         plannedInput.addEventListener('mouseup', () => { calcul(res.amount) })
@@ -208,6 +208,7 @@ function loadDevis(){
 
 window.addEventListener('resize', resizeCanvas);
 window.onload = () => {
+  calcul(0);
   loadDevis();
 };
 

@@ -83,13 +83,17 @@ function resizeCanvas() {
 window.addEventListener('resize', resizeCanvas);
 resizeCanvas();
 
-function calcul(tjm) {
+function calcul(tjm, tva = true) {
   const planned = parseInt(document.getElementById('planned').value);
   const totalHT = (planned * tjm) / 100;
   const totalHTSpan = document.getElementById('totalHTSpan');
   totalHTSpan.textContent = totalHT.toLocaleString('fr', currency)
 
-  const taxes = totalHT * 0.2;
+  let taxes = 0;
+  if(tva) {
+    taxes = totalHT * 0.2;
+  }
+
   const taxesSpan = document.getElementById('taxesSpan');
   taxesSpan.textContent = taxes.toLocaleString('fr', currency);
 
@@ -160,15 +164,15 @@ function loadDevis(){
         legalNameInput.disabled = true;
         const signedDate = new Date(res.created*1000);
         dateDiv.textContent = signedDate.toLocaleDateString('fr');
-        calcul(res.amount);
+        calcul(res.amount, res.customer.tva);
         document.getElementById('signatureImg').src = res.signature;
         canvas.style.display = 'none';
       } else {
         const now = new Date();
         dateDiv.textContent = now.toLocaleDateString('fr');
-        plannedInput.addEventListener('change', () => { calcul(res.amount) })
-        plannedInput.addEventListener('keyup', () => { calcul(res.amount) })
-        plannedInput.addEventListener('mouseup', () => { calcul(res.amount) })
+        plannedInput.addEventListener('change', () => { calcul(res.amount, res.customer.tva) })
+        plannedInput.addEventListener('keyup', () => { calcul(res.amount, res.customer.tva) })
+        plannedInput.addEventListener('mouseup', () => { calcul(res.amount, res.customer.tva) })
 
         validateButton.addEventListener('click', () => {
           const legalName = legalNameInput.value;

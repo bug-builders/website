@@ -77,7 +77,7 @@ layout: default
           if(typeof(transaction.label) === 'object') {
             const proofA = document.createElement('a')
             proofA.href = transaction.label.proof;
-            proofA.textContent = transaction.label.claimant;
+            proofA.textContent = transaction.label.label;
             correspondantTd.appendChild(proofA)
           } else {
             correspondantTd.textContent = transaction.label;

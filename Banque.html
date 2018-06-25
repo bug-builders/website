@@ -74,7 +74,14 @@ layout: default
 
         let type;
         if(transaction.type === 'debit') {
-          correspondantTd.textContent = transaction.label;
+          if(typeof(transaction.label) === 'object') {
+            const proofA = document.createElement('a')
+            proofA.href = transaction.label.proof;
+            proofA.textContent = transaction.label.claimant;
+            correspondantTd.appendChild(proofA)
+          } else {
+            correspondantTd.textContent = transaction.label;
+          }
           type = '-';
           amountTd.className = 'amount';
         } else {

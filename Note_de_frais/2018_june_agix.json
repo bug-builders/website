@@ -1,0 +1,18 @@
+{
+    "claimant": "agix",
+    "infos": "Achat de matériel numérique",
+    "claims": [
+        {
+            "description": "Imprimante",
+            "price": 8536,
+            "justificatif": "/justificatifs/agix/2018/june/Amazon_imprimante.pdf",
+            "sha": "eb2c182eb7f093c7f2de6e2791b0977a6f731d27"
+        },
+        {
+            "description": "Souris",
+            "price": 895,
+            "justificatif": "/justificatifs/agix/2018/june/Amazon_souris.pdf",
+            "sha" : "3734c397ffc1042e0dc9165e3df17ae63d2fbe75"
+        }
+    ]
+}

@@ -7,15 +7,6 @@ layout: default
     <legend>Solde du compte</legend>
     <span id="totalSpan"></span>
   </fieldset>
-  <div class="pure-u-1-2" style="float:right">
-    <fieldset>
-      <legend>Solde membre</legend>
-      <div class="pure-u-1">
-        <input type="text" id="memberNameInput" placeholder="Member name">
-        <div style="float:right"><span id="memberTotalSpan" style="line-height:28px; text-align:right"></span></div>
-      </div>
-    </fieldset>
-  </div>
   <table class="pure-table pure-table-horizontal" style="width:100%; margin-bottom:2em">
     <thead>
       <tr>
@@ -29,29 +20,12 @@ layout: default
 </div>
 <script>
   window.onload = async () => {
-    let memberTimer = null;
-    const memberNameInput = document.getElementById('memberNameInput');
-    memberNameInput.addEventListener('input', () => {
-      const memberTotalSpan = document.getElementById('memberTotalSpan');
-      memberTotalSpan.textContent = '';
-      clearTimeout(memberTimer);
-      console.log(memberNameInput.value);
-      if(memberNameInput.value !== '') {
-        memberTimer = setTimeout(() => {
-          memberTotalSpan.textContent = '...';
-          loadBank(memberNameInput.value)
-          .then(() => {
-            memberTotalSpan.textContent = '';
-          })
-        }, 1000)
-      }
-
-    })
-    const member = location.hash.substr(1);
-    await loadBank(member);
+    window.onhashchange = loadBank;
+    loadBank();
   };
 
-  async function loadBank(member) {
+  async function loadBank() {
+    const member = location.hash.substr(1);
     fetch(`${mainUrl}/bank/${member}`, {
       method: 'GET',
       mode: 'cors'

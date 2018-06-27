@@ -28,7 +28,7 @@ layout: default
   </table>
 </div>
 <script>
-  window.onload = () => {
+  window.onload = async () => {
     let memberTimer = null;
     const memberNameInput = document.getElementById('memberNameInput');
     memberNameInput.addEventListener('input', () => {
@@ -39,21 +39,20 @@ layout: default
       if(memberNameInput.value !== '') {
         memberTimer = setTimeout(() => {
           memberTotalSpan.textContent = '...';
-          fetch(`${mainUrl}/bank/${memberNameInput.value}`, {
-            method: 'GET',
-            mode: 'cors'
-          })
-          .then(res => res.json())
-          .then(res => {
-            const memberTotal = res.total/100;
-            memberTotalSpan.textContent = memberTotal.toLocaleString('fr', currency);
+          loadBank(memberNameInput.value)
+          .then(() => {
+            memberTotalSpan.textContent = '';
           })
         }, 1000)
       }
 
     })
+    const member = location.hash.substr(1);
+    await loadBank(member);
+  };
 
-    fetch(`${mainUrl}/bank`, {
+  async function loadBank(member) {
+    fetch(`${mainUrl}/bank/${member}`, {
       method: 'GET',
       mode: 'cors'
     })
@@ -64,6 +63,9 @@ layout: default
       totalSpan.textContent = total.toLocaleString('fr', currency)
 
       const bankTbody = document.getElementById('bankTbody');
+      while (bankTbody.firstChild) {
+        bankTbody.removeChild(bankTbody.firstChild);
+      }
       res.transactions.forEach(transaction => {
         const dateTd = document.createElement('td');
         const correspondantTd = document.createElement('td');
@@ -87,6 +89,9 @@ layout: default
         } else {
           correspondantTd.textContent = transaction.label.substr(0, 20);
           type = '+';
+          if(transaction.fees) {
+            amountTd.title = transaction.fees.reduce((fees, fee) => `${fees}\n${fee.name}: ${(fee.amount/100).toLocaleString('fr', currency)}`,'');
+          }
           amountTd.className = 'amount positif';
         }
 
@@ -101,5 +106,5 @@ layout: default
         bankTbody.appendChild(bankTr);
       })
     })
-  };
+  }
 </script>

@@ -50,11 +50,15 @@ layout: default
 
         let type;
         if(transaction.type === 'debit') {
-          if(typeof(transaction.label) === 'object') {
-            const proofA = document.createElement('a')
-            proofA.href = transaction.label.proof;
-            proofA.textContent = transaction.label.label;
-            correspondantTd.appendChild(proofA)
+          if(typeof(transaction.label) === 'object' && typeof(transaction.label.proof) !== 'undefined')) {
+            if(typeof(transaction.label.proof) !== 'undefined') {
+              const proofA = document.createElement('a')
+              proofA.href = transaction.label.proof;
+              proofA.textContent = transaction.label.label;
+              correspondantTd.appendChild(proofA)
+            } else {
+              correspondantTd.textContent = transaction.label.label;
+            }
           } else {
             correspondantTd.textContent = transaction.label;
           }

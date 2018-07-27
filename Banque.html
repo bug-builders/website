@@ -50,7 +50,7 @@ layout: default
 
         let type;
         if(transaction.type === 'debit') {
-          if(typeof(transaction.label) === 'object' && typeof(transaction.label.proof) !== 'undefined')) {
+          if(typeof(transaction.label) === 'object'){
             if(typeof(transaction.label.proof) !== 'undefined') {
               const proofA = document.createElement('a')
               proofA.href = transaction.label.proof;

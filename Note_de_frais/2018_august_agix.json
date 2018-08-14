@@ -1,0 +1,18 @@
+{
+    "claimant": "agix",
+    "infos": "Achat de matériel numérique",
+    "claims": [
+        {
+            "description": "Caméra",
+            "justificatif": "/justificatifs/agix/2018/august/Darty.pdf",
+            "price": 35899,
+            "sha": "f4ad7bd9cae9270ec76ca278b31faf718ea568eb"
+        },
+        {
+            "description": "Carte SD 128 GO",
+            "justificatif": "/justificatifs/agix/2018/august/Leclerc.pdf",
+            "price": 6595,
+            "sha": "feaa0de96e3df8aa2d08c0c5a0fc19020d8026e3"
+        }
+    ]
+}

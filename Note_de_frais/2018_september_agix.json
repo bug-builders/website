@@ -1,0 +1,12 @@
+{
+    "claimant": "agix",
+    "infos": "Soirée présentation bug builders",
+    "claims": [
+        {
+            "description": "Tapas",
+            "justificatif": "/justificatifs/agix/2018/september/Repas_prez_asso.pdf",
+            "price": 15400,
+            "sha": "721be419cf1c0a81aed3d995206f6b323ebfa16b"
+        }
+    ]
+}

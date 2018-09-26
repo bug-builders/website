@@ -60,7 +60,7 @@ layout: default
       .then(keys => {
         const signaturePromises = [];
         Object.keys(signatory).forEach((member, i) => {
-          if(member.login in signatures) {
+          if(member in signatures) {
             signaturePromises.push(verify(postSha, keys[i], signatures[member]));
           } else {
             signaturePromises.push(Promise.resolve(false));

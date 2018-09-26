@@ -1,3 +1,6 @@
+---
+signatory: '{"agix": "Florian Gaultier", "Calebsem": "Julien Noble"}'
+---
 # Procès-verbal de l'assemblée générale constitutive du 24 février 2018
 
 Le 24 février 2018 à 18 heures, les fondateurs de l'association Bug builders se sont réunis en assemblée générale constitutive au 86 rue de Macau 33000 Bordeaux.

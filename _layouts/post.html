@@ -27,33 +27,41 @@ layout: default
 </article>
 
 <fieldset id="postSignatureFieldSet">
-  <ul class="pure-u-7-12" style="list-style-type: none; margin-left:0px; border: 1px solid black;" id="postSignatureUl"></ul>
+  <legend>Signatures</legend>
+  <ul class="pure-u-7-12" style="list-style-type: none; margin-left:0px;" id="postSignaturesUl"></ul>
 </fieldset>
 <script>
   window.onload = () => {
+    let signatory = {};
+    try {
+      signatory = JSON.parse('{{ page.signatory }}');
+    } catch(e) {
+    }
+
+    const avatars = new Avatars(Avatars.sprites.identicon);
     const postPath = location.pathname.replace(/\//g, '-').substr(1).replace('.html', '.md');
-    let signatures;
-    let members;
-    getContent(`_posts/${postPath}.sig`)
+    let signatures = {};
+    let postSha;
+    getContent(`_posts/${postPath}`)
+      .then(p => {
+        postSha = p.sha;
+        return getContent(`_posts/${postPath}.sig`);
+      })
       .then(sigFile => {
         if(typeof(sigFile.content) !== 'undefined') {
           signatures = JSON.parse(b64DecodeUnicode(sigFile.content));
         }
-        return getMembers()
-      })
-      .then(rMembers => {
-        members = rMembers;
         const keyPromises = [];
-        members.forEach(member => {
-          keyPromises.push(getKeys(member.login))
+        Object.keys(signatory).forEach(member => {
+          keyPromises.push(getKeys(member))
         })
         return Promise.all(keyPromises);
       })
       .then(keys => {
         const signaturePromises = [];
-        members.forEach((member, i) => {
+        Object.keys(signatory).forEach((member, i) => {
           if(member.login in signatures) {
-            signaturePromises.push(verify(noteDeFraisSha, keys[i], signatures[member.login]));
+            signaturePromises.push(verify(postSha, keys[i], signatures[member]));
           } else {
             signaturePromises.push(Promise.resolve(false));
           }
@@ -65,7 +73,7 @@ layout: default
         while (postSignaturesUl.firstChild) {
           postSignaturesUl.removeChild(postSignaturesUl.firstChild);
         }
-        members.forEach((member, i) => {
+        Object.keys(signatory).forEach((member, i) => {
           const loginLi = document.createElement('li')
           loginLi.className = 'pure-u-1';
           loginLi.style['padding'] = '0.5em';
@@ -76,22 +84,22 @@ layout: default
             const signImg = document.createElement('img');
             signImg.width = 50;
 
-            const svg = avatars.create(signatures[member.login]);
+            const svg = avatars.create(signatures[member]);
             const svgUri = `data:image/svg+xml;base64,${btoa(svg)}`;
             signImg.src = svgUri;
             const signP = document.createElement('span');
             signP.className = 'pure-u-4-5';
-            signP.textContent = `Valid signature by ${member.login}`;
+            signP.textContent = `Valid signature by ${signatory[member]}`;
             loginLi.style.color = '#77ce44';
             loginLi.appendChild(signP);
             loginLi.appendChild(signImg);
           } else {
-            if(member.login in signatures) {
-              loginLi.textContent = `Invalid signature by ${member.login}`;
+            if(member in signatures) {
+              loginLi.textContent = `Invalid signature by ${signatory[member]}`;
               loginLi.style.color = '#f95e5e';
             }
             else {
-              loginLi.textContent = `Not signed by ${member.login}`;
+              loginLi.textContent = `Not signed by ${signatory[member]}`;
             }
           }
           postSignaturesUl.appendChild(loginLi);

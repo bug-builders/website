@@ -1,0 +1,101 @@
+---
+layout: default
+---
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+        {{ page.date | date: date_format }}
+      </time>
+      {%- if page.author -%}
+        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">{{ page.author }}</span></span>
+      {%- endif -%}</p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    {{ content }}
+  </div>
+
+  {%- if site.disqus.shortname -%}
+    {%- include disqus_comments.html -%}
+  {%- endif -%}
+
+  <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+</article>
+
+<fieldset id="postSignatureFieldSet">
+  <ul class="pure-u-7-12" style="list-style-type: none; margin-left:0px; border: 1px solid black;" id="postSignatureUl"></ul>
+</fieldset>
+<script>
+  window.onload = () => {
+    const postPath = location.pathname.replace(/\//g, '-').substr(1).replace('.html', '.md');
+    let signatures;
+    let members;
+    getContent(`_posts/${postPath}.sig`)
+      .then(sigFile => {
+        if(typeof(sigFile.content) !== 'undefined') {
+          signatures = JSON.parse(b64DecodeUnicode(sigFile.content));
+        }
+        return getMembers()
+      })
+      .then(rMembers => {
+        members = rMembers;
+        const keyPromises = [];
+        members.forEach(member => {
+          keyPromises.push(getKeys(member.login))
+        })
+        return Promise.all(keyPromises);
+      })
+      .then(keys => {
+        const signaturePromises = [];
+        members.forEach((member, i) => {
+          if(member.login in signatures) {
+            signaturePromises.push(verify(noteDeFraisSha, keys[i], signatures[member.login]));
+          } else {
+            signaturePromises.push(Promise.resolve(false));
+          }
+        })
+        return Promise.all(signaturePromises);
+      })
+      .then(verifications => {
+        const postSignaturesUl = document.getElementById('postSignaturesUl');
+        while (postSignaturesUl.firstChild) {
+          postSignaturesUl.removeChild(postSignaturesUl.firstChild);
+        }
+        members.forEach((member, i) => {
+          const loginLi = document.createElement('li')
+          loginLi.className = 'pure-u-1';
+          loginLi.style['padding'] = '0.5em';
+          loginLi.style['line-height'] = '60px';
+          loginLi.style['font-weight'] = '600';
+
+          if(verifications[i]) {
+            const signImg = document.createElement('img');
+            signImg.width = 50;
+
+            const svg = avatars.create(signatures[member.login]);
+            const svgUri = `data:image/svg+xml;base64,${btoa(svg)}`;
+            signImg.src = svgUri;
+            const signP = document.createElement('span');
+            signP.className = 'pure-u-4-5';
+            signP.textContent = `Valid signature by ${member.login}`;
+            loginLi.style.color = '#77ce44';
+            loginLi.appendChild(signP);
+            loginLi.appendChild(signImg);
+          } else {
+            if(member.login in signatures) {
+              loginLi.textContent = `Invalid signature by ${member.login}`;
+              loginLi.style.color = '#f95e5e';
+            }
+            else {
+              loginLi.textContent = `Not signed by ${member.login}`;
+            }
+          }
+          postSignaturesUl.appendChild(loginLi);
+        })
+      });
+  }
+</script>

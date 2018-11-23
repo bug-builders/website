@@ -1,0 +1,109 @@
+---
+layout: default
+---
+
+<div class="home">
+  <header class="post-header">
+    <h1 class="post-title">Factures</h1>
+  </header>
+  <ul class="pure-u-1" id="invoices">
+    <li><a href="#Scaleway">Scaleway</a></li>
+  </ul>
+  <fieldset id="invoicesDetailsFieldset">
+    <legend id="invoicesProviderLegend"></legend>
+    <table class="pure-table pure-table-horizontal" style="width:100%; margin-bottom:2em">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Organisation</th>
+          <th style="text-align:center">Date d'émission</th>
+          <th style="text-align:center">Montant</th>
+        </tr>
+      </thead>
+      <tbody id="invoicesTbody"></tbody>
+    </table>
+  </fieldset>
+</div>
+<script>
+  function loadInvoices(){
+    const provider = location.hash.substr(1);
+    const invoicesProviderLegend = document.getElementById('invoicesProviderLegend');
+    invoicesProviderLegend.textContent = provider;
+    fetch(`${mainUrl}/invoices/${provider.toLowerCase()}`, {
+      method: 'GET',
+      mode: 'cors'
+    })
+    .then(res => res.json())
+    .then(invoices => {
+      const invoicesTbody = document.getElementById('invoicesTbody');
+      while (invoicesTbody.firstChild) {
+        invoicesTbody.removeChild(invoicesTbody.firstChild);
+      }
+      invoices.forEach(invoice => {
+        const idTd = document.createElement('td')
+        const organizationTd = document.createElement('td')
+        const issuedDateTd = document.createElement('td')
+        issuedDateTd.style['text-align'] = 'center';
+        const amountTd = document.createElement('td')
+
+        organizationTd.textContent = invoice.organization.name;
+        organizationTd.title = invoice.organization.id;
+
+        const issuedDate = new Date(invoice.issued);
+        if(invoice.state ===  'draft'){
+          idTd.textContent = 'En cours';
+          issuedDateTd.textContent = '⁻'
+        } else {
+          idTd.textContent = invoice.number;
+          issuedDateTd.textContent = issuedDate.toLocaleDateString('fr');
+        }
+
+        idTd.title = invoice.id;
+
+        // amountTd.textContent = invoice.total.ttc.toLocaleString('fr', currency);
+
+        const htP = document.createElement('span');
+        const htP2 = document.createElement('span');
+        htP.className = 'pure-u-1-2';
+        htP.style['text-align'] = 'right';
+        htP2.className = 'pure-u-1-2 amount';
+        htP.textContent = 'HT';
+        htP2.textContent = invoice.total.ht.toLocaleString('fr', currency);
+        const taxP = document.createElement('span');
+        const taxP2 = document.createElement('span');
+        taxP.className = 'pure-u-1-2'
+        taxP.style['text-align'] = 'right';
+        taxP2.className = 'pure-u-1-2 amount'
+        taxP.textContent = 'TVA'
+        taxP2.textContent = invoice.total.tax.toLocaleString('fr', currency);
+        const ttcP = document.createElement('span');
+        const ttcP2 = document.createElement('span');
+        ttcP.className = 'pure-u-1-2'
+        ttcP.style['text-align'] = 'right';
+        ttcP2.className = 'pure-u-1-2 amount'
+        ttcP.textContent = 'TTC'
+        ttcP2.textContent = invoice.total.ttc.toLocaleString('fr', currency);
+
+        amountTd.appendChild(htP)
+        amountTd.appendChild(htP2)
+        amountTd.appendChild(taxP)
+        amountTd.appendChild(taxP2)
+        amountTd.appendChild(ttcP)
+        amountTd.appendChild(ttcP2)
+
+        // amountTd.className = 'amount';
+
+        const invoiceTr = document.createElement('tr');
+
+        invoiceTr.appendChild(idTd)
+        invoiceTr.appendChild(organizationTd)
+        invoiceTr.appendChild(issuedDateTd);
+        invoiceTr.appendChild(amountTd);
+
+        invoicesTbody.appendChild(invoiceTr);
+      })
+    })
+  }
+
+  window.onload = loadInvoices;
+</script>

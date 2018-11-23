@@ -16,13 +16,14 @@ layout: default
     titleH1.textContent = location.pathname;
     filesUl.textContent = '';
     files.forEach(file => {
-      console.log(file);
-      const fLi = document.createElement('li');
-      const fA = document.createElement('a');
-      fA.href = `/${file.path}`;
-      fA.textContent = file.name;
-      fLi.appendChild(fA);
-      filesUl.appendChild(fLi);
+      if(file.name !== 'index.html'){
+        const fLi = document.createElement('li');
+        const fA = document.createElement('a');
+        fA.href = `/${file.path}`;
+        fA.textContent = file.name;
+        fLi.appendChild(fA);
+        filesUl.appendChild(fLi);
+      }
     })
   }
 

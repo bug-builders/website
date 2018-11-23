@@ -109,6 +109,23 @@ layout: default
     })
   }
 
+  async function listFiles() {
+    const files = await getContent('Factures');
+    const filesUl = document.getElementById('invoices');
+
+    files.forEach(file => {
+      console.log(file);
+      const fLi = document.createElement('li');
+      const fA = document.createElement('a');
+      fA.href = `/${file.path}`;
+      fA.textContent = file.name;
+      fLi.appendChild(fA);
+      filesUl.appendChild(fLi);
+    })
+  }
+
+  window.onload = listFiles;
+
   window.onhashchange = loadInvoices;
 
 </script>

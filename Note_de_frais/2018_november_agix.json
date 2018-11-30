@@ -6,7 +6,7 @@
             "description": "Déplacement allé",
             "justificatif": "/justificatifs/agix/2018/november/blablacar_alle.pdf",
             "price": 2300,
-            "sha": "a039f63e6fe5d4a2b077b4c719c17574d269b97c"
+            "sha": "7278d174829ad0d3ef13e2127fe7048b49830504"
         },
         {
             "description": "Manette",
@@ -55,6 +55,18 @@
             "justificatif": "/justificatifs/agix/2018/november/repas_soir_22.pdf",
             "price": 6325,
             "sha": "d5d9a57a67ffd9e40676c7a5511126b686b3e27e"
-        }
+        },
+        {
+            "description": "Déplacement retour",
+            "justificatif": "/justificatifs/agix/2018/november/blablacar_retour.pdf",
+            "price": 3400,
+            "sha": "0441163ee868b344533ea94643b671e6ba0c60de"
+        },
+        {
+            "description": "Déplacement retour",
+            "justificatif": "/justificatifs/agix/2018/november/EGGEtroni.pdf",
+            "price": 3056,
+            "sha": "589f20cde1ac3739f81c459932a4a70d6f5dd1e1"
+        },
     ]
 }

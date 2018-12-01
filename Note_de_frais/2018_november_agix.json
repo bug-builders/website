@@ -57,6 +57,12 @@
             "sha": "d5d9a57a67ffd9e40676c7a5511126b686b3e27e"
         },
         {
+            "description": "Repas soir 23/11",
+            "justificatif": "/justificatifs/agix/2018/november/repas_soir_23.pdf",
+            "price": 5300,
+            "sha": "2a99c95a488da9d3a3b41c61b67741e0f94df505"
+        },
+        {
             "description": "Déplacement retour",
             "justificatif": "/justificatifs/agix/2018/november/blablacar_retour.pdf",
             "price": 3400,

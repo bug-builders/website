@@ -1,0 +1,93 @@
+---
+layout: default
+---
+
+<article class="post">
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+</article>
+
+<fieldset id="postSignatureFieldSet">
+  <legend>Signatures</legend>
+  <ul class="pure-u-7-12" style="list-style-type: none; margin-left:0px;" id="postSignaturesUl"></ul>
+</fieldset>
+<script>
+  window.onload = () => {
+    let signatory = {"agix": "Florian Gaultier", "Calebsem": "Julien Noble", "antoinelyset": "Antoine Lyset"};
+    try {
+      signatory = JSON.parse('{{ page.signatory }}');
+    } catch(e) {
+    }
+
+    const avatars = new Avatars(Avatars.sprites.identicon);
+    const postPath = location.pathname.replace(/\//g, '-').substr(1).replace('.html', '.md');
+    let signatures = {};
+    let postSha;
+    getContent(postPath)
+      .then(p => {
+        postSha = p.sha;
+        return getContent(`${postPath}.sig`);
+      })
+      .then(sigFile => {
+        if(typeof(sigFile.content) !== 'undefined') {
+          signatures = JSON.parse(b64DecodeUnicode(sigFile.content));
+        }
+        const keyPromises = [];
+        Object.keys(signatory).forEach(member => {
+          keyPromises.push(getKeys(member))
+        })
+        return Promise.all(keyPromises);
+      })
+      .then(keys => {
+        const signaturePromises = [];
+        Object.keys(signatory).forEach((member, i) => {
+          if(member in signatures) {
+            signaturePromises.push(verify(postSha, keys[i], signatures[member]));
+          } else {
+            signaturePromises.push(Promise.resolve(false));
+          }
+        })
+        return Promise.all(signaturePromises);
+      })
+      .then(verifications => {
+        const postSignaturesUl = document.getElementById('postSignaturesUl');
+        while (postSignaturesUl.firstChild) {
+          postSignaturesUl.removeChild(postSignaturesUl.firstChild);
+        }
+        Object.keys(signatory).forEach((member, i) => {
+          const loginLi = document.createElement('li')
+          loginLi.className = 'pure-u-1';
+          loginLi.style['padding'] = '0.5em';
+          loginLi.style['line-height'] = '60px';
+          loginLi.style['font-weight'] = '600';
+
+          if(verifications[i]) {
+            const signImg = document.createElement('img');
+            signImg.width = 50;
+
+            const svg = avatars.create(signatures[member]);
+            const svgUri = `data:image/svg+xml;base64,${btoa(svg)}`;
+            signImg.src = svgUri;
+            const signP = document.createElement('span');
+            signP.className = 'pure-u-4-5';
+            signP.textContent = `Valid signature by ${signatory[member]}`;
+            loginLi.style.color = '#77ce44';
+            loginLi.appendChild(signP);
+            loginLi.appendChild(signImg);
+          } else {
+            if(member in signatures) {
+              loginLi.textContent = `Invalid signature by ${signatory[member]}`;
+              loginLi.style.color = '#f95e5e';
+            }
+            else {
+              loginLi.textContent = `Not signed by ${signatory[member]}`;
+            }
+          }
+          postSignaturesUl.appendChild(loginLi);
+        })
+      });
+  }
+</script>

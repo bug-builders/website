@@ -3,17 +3,11 @@
     "infos": "Matériel de soudure et déplacement mission 3CCFD76 04-08",
     "claims": [
         {
-            "description": "Déplacement allé",
-            "justificatif": "/justificatifs/agix/2019/february/blabla_aller.pdf",
-            "price": 2650,
-            "sha": "f22166e68529e8e5b5365023c4b7e95fb7d2cfad"
-        },
-        {
             "description": "Fer à souder",
             "justificatif": "/justificatifs/agix/2019/february/fer_a_souder.pdf",
             "price": 1999,
             "sha": "d5737a7702bd2105774e567d44543929392b3b09"
-        },
+        }
         {
             "description": "Fil à souder",
             "justificatif": "/justificatifs/agix/2019/february/fil_a_souder.pdf",
@@ -25,6 +19,18 @@
             "justificatif": "/justificatifs/agix/2019/february/kit_capteur_arduino.pdf",
             "price": 3299,
             "sha": "bb8b55dff162fd03bfcb014a6797516f42ea9f17"
+        },
+        {
+            "description": "Cable usb type-c -> hdmi",
+            "justificatif": "/justificatifs/agix/2019/february/cable_hdmi.pdf",
+            "price": 1499,
+            "sha": "dd784abf53bddef5f6d249ea3de6633e97c4c50b"
+        },
+        {
+            "description": "Déplacement allé",
+            "justificatif": "/justificatifs/agix/2019/february/blabla_aller.pdf",
+            "price": 2650,
+            "sha": "f22166e68529e8e5b5365023c4b7e95fb7d2cfad"
         },
         {
             "description": "Repas soir 04/02",

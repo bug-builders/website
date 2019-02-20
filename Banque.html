@@ -7,6 +7,11 @@ layout: default
     <legend>Solde du compte</legend>
     <span id="totalSpan"></span>
   </fieldset>
+  <fieldset id="bbFees" class="pure-u-1-3">
+    <legend>Cotisation Bug Builders</legend>
+    <ul id="bbFeesUl">
+    </ul>
+  </fieldset>
   <table class="pure-table pure-table-horizontal" style="width:100%; margin-bottom:2em">
     <thead>
       <tr>
@@ -40,6 +45,41 @@ layout: default
       while (bankTbody.firstChild) {
         bankTbody.removeChild(bankTbody.firstChild);
       }
+
+      if(typeof(res.bbFees) !== 'undefined') {
+        const bbFees = document.getElementById('bbFees');
+        bbFees.style.display = 'inline-block';
+        const bbFeesUl = document.getElementById('bbFeesUl');
+        while (bbFeesUl.firstChild) {
+          bbFeesUl.removeChild(bbFeesUl.firstChild);
+        }
+
+        let type = '-';
+        if(window.location.hash === '#asso') {
+          type = '+';
+        }
+
+        Object.keys(res.bbFees).forEach(year => {
+          const currentFee = res.bbFees[year];
+          const feeLi = document.createElement('li');
+          const yearSpan = document.createElement('span');
+          yearSpan.textContent = year;
+          const feeSpan = document.createElement('b');
+          feeSpan.textContent = `${type} ${(currentFee.bbFee/100).toLocaleString('fr', currency)}`;
+
+          feeLi.appendChild(yearSpan)
+          feeLi.appendChild(feeSpan)
+          bbFeesUl.appendChild(feeLi);
+        })
+
+        const feeP = document.createElement('p');
+        feeP.textContent = `Moyenne de cotisation : ${res.bbFeeAverage.toLocaleString('fr')} %`
+        bbFeesUl.appendChild(feeP);
+
+      } else {
+        bbFees.style.display = 'none';
+      }
+
       res.transactions.forEach(transaction => {
         const dateTd = document.createElement('td');
         const correspondantTd = document.createElement('td');

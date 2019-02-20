@@ -57,6 +57,28 @@ $base-font-family: 'Open Sans', sans-serif;
     text-align: center;
 }
 
+#bbFees {
+    display: none;
+    margin-bottom: 2em;
+    text-align: left;
+    float: right;
+}
+
+#bbFeesUl {
+    list-style-type: none;
+    margin-left: 10px;
+    margin-bottom: 0px;
+}
+
+#bbFeesUl li b {
+    float:right;
+}
+
+#bbFeesUl p {
+    margin-top:10px;
+    margin-bottom:0px;
+}
+
 #memberTotalSpan, #totalSpan {
     font-weight: 600;
 }

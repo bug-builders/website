@@ -76,6 +76,7 @@ layout: default
       .then(c => {
         contractSha = c.sha;
         contract = JSON.parse(b64DecodeUnicode(c.content));
+
         const contractDetailsFieldset = document.getElementById('contractDetailsFieldset');
         contractDetailsFieldset.style.display = 'block';
         const contractClaimantSpan = document.getElementById('contractClaimantSpan');
@@ -88,9 +89,17 @@ layout: default
         const fromDate = new Date(contract.from);
         contractFromSpan.textContent = fromDate.toLocaleDateString('fr');
 
-        const contractToSpan = document.getElementById('contractToSpan');
-        const toDate = new Date(contract.to);
-        contractToSpan.textContent = toDate.toLocaleDateString('fr');
+        let time;
+        if(typeof(contract.to) !== 'undefined') {
+          const contractToSpan = document.getElementById('contractToSpan');
+          const toDate = new Date(contract.to);
+          contractToSpan.textContent = toDate.toLocaleDateString('fr');
+          time = monthDiff(fromDate, toDate);
+          const timeSpan = document.getElementById('timeSpan');
+          timeSpan.textContent = `${time} mois`;
+        } else {
+          time = 1;
+        }
 
         const salaryGrossSpan = document.getElementById('salaryGrossSpan');
         const salaryGross = contract.salary/100;
@@ -111,10 +120,6 @@ layout: default
         const taxSpan = document.getElementById('taxSpan');
         tax = 14;
         taxSpan.textContent = tax.toLocaleString('fr', currency);
-
-        const timeSpan = document.getElementById('timeSpan');
-        const time = monthDiff(fromDate, toDate);
-        timeSpan.textContent = `${time} mois`;
 
         const totalSpan = document.getElementById('totalSpan');
         const margin = 10/100;

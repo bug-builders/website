@@ -4,19 +4,19 @@
     "claims": [
         {
             "description": "Imprimante",
-            "justificatif": "/justificatifs/agix/2018/june/Amazon_imprimante.pdf",
+            "doc": "/justificatifs/agix/2018/june/Amazon_imprimante.pdf",
             "price": 8536,
             "sha": "eb2c182eb7f093c7f2de6e2791b0977a6f731d27"
         },
         {
             "description": "Souris",
-            "justificatif": "/justificatifs/agix/2018/june/Amazon_souris.pdf",
+            "doc": "/justificatifs/agix/2018/june/Amazon_souris.pdf",
             "price": 895,
             "sha": "3734c397ffc1042e0dc9165e3df17ae63d2fbe75"
         },
         {
             "description": "Téléphone",
-            "justificatif": "/justificatifs/agix/2018/june/Oneplus.pdf",
+            "doc": "/justificatifs/agix/2018/june/Oneplus.pdf",
             "price": 60934,
             "sha": "d9442e348cc40cfacddff86fb7f104da4c55d1c6"
         }

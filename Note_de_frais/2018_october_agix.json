@@ -4,19 +4,19 @@
     "claims": [
         {
             "description": "Weldom",
-            "justificatif": "/justificatifs/agix/2018/october/weldom.pdf",
+            "doc": "/justificatifs/agix/2018/october/weldom.pdf",
             "price": 4250,
             "sha": "18f7b626373091cbc8a31ee821076cf319f7b699"
         },
         {
             "description": "Arduino",
-            "justificatif": "/justificatifs/agix/2018/october/arduino.pdf",
+            "doc": "/justificatifs/agix/2018/october/arduino.pdf",
             "price": 1274,
             "sha": "1ea67b0e09c597bc2af64c20366aa7ab69e27e6e"
         },
         {
             "description": "Fakir",
-            "justificatif": "/justificatifs/agix/2018/october/fakir.pdf",
+            "doc": "/justificatifs/agix/2018/october/fakir.pdf",
             "price": 6000,
             "sha": "c915713f2145c664b4863426d93e5ffdf2d68401"
         }

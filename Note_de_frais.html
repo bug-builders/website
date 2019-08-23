@@ -65,7 +65,7 @@ layout: default
 
         const justificatifPromises = [];
         noteDeFrais.claims.forEach(claim => {
-          const justificatifSplitted = claim.justificatif.split('/');
+          const justificatifSplitted = claim.doc.split('/');
           const justificatifName = justificatifSplitted[justificatifSplitted.length-1];
           justificatifSplitted.pop();
           const justificatifPath = justificatifSplitted.join('/');
@@ -81,7 +81,7 @@ layout: default
 
         let total = 0;
         noteDeFrais.claims.forEach((claim, i) => {
-          const justificatifSplitted = claim.justificatif.split('/');
+          const justificatifSplitted = claim.doc.split('/');
           const justificatifName = justificatifSplitted[justificatifSplitted.length-1];
 
           const descriptionTd = document.createElement('td');
@@ -90,12 +90,12 @@ layout: default
           const shaTd = document.createElement('td');
 
           descriptionTd.textContent = claim.description;
-          const price = claim.price/100;
+          const price = claim.amount_total/100;
           priceTd.textContent = price.toLocaleString('fr', currency)
           priceTd.className = 'amount';
           const justificatifA = document.createElement('a');
           justificatifA.textContent = justificatifName;
-          justificatifA.href = claim.justificatif;
+          justificatifA.href = claim.doc;
           justificatifTd.appendChild(justificatifA)
           if(justificatifs[i].find(justificatif => justificatif.name === justificatifName).sha === claim.sha){
             shaTd.textContent = '✔';
@@ -112,7 +112,7 @@ layout: default
 
           ndfClaimsTbody.appendChild(claimTr);
 
-          total += claim.price;
+          total += claim.amount_total;
         })
 
         const claimTotalTr = document.createElement('tr');

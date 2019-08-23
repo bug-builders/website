@@ -1,0 +1,193 @@
+{
+  "claimant": "agix",
+  "infos": "Compétition WCTF et déplacements mission 3CCFD76",
+  "claims": [
+    {
+      "title": "WCTF actionvisa visa",
+      "description": "WCTF - visa",
+      "amount_total": 30800,
+      "amount_taxes": 0,
+      "date": "2019-06-17T00:00:00+02:00",
+      "invoice_id": "1916811365650",
+      "issuer": "ACTION-VISAS",
+      "sha": "0e6e127b84954eb9e488e3e20bc9cb3283a67790",
+      "doc": "/justificatifs/agix/2019/june/1916811365650.pdf"
+    },
+    {
+      "title": "WCTF chronopost actionvisa",
+      "description": "WCTF - Chronopost pour envoie du passeport à ActionVisa",
+      "amount_total": 2800,
+      "amount_taxes": 467,
+      "date": "2019-06-17T00:00:00+02:00",
+      "invoice_id": "CH44109019000136",
+      "issuer": "LA POSTE",
+      "sha": "a608527666ae250fcac19942df5ead96d35e94a6",
+      "doc": "/justificatifs/agix/2019/june/CH44109019000136__Florian gaultier.pdf"
+    },
+    {
+      "title": "BlaBlaCar retour 3CCFD76",
+      "description": "Déplacement retour mission 3CCFD76",
+      "amount_total": 2300,
+      "amount_taxes": 66,
+      "date": "2019-06-15T00:00:00+02:00",
+      "invoice_id": "3034896532-265260180-ROZSEP-5d04f128dc5af_ses",
+      "issuer": "BlaBlaCar",
+      "sha": "79687409e7b9102472db70db73f1f3a12331691d",
+      "doc": "/justificatifs/agix/2019/june/Gmail - Votre recu de paiement pour votre reservation_1.pdf"
+    },
+    {
+      "title": "BlaBlaCar aller 3CCFD76",
+      "description": "Déplacement aller mission 3CCFD76",
+      "amount_total": 1950,
+      "amount_taxes": 57,
+      "date": "2019-06-06T00:00:00+02:00",
+      "invoice_id": "3009120334-265260180-YHZWMN-5cf97a8cac52f_ses",
+      "issuer": "BlaBlaCar",
+      "sha": "97dc8560a77e8588e30f9c954055026047b757f4",
+      "doc": "/justificatifs/agix/2019/june/Gmail - Votre recu de paiement pour votre reservation_2.pdf"
+    },
+    {
+      "title": "BlaBlaCar aller 3CCFD76",
+      "description": "Déplacement aller mission 3CCFD76",
+      "amount_total": 2650,
+      "amount_taxes": 75,
+      "date": "2019-04-09T00:00:00+02:00",
+      "invoice_id": "2864946148-265260180-JHGXZU-5cac5ac0a0b50_ses",
+      "issuer": "BlaBlaCar",
+      "sha": "a3fd7b144a9586284f644370bb19373b93c4ca01",
+      "doc": "/justificatifs/agix/2019/june/Gmail - Votre recu de paiement pour votre reservation_3.pdf"
+    },
+    {
+      "title": "BlaBlaCar retour 3CCFD76",
+      "description": "Déplacement retour mission 3CCFD76",
+      "amount_total": 2300,
+      "amount_taxes": 66,
+      "date": "2019-04-12T00:00:00+02:00",
+      "invoice_id": "2871825804-265260180-QTMBLR-5cb049b353bcb_ses",
+      "issuer": "BlaBlaCar",
+      "sha": "21c1ee36bdc0af8d5df3f287eaf3ff6663933779",
+      "doc": "/justificatifs/agix/2019/june/Gmail - Votre recu de paiement pour votre reservation_4.pdf"
+    },
+    {
+      "title": "Nom de domaine",
+      "description": "Nom de domaine",
+      "amount_total": 10696,
+      "amount_taxes": 0,
+      "date": "2019-06-19T00:00:00+02:00",
+      "invoice_id": "0000461",
+      "issuer": "ethio telecom",
+      "sha": "642a3b228d9e059580837e826a125b13b07ef56b",
+      "doc": "/justificatifs/agix/2019/june/Invoice-0000461.pdf"
+    },
+    {
+      "title": "Repas déplacement 3CCFD76",
+      "description": "Repas soir 12/04 déplacement mission 3CCFD76",
+      "amount_total": 6140,
+      "amount_taxes": 0,
+      "date": "2019-12-04T00:00:00+01:00",
+      "invoice_id": "4646107",
+      "issuer": "Saveur Latine",
+      "sha": "1ac07e1962a0c2a870f1b9458a02531fbb9c16c3",
+      "doc": "/justificatifs/agix/2019/june/Nouveau document 2019-04-22 19.57.02.pdf"
+    },
+    {
+      "title": "Repas déplacement 3CCFD76",
+      "description": "Repas midi 12/04 déplacement mission 3CCFD76",
+      "amount_total": 4790,
+      "amount_taxes": 434,
+      "date": "2019-12-04T00:00:00+01:00",
+      "invoice_id": "1759860-1",
+      "issuer": "Quick",
+      "sha": "521980b1a68067ff1f266cbfe4a26ac210db6c5c",
+      "doc": "/justificatifs/agix/2019/june/Nouveau document 2019-04-22 19.57.45.pdf"
+    },
+    {
+      "title": "Repas déplacement 3CCFD76",
+      "description": "Repas soir 11/04 déplacement mission 3CCFD76",
+      "amount_total": 4800,
+      "amount_taxes": 480,
+      "date": "2019-11-04T00:00:00+01:00",
+      "invoice_id": "799117395",
+      "issuer": "Aphrodite",
+      "sha": "97a135ccec66a7811cf2cf998dafd80fbbafe964",
+      "doc": "/justificatifs/agix/2019/june/Nouveau document 2019-04-22 19.58.18.pdf"
+    },
+    {
+      "title": "Repas mission 3CCFD76",
+      "description": "Repas soir 10/04 déplacement mission 3CCFD76",
+      "amount_total": 5700,
+      "amount_taxes": 655,
+      "date": "2019-10-04T00:00:00+02:00",
+      "invoice_id": "4.03.33.01.080NF",
+      "issuer": "LE MURANO",
+      "sha": "9a58f558852baf559e54d3dc6cffa2996b3f1f2c",
+      "doc": "/justificatifs/agix/2019/june/Nouveau document 2019-04-22 19.58.49.pdf"
+    },
+    {
+      "title": "Repas déplacement 3CCFD76",
+      "description": "Repas soir 10/06 déplacement mission 3CCFD76",
+      "amount_total": 7200,
+      "amount_taxes": 851,
+      "date": "2019-10-06T00:00:00+02:00",
+      "invoice_id": "10995/01",
+      "issuer": "LE MURANO",
+      "sha": "6d43b91422e2d709bcb46296ddc9b41982a25d27",
+      "doc": "/justificatifs/agix/2019/june/Nouveau document 2019-06-11 12.40.20.pdf"
+    },
+    {
+      "title": "Repas déplacement 3CCFD76",
+      "description": "Repas midi 11/06 déplacement mission 3CCFD76",
+      "amount_total": 4280,
+      "amount_taxes": 0,
+      "date": "2019-11-06T00:00:00+01:00",
+      "invoice_id": "0019",
+      "issuer": "BRASSERIE LE JOHNSTON",
+      "sha": "bed2dd72bc55c7316755c27d6480c5595d771dea",
+      "doc": "/justificatifs/agix/2019/june/Nouveau document 2019-06-11 14.20.40.pdf"
+    },
+    {
+      "title": "Repas déplacement 3CCFD76",
+      "description": "Repas soir 11/06 déplacement mission 3CCFD76",
+      "amount_total": 7380,
+      "amount_taxes": 836,
+      "date": "2019-11-06T00:00:00+01:00",
+      "invoice_id": "21",
+      "issuer": "Punjab",
+      "sha": "3c05e4069cde160910100c98bb0c982818a06ef7",
+      "doc": "/justificatifs/agix/2019/june/Nouveau document 2019-06-12 21.04.18.pdf"
+    },
+    {
+      "title": "Repas déplacement 3CCFD76",
+      "description": "Repas soir 12/06 déplacement mission 3CCFD76",
+      "amount_total": 3450,
+      "amount_taxes": 370,
+      "date": "2019-12-06T00:00:00+01:00",
+      "invoice_id": "T2-1-2008",
+      "issuer": "SIEM REAP",
+      "sha": "8bf02f8cce794f5e2a360bd862f07b1f2056c2eb",
+      "doc": "/justificatifs/agix/2019/june/Nouveau document 2019-06-12 21.05.06.pdf"
+    },
+    {
+      "title": "Repas déplacement 3CCFD76",
+      "description": "Repas midi 13/06 déplacement mission 3CCFD76",
+      "amount_total": 3350,
+      "amount_taxes": 305,
+      "date": "2019-06-13T00:00:00+02:00",
+      "invoice_id": "2611/1",
+      "issuer": "A TABLE",
+      "sha": "4cf8d7d3a2cc065a13ee7c72bb92b10900c4216a",
+      "doc": "/justificatifs/agix/2019/june/Nouveau document 2019-06-17 12.24.41.pdf"
+    },
+    {
+      "title": "Repas déplacement 3CCFD76",
+      "description": "Repas midi 12/06 déplacement mission 3CCFD76",
+      "amount_total": 2400,
+      "amount_taxes": 393,
+      "date": "2019-12-06T00:00:00+01:00",
+      "invoice_id": "S20190001309",
+      "issuer": "Carrapide cuisine sénégalaise",
+      "sha": "59995b2e714bc2628e4cde8a1e96b1500afbfb83",
+      "doc": "/justificatifs/agix/2019/june/SumUp Receipt.pdf"
+    }
+  ]
+}

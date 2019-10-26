@@ -1,0 +1,127 @@
+{
+  "claimant": "agix",
+  "infos": "Déplacements mission C611BE39 et 220FEB9",
+  "claims": [
+  {
+    "title": "Parking mission C611BE39",
+    "description": "Parking 29/08 déplacement mission C611BE39",
+    "amount_total": 500,
+    "amount_taxes": 0,
+    "date": "2019-08-29T00:00:00+02:00",
+    "invoice_id": "03KLS46B 153222",
+    "issuer": "VILLE DE NIORT",
+    "sha": "20bd6c13c85d631ad96a5ff7c2bcfed9afc79fc1",
+    "doc": "justificatifs/agix/2019/september/Parking_29.pdf"
+  },
+  {
+    "title": "Pass navigo mission 220FEB9",
+    "description": "Pass navigo déplacement mission 220FEB9",
+    "amount_total": 8020,
+    "amount_taxes": 729,
+    "date": "2019-09-02T00:00:00+02:00",
+    "invoice_id": "1276585510",
+    "issuer": "RATP",
+    "sha": "d244ea7b639261fd81159a8f39e838fd630b8873",
+    "doc": "justificatifs/agix/2019/september/Pass_navigo_septembre.pdf"
+  },
+  {
+    "title": "Repas déplacement 220FEB9",
+    "description": "Repas soir 16/09 déplacement mission 220FEB9",
+    "amount_total": 3000,
+    "amount_taxes": 318,
+    "date": "2019-09-16T00:00:00+02:00",
+    "invoice_id": "T7251",
+    "issuer": "RAVIOLI CHINOIS NORD EST",
+    "sha": "34644ae183f1e4cbe75c742ebc06a5eef98a4513",
+    "doc": "justificatifs/agix/2019/september/Repas_16_09.pdf"
+  },
+  {
+    "title": "Repas déplacement 220FEB9",
+    "description": "Repas midi 17/09 déplacement mission 220FEB9",
+    "amount_total": 1600,
+    "amount_taxes": 145,
+    "date": "2019-09-17T00:00:00+02:00",
+    "invoice_id": "A53",
+    "issuer": "Bocamexa Rue Réaumur",
+    "sha": "dfd67cfa87550fbc60b4c438295b20957d5064a6",
+    "doc": "justificatifs/agix/2019/september/Repas_17_09.pdf"
+  },
+  {
+    "title": "Repas déplacement 220FEB9",
+    "description": "Repas midi 18/09 déplacement mission 220FEB9",
+    "amount_total": 1550,
+    "amount_taxes": 141,
+    "date": "2019-09-18T00:00:00+02:00",
+    "invoice_id": "UDC25-229467-Nº 12",
+    "issuer": "Monsieur Printemps",
+    "sha": "cecfa755abd4884cf75811f76e66c1efb41af2f3",
+    "doc": "justificatifs/agix/2019/september/Repas_18_09.pdf"
+  },
+  {
+    "title": "Repas déplacement 220FEB9",
+    "description": "Repas midi 19/09 déplacement mission 220FEB9",
+    "amount_total": 980,
+    "amount_taxes": 59,
+    "date": "",
+    "invoice_id": "33",
+    "issuer": "DELITALY",
+    "sha": "469f8d9fafc4b0ebd7d9f60cd95a417810369376",
+    "doc": "justificatifs/agix/2019/september/Repas_19_2019.pdf"
+  },
+  {
+    "title": "Repas déplacement C611BE39",
+    "description": "Repas midi 24/07 déplacement mission C611BE39",
+    "amount_total": 3090,
+    "amount_taxes": 281,
+    "date": "2019-07-24T00:00:00+02:00",
+    "invoice_id": "28265",
+    "issuer": "Cuisine Comptoir Ci",
+    "sha": "c24b430ea52f31fbe3ae1a236736d5030e890fbf",
+    "doc": "justificatifs/agix/2019/september/repas_24_07.pdf"
+  },
+  {
+    "title": "Repas déplacement C611BE39",
+    "description": "Repas midi 25/07 déplacement mission C611BE39",
+    "amount_total": 900,
+    "amount_taxes": 47,
+    "date": "2019-07-25T00:00:00+02:00",
+    "invoice_id": "N°2-00031587",
+    "issuer": "L'EPICERIE",
+    "sha": "1f6757659b08b83c8da1874eacc7e95f12d39400",
+    "doc": "justificatifs/agix/2019/september/repas_25_07.pdf"
+  },
+  {
+    "title": "Repas déplacement C611BE39",
+    "description": "Repas midi 26/07 déplacement mission C611BE39",
+    "amount_total": 2540,
+    "amount_taxes": 230,
+    "date": "2019-07-26T00:00:00+02:00",
+    "invoice_id": "UC638-1479810-Nº4",
+    "issuer": "LA DOLCE VITA",
+    "sha": "842a1ff7510f7cf14cccc8bd06a5db358a724339",
+    "doc": "justificatifs/agix/2019/september/repas_26_07 - Page 1.pdf"
+  },
+  {
+    "title": "Repas déplacement C611BE39",
+    "description": "Repas midi 28/08 déplacement mission C611BE39",
+    "amount_total": 2000,
+    "amount_taxes": 182,
+    "date": "2019-08-28T00:00:00+02:00",
+    "invoice_id": "2-00032154",
+    "issuer": "L'EPICERIE",
+    "sha": "22f7dd8cb6e2580af64aec2d144671a4aee7b272",
+    "doc": "justificatifs/agix/2019/september/Repas_28_08.pdf"
+  },
+  {
+    "title": "Repas déplacement C611BE39",
+    "description": "Repas midi 22/07 déplacement mission C611BE39",
+    "amount_total": 940,
+    "amount_taxes": 71,
+    "date": "2019-07-22T00:00:00+02:00",
+    "invoice_id": "101082196",
+    "issuer": "La Mie Câline",
+    "sha": "22fc0601833ed4bbdb3e9564fbfa7f298e6fc28c",
+    "doc": "justificatifs/agix/2019/september/repas_deplacement_22_07.pdf"
+  }
+]
+}

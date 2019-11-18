@@ -1,18 +1,28 @@
 {
     "claimant": "agix",
-    "infos": "Première note de frais pour couvrir les achats d'avant ouverture de compte à savoir le nom de domaine bug.builders chez GoDaddy et la publication au JO.",
     "claims": [
         {
-            "description": "Go Daddy bug.builders",
-            "price": 4405,
-            "doc": "/justificatifs/agix/2018/may/GoDaddy_DNS.pdf",
-            "sha": "8b46c881b4a0d00d322691215906f168e83eaffc"
+            "amount_taxes": 734,
+            "amount_total": 4405,
+            "date": "2018-02-24T00:00:00+01:00",
+            "description": "Achat nom de domaine association",
+            "doc": "justificatifs/agix/2018/may/GoDaddy_DNS.pdf",
+            "invoice_id": "1269379719",
+            "issuer": "GoDaddy.com",
+            "sha": "8b46c881b4a0d00d322691215906f168e83eaffc",
+            "title": "DNS bug.builders"
         },
         {
-            "description": "Publicatoin JO",
-            "price": 4400,
-            "doc": "/justificatifs/agix/2018/may/Publication_JO.jpg",
-            "sha" : "e218409c3f1ffb033135e114a32ec40d6a8962df"
+            "amount_taxes": 0,
+            "amount_total": 4400,
+            "date": "2018-03-03T00:00:00+01:00",
+            "description": "Publication au JO",
+            "doc": "justificatifs/agix/2018/may/Publication_JO.pdf",
+            "invoice_id": "3727705",
+            "issuer": "REPUBLIQUE FRANÇAISE",
+            "sha": "f6b16925895aa59c91c470adb70853b5875c3ee2",
+            "title": "Publication au JO"
         }
-    ]
+    ],
+    "infos": "Première note de frais pour couvrir les achats d'avant ouverture de compte à savoir le nom de domaine bug.builders chez GoDaddy et la publication au JO."
 }

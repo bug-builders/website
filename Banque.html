@@ -18,6 +18,7 @@ layout: default
         <th>Correspondant</th>
         <th>Date</th>
         <th class="amount">Montant</th>
+        <th class="vat_amount">TVA</th>
       </tr>
     </thead>
     <tbody id="bankTbody"></tbody>
@@ -84,15 +85,18 @@ layout: default
         const dateTd = document.createElement('td');
         const correspondantTd = document.createElement('td');
         const amountTd = document.createElement('td');
+        const vatAmountTd = document.createElement('td');
 
         const date = new Date(transaction.date);
         dateTd.textContent = date.toLocaleDateString('fr');
 
         let type;
+        let vat_amount = transaction.vat_amount/100;
         if(transaction.type === 'debit') {
           if(typeof(transaction.label) === 'object'){
             if(typeof(transaction.label.proof) !== 'undefined') {
               const proofA = document.createElement('a')
+              proofA.target = '_blank';
               proofA.href = transaction.label.proof;
               proofA.textContent = transaction.label.label;
               correspondantTd.appendChild(proofA);
@@ -104,8 +108,19 @@ layout: default
           }
           type = '-';
           amountTd.className = 'amount';
+          vatAmountTd.className = 'vat_amount';
+          if(transaction.vat_amount === null) {
+            vatAmountTd.textContent = '...';
+          } else if (vat_amount === 0) {
+            vatAmountTd.textContent = '';
+          } else {
+            vatAmountTd.textContent = `${vat_amount.toLocaleString('fr', currency)} `
+          }
+
+
         } else {
           correspondantTd.textContent = transaction.label.substr(0, 20);
+          vatAmountTd.textContent = '';
           type = '+';
           if(transaction.fees) {
             amountTd.title = transaction.fees.reduce((fees, fee) => `${fees}\n${fee.name}: ${(fee.amount/100).toLocaleString('fr', currency)}`,'');
@@ -120,6 +135,12 @@ layout: default
         bankTr.appendChild(correspondantTd)
         bankTr.appendChild(dateTd)
         bankTr.appendChild(amountTd);
+        if(member === '') {
+          bankTr.appendChild(vatAmountTd);
+          document.getElementsByClassName('vat_amount')[0].style.display = '';
+        } else {
+          document.getElementsByClassName('vat_amount')[0].style.display = 'none';
+        }
 
         bankTbody.appendChild(bankTr);
       })

@@ -17,6 +17,7 @@ layout: default
           <th>Justificatif</th>
           <th></th>
           <th class="amount">Price</th>
+          <th class="amount">TVA</th>
         </tr>
       </thead>
       <tbody id="ndfClaimsTbody"></tbody>
@@ -80,19 +81,25 @@ layout: default
         }
 
         let total = 0;
+        let taxes = 0;
         noteDeFrais.claims.forEach((claim, i) => {
           const justificatifSplitted = claim.doc.split('/');
           const justificatifName = justificatifSplitted[justificatifSplitted.length-1];
 
           const descriptionTd = document.createElement('td');
           const priceTd = document.createElement('td');
+          const taxTd = document.createElement('td');
           const justificatifTd = document.createElement('td');
           const shaTd = document.createElement('td');
 
           descriptionTd.textContent = claim.description;
           const price = claim.amount_total/100;
+          const tax = claim.amount_taxes/100;
           priceTd.textContent = price.toLocaleString('fr', currency)
           priceTd.className = 'amount';
+
+          taxTd.className = 'vat_amount';
+          taxTd.textContent = tax.toLocaleString('fr', currency)
           const justificatifA = document.createElement('a');
           justificatifA.textContent = justificatifName;
           justificatifA.href = claim.doc;
@@ -108,29 +115,48 @@ layout: default
           claimTr.appendChild(descriptionTd)
           claimTr.appendChild(justificatifTd)
           claimTr.appendChild(shaTd);
-          claimTr.appendChild(priceTd)
+          claimTr.appendChild(priceTd);
+          claimTr.appendChild(taxTd);
 
           ndfClaimsTbody.appendChild(claimTr);
 
           total += claim.amount_total;
+          taxes += claim.amount_taxes;
         })
 
         const claimTotalTr = document.createElement('tr');
         claimTotalTr.className = 'pure-table-odd';
 
+        const claimTaxesTr = document.createElement('tr');
+        claimTaxesTr.className = 'pure-table-odd';
+
         const totalTd = document.createElement('td');
         totalTd.colSpan = 3
-        totalTd.textContent = 'Total'
+        totalTd.textContent = 'Total TTC'
+
+        const taxesTd = document.createElement('td');
+        taxesTd.colSpan = 4
+        taxesTd.textContent = 'Total TVA'
 
         const totalNTd = document.createElement('td');
         total = total/100;
         totalNTd.className = 'amount';
         totalNTd.textContent = total.toLocaleString('fr', currency);
 
+        const taxesNTd = document.createElement('td');
+        taxes = taxes/100;
+        taxesNTd.className = 'amount';
+        taxesNTd.textContent = taxes.toLocaleString('fr', currency);
+
         claimTotalTr.appendChild(totalTd);
         claimTotalTr.appendChild(totalNTd);
+        claimTotalTr.appendChild(document.createElement('td'));
+
+        claimTaxesTr.appendChild(taxesTd);
+        claimTaxesTr.appendChild(taxesNTd);
 
         ndfClaimsTbody.appendChild(claimTotalTr);
+        ndfClaimsTbody.appendChild(claimTaxesTr);
 
         const ndfClaimantSpan = document.getElementById('ndfClaimantSpan');
         ndfClaimantSpan.textContent = noteDeFrais.claimant;

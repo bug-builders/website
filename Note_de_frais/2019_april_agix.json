@@ -3,7 +3,7 @@
   "claims": [
     {
       "amount_taxes": 66,
-      "amount_total": 2000,
+      "amount_total": 2400,
       "date": "2019-03-17T00:00:00+01:00",
       "description": "Déplacement aller 3CCFD76",
       "doc": "justificatifs/agix/2019/april/Blabla_aller.pdf",
@@ -80,7 +80,7 @@
     },
     {
       "amount_taxes": 761,
-      "amount_total": 6720,
+      "amount_total": 7620,
       "date": "2019-03-25T00:00:00+01:00",
       "description": "Repas midi 25/03 déplacement mission 3CCFD76",
       "doc": "justificatifs/agix/2019/april/Repas_midi_25_03.pdf",

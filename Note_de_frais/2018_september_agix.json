@@ -1,12 +1,17 @@
 {
-    "claimant": "agix",
-    "infos": "Soirée présentation bug builders",
-    "claims": [
-        {
-            "description": "Tapas",
-            "doc": "/justificatifs/agix/2018/september/Repas_prez_asso.pdf",
-            "price": 15400,
-            "sha": "721be419cf1c0a81aed3d995206f6b323ebfa16b"
-        }
-    ]
+  "claimant": "agix",
+  "claims": [
+    {
+      "amount_taxes": 2158,
+      "amount_total": 15400,
+      "date": "2018-08-31T00:00:00+02:00",
+      "description": "Presentation association",
+      "doc": "justificatifs/agix/2018/september/Repas_prez_asso.pdf",
+      "invoice_id": "XXXXX",
+      "issuer": "VINS URBAINS",
+      "sha": "721be419cf1c0a81aed3d995206f6b323ebfa16b",
+      "title": "Presentation association"
+    }
+  ],
+  "infos": "Soirée présentation bug builders"
 }

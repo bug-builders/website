@@ -1,78 +1,138 @@
 {
-    "claimant": "agix",
-    "infos": "Matériel electronique et déplacement mission 3CCFD76 19-23",
-    "claims": [
-        {
-            "description": "Déplacement allé",
-            "doc": "/justificatifs/agix/2018/november/blablacar_alle.pdf",
-            "price": 2300,
-            "sha": "7278d174829ad0d3ef13e2127fe7048b49830504"
-        },
-        {
-            "description": "Manette",
-            "doc": "/justificatifs/agix/2018/november/manette.pdf",
-            "price": 5999,
-            "sha": "67493fac75b20ca0e9d6cbfe40f0d66fca282ef9"
-        },
-        {
-            "description": "Repas midis 19,20,21/11",
-            "doc": "/justificatifs/agix/2018/november/repas_midis.pdf",
-            "price": 2120,
-            "sha": "d5ed37defb6de4c02397f2c0242ac3bc1e42b3d5"
-        },
-        {
-            "description": "Repas midi 22/11",
-            "doc": "/justificatifs/agix/2018/november/repas_midi_22.pdf",
-            "price": 2910,
-            "sha": "f700510ce7dd776846434a331684b4edbc19218e"
-        },
-        {
-            "description": "Repas midi 23/11",
-            "doc": "/justificatifs/agix/2018/november/repas_midi_23.pdf",
-            "price": 2245,
-            "sha": "3b7a406a6ed68a335114fecfa137139ba211990b"
-        },
-        {
-            "description": "Repas soir 19/11",
-            "doc": "/justificatifs/agix/2018/november/repas_soir_19.pdf",
-            "price": 3700,
-            "sha": "bd60b66583bd8853e7e9b4049b4ef1c8d0096bb7"
-        },
-        {
-            "description": "Repas soir 20/11",
-            "doc": "/justificatifs/agix/2018/november/repas_soir_20.pdf",
-            "price": 2650,
-            "sha": "b9b505e09ff226ca7c8efe4ba871a72b105f8f08"
-        },
-        {
-            "description": "Repas soir 21/11",
-            "doc": "/justificatifs/agix/2018/november/repas_soir_21.pdf",
-            "price": 4740,
-            "sha": "defec2d38a8488f506c12d5d96c3e53d5091f2f3"
-        },
-        {
-            "description": "Repas soir 22/11",
-            "doc": "/justificatifs/agix/2018/november/repas_soir_22.pdf",
-            "price": 6325,
-            "sha": "d5d9a57a67ffd9e40676c7a5511126b686b3e27e"
-        },
-        {
-            "description": "Repas soir 23/11",
-            "doc": "/justificatifs/agix/2018/november/repas_soir_23.pdf",
-            "price": 5300,
-            "sha": "2a99c95a488da9d3a3b41c61b67741e0f94df505"
-        },
-        {
-            "description": "Déplacement retour",
-            "doc": "/justificatifs/agix/2018/november/blablacar_retour.pdf",
-            "price": 3400,
-            "sha": "0441163ee868b344533ea94643b671e6ba0c60de"
-        },
-        {
-            "description": "Troisième main station fer à souder",
-            "doc": "/justificatifs/agix/2018/november/EGGEtroni.pdf",
-            "price": 3056,
-            "sha": "589f20cde1ac3739f81c459932a4a70d6f5dd1e1"
-        }
-    ]
+  "claimant": "agix",
+  "claims": [
+    {
+      "amount_taxes": 66,
+      "amount_total": 2300,
+      "date": "2018-11-18T00:00:00+01:00",
+      "description": "Déplacement aller 3CCFD76",
+      "doc": "justificatifs/agix/2018/november/blablacar_alle.pdf",
+      "invoice_id": "2542248041-265260180-EMWFXZ-5bf01087e8949_ses",
+      "issuer": "BlaBlaCar",
+      "sha": "7278d174829ad0d3ef13e2127fe7048b49830504",
+      "title": "Déplacement aller 3CCFD76"
+    },
+    {
+      "amount_taxes": 100,
+      "amount_total": 3400,
+      "date": "2018-11-24T00:00:00+01:00",
+      "description": "Déplacement retour 3CCFD76",
+      "doc": "justificatifs/agix/2018/november/blablacar_retour.pdf",
+      "invoice_id": "2558224295-265260180-XOAVUE-5bf98469db584_ses",
+      "issuer": "BlaBlaCar",
+      "sha": "0441163ee868b344533ea94643b671e6ba0c60de",
+      "title": "Déplacement retour 3CCFD76"
+    },
+    {
+      "amount_taxes": 509,
+      "amount_total": 3056,
+      "date": "2018-10-31T00:00:00+01:00",
+      "description": "Equipement arduino",
+      "doc": "justificatifs/agix/2018/november/EGGEtroni.pdf",
+      "invoice_id": "18045652",
+      "issuer": "EGGEtroni",
+      "sha": "589f20cde1ac3739f81c459932a4a70d6f5dd1e1",
+      "title": "Arduino"
+    },
+    {
+      "amount_taxes": 1000,
+      "amount_total": 5999,
+      "date": "2018-06-11T00:00:00+02:00",
+      "description": "Manette playstation 4",
+      "doc": "justificatifs/agix/2018/november/manette.pdf",
+      "invoice_id": "201811061329004702309322",
+      "issuer": "Intermarché",
+      "sha": "67493fac75b20ca0e9d6cbfe40f0d66fca282ef9",
+      "title": "Manette playstation 4"
+    },
+    {
+      "amount_taxes": 152,
+      "amount_total": 2910,
+      "date": "2018-11-22T00:00:00+01:00",
+      "description": "Repas midi 22/11 déplacement mission 3CCFD76",
+      "doc": "justificatifs/agix/2018/november/repas_midi_22.pdf",
+      "invoice_id": "69771",
+      "issuer": "FRITKOT",
+      "sha": "f700510ce7dd776846434a331684b4edbc19218e",
+      "title": "Repas déplacement 3CCFD76"
+    },
+    {
+      "amount_taxes": 204,
+      "amount_total": 2245,
+      "date": "2018-11-23T00:00:00+01:00",
+      "description": "Repas midi 23/11 déplacement mission 3CCFD76",
+      "doc": "justificatifs/agix/2018/november/repas_midi_23.pdf",
+      "invoice_id": "8605567",
+      "issuer": "KO-SAN",
+      "sha": "3b7a406a6ed68a335114fecfa137139ba211990b",
+      "title": "Repas déplacement 3CCFD76"
+    },
+    {
+      "amount_taxes": 111,
+      "amount_total": 2120,
+      "date": "2018-11-20T00:00:00+01:00",
+      "description": "Courses pour repas midis déplacement mission 3CCFD76",
+      "doc": "justificatifs/agix/2018/november/repas_midis.pdf",
+      "invoice_id": "201811191254001202111108",
+      "issuer": "Intermarché",
+      "sha": "d5ed37defb6de4c02397f2c0242ac3bc1e42b3d5",
+      "title": "Repas déplacement 3CCFD76"
+    },
+    {
+      "amount_taxes": 412,
+      "amount_total": 3700,
+      "date": "2018-11-19T00:00:00+01:00",
+      "description": "Repas soir 19/11 déplacement mission 3CCFD76",
+      "doc": "justificatifs/agix/2018/november/repas_soir_19.pdf",
+      "invoice_id": "J1-1-248",
+      "issuer": "SIEM REAP",
+      "sha": "bd60b66583bd8853e7e9b4049b4ef1c8d0096bb7",
+      "title": "Repas déplacement 3CCFD76"
+    },
+    {
+      "amount_taxes": 241,
+      "amount_total": 2650,
+      "date": "2018-11-20T00:00:00+01:00",
+      "description": "Repas soir 20/11 déplacement mission 3CCFD76",
+      "doc": "justificatifs/agix/2018/november/repas_soir_20.pdf",
+      "invoice_id": "FA001378",
+      "issuer": "Le Petit Pizzaïolo",
+      "sha": "b9b505e09ff226ca7c8efe4ba871a72b105f8f08",
+      "title": "Repas déplacement 3CCFD76"
+    },
+    {
+      "amount_taxes": 544,
+      "amount_total": 4740,
+      "date": "2018-11-22T00:00:00+01:00",
+      "description": "Repas soir 21/11 déplacement mission 3CCFD76",
+      "doc": "justificatifs/agix/2018/november/repas_soir_21.pdf",
+      "invoice_id": "138068",
+      "issuer": "THE CENTRAL PUB GAMBETTA",
+      "sha": "defec2d38a8488f506c12d5d96c3e53d5091f2f3",
+      "title": "Repas déplacement 3CCFD76"
+    },
+    {
+      "amount_taxes": 711,
+      "amount_total": 6325,
+      "date": "2018-11-22T00:00:00+01:00",
+      "description": "Repas soir 22/11 déplacement mission 3CCFD76",
+      "doc": "justificatifs/agix/2018/november/repas_soir_22.pdf",
+      "invoice_id": "28433",
+      "issuer": "Le Chapeau rouge",
+      "sha": "d5d9a57a67ffd9e40676c7a5511126b686b3e27e",
+      "title": "Repas déplacement 3CCFD76"
+    },
+    {
+      "amount_taxes": 482,
+      "amount_total": 5300,
+      "date": "2018-11-23T00:00:00+01:00",
+      "description": "Repas soir 23/11 déplacement mission 3CCFD76",
+      "doc": "justificatifs/agix/2018/november/repas_soir_23.pdf",
+      "invoice_id": "0981222581",
+      "issuer": "L'ANNEXE",
+      "sha": "2a99c95a488da9d3a3b41c61b67741e0f94df505",
+      "title": "Repas déplacement 3CCFD76"
+    }
+  ],
+  "infos": "Matériel electronique et déplacement mission 3CCFD76 19-23"
 }

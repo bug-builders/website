@@ -1,18 +1,28 @@
 {
-    "claimant": "agix",
-    "infos": "Achat de matériel numérique",
-    "claims": [
-        {
-            "description": "Caméra",
-            "doc": "/justificatifs/agix/2018/august/Darty.pdf",
-            "amount_total": 35899,
-            "sha": "f4ad7bd9cae9270ec76ca278b31faf718ea568eb"
-        },
-        {
-            "description": "Carte SD 128 GO",
-            "doc": "/justificatifs/agix/2018/august/Leclerc.pdf",
-            "amount_total": 6595,
-            "sha": "feaa0de96e3df8aa2d08c0c5a0fc19020d8026e3"
-        }
-    ]
+  "claimant": "agix",
+  "claims": [
+    {
+      "amount_taxes": 5983,
+      "amount_total": 35899,
+      "date": "2018-08-14T00:00:00+02:00",
+      "description": "GoPro",
+      "doc": "justificatifs/agix/2018/august/Darty.pdf",
+      "invoice_id": "945/414/L001306",
+      "issuer": "DARTY",
+      "sha": "f4ad7bd9cae9270ec76ca278b31faf718ea568eb",
+      "title": "GoPro"
+    },
+    {
+      "amount_taxes": 1099,
+      "amount_total": 6595,
+      "date": "2018-08-15T00:00:00+02:00",
+      "description": "Carte SD 128Go",
+      "doc": "justificatifs/agix/2018/august/Leclerc.pdf",
+      "invoice_id": "XXXXX",
+      "issuer": "Leclerc",
+      "sha": "feaa0de96e3df8aa2d08c0c5a0fc19020d8026e3",
+      "title": "Carte SD 128Go"
+    }
+  ],
+  "infos": "Achat de matériel numérique"
 }

@@ -1,24 +1,39 @@
 {
-    "claimant": "agix",
-    "infos": "Achat de matériel numérique",
-    "claims": [
-        {
-            "description": "Imprimante",
-            "doc": "/justificatifs/agix/2018/june/Amazon_imprimante.pdf",
-            "price": 8536,
-            "sha": "eb2c182eb7f093c7f2de6e2791b0977a6f731d27"
-        },
-        {
-            "description": "Souris",
-            "doc": "/justificatifs/agix/2018/june/Amazon_souris.pdf",
-            "price": 895,
-            "sha": "3734c397ffc1042e0dc9165e3df17ae63d2fbe75"
-        },
-        {
-            "description": "Téléphone",
-            "doc": "/justificatifs/agix/2018/june/Oneplus.pdf",
-            "price": 60934,
-            "sha": "d9442e348cc40cfacddff86fb7f104da4c55d1c6"
-        }
-    ]
+  "claimant": "agix",
+  "claims": [
+    {
+      "amount_taxes": 1423,
+      "amount_total": 8536,
+      "date": "2018-05-29T00:00:00+02:00",
+      "description": "Imprimante",
+      "doc": "justificatifs/agix/2018/june/Amazon_imprimante.pdf",
+      "invoice_id": "AEU-INV-FR-2018-38332924",
+      "issuer": "Amazon",
+      "sha": "eb2c182eb7f093c7f2de6e2791b0977a6f731d27",
+      "title": "Imprimante"
+    },
+    {
+      "amount_taxes": 149,
+      "amount_total": 895,
+      "date": "2018-06-13T00:00:00+02:00",
+      "description": "Souris filaire",
+      "doc": "justificatifs/agix/2018/june/Amazon_souris.pdf",
+      "invoice_id": "AEU-INV-FR-2018-41825864",
+      "issuer": "Amazon",
+      "sha": "3734c397ffc1042e0dc9165e3df17ae63d2fbe75",
+      "title": "Souris filaire"
+    },
+    {
+      "amount_taxes": 0,
+      "amount_total": 60934,
+      "date": "2018-06-25T00:00:00+02:00",
+      "description": "Smartphone OnePlus",
+      "doc": "justificatifs/agix/2018/june/Oneplus.pdf",
+      "invoice_id": "E111806253141446750",
+      "issuer": "OnePlus",
+      "sha": "d9442e348cc40cfacddff86fb7f104da4c55d1c6",
+      "title": "Smartphone OnePlus"
+    }
+  ],
+  "infos": "Achat de matériel numérique"
 }

@@ -1,84 +1,149 @@
 {
-    "claimant": "agix",
-    "infos": "Matériel de soudure et déplacement mission 3CCFD76 04-08",
-    "claims": [
-        {
-            "description": "Fer à souder",
-            "doc": "/justificatifs/agix/2019/february/fer_a_souder.pdf",
-            "price": 1999,
-            "sha": "d5737a7702bd2105774e567d44543929392b3b09"
-        },
-        {
-            "description": "Fil à souder",
-            "doc": "/justificatifs/agix/2019/february/fil_a_souder.pdf",
-            "price": 999,
-            "sha": "ac468dbd30f7091778095553912028040f819c4b"
-        },
-        {
-            "description": "Kit capteur arduino",
-            "doc": "/justificatifs/agix/2019/february/kit_capteur_arduino.pdf",
-            "price": 3299,
-            "sha": "bb8b55dff162fd03bfcb014a6797516f42ea9f17"
-        },
-        {
-            "description": "Cable usb type-c -> hdmi",
-            "doc": "/justificatifs/agix/2019/february/cable_hdmi.pdf",
-            "price": 1499,
-            "sha": "dd784abf53bddef5f6d249ea3de6633e97c4c50b"
-        },
-        {
-            "description": "Déplacement allé",
-            "doc": "/justificatifs/agix/2019/february/blabla_aller.pdf",
-            "price": 2650,
-            "sha": "f22166e68529e8e5b5365023c4b7e95fb7d2cfad"
-        },
-        {
-            "description": "Repas soir 04/02",
-            "doc": "/justificatifs/agix/2019/february/Repas_04_soir.pdf",
-            "price": 4280,
-            "sha": "48c68db95bcb84844602c991d9a36315e910b267"
-        },
-        {
-            "description": "Repas soir 05/02",
-            "doc": "/justificatifs/agix/2019/february/Repas_05_soir.pdf",
-            "price": 3650,
-            "sha": "8fd62b5aeeda757d8ab48cd7722b48914f6e480e"
-        },
-        {
-            "description": "Repas soir 06/02",
-            "doc": "/justificatifs/agix/2019/february/Repas_06_soir.pdf",
-            "price": 3630,
-            "sha": "ee19447b917295a588299460ca9dbbb710cb0ac0"
-        },
-        {
-            "description": "Repas midi 07/02",
-            "doc": "/justificatifs/agix/2019/february/Repas_07_midi.pdf",
-            "price": 2400,
-            "sha": "115fbd88c7368ad75a629a8222e6cc4eebca488b"
-        },
-        {
-            "description": "Repas midi 08/02",
-            "doc": "/justificatifs/agix/2019/february/Repas_08_midi.pdf",
-            "price": 6155,
-            "sha": "a56c2834059e247004b3b827a6a682b7e52c50a7"
-        },
-        {
-            "description": "Soirée assemblée générale (1/2)",
-            "doc": "/justificatifs/agix/2019/february/AG_1.pdf",
-            "price": 3290,
-            "sha": "68237c0d0c24e9c85aaedcedd2c363d53151f4c2"
-        },
-        {
-            "description": "Soirée assemblée générale (2/2)",
-            "doc": "/justificatifs/agix/2019/february/AG_2.pdf",
-            "price": 12340,
-            "sha": "1f7df150e7d55d29b005f864343fd3b8ba64cda7"
-        },
-        {
-            "description": "Déplacement retour",
-            "doc": "/justificatifs/agix/2019/february/blabla_retour.pdf",
-            "price": 2900,
-            "sha": "8e66c9d37a131275672f02e12a1429f326dc74a2"
-        }
-    ]
+  "claimant": "agix",
+  "claims": [
+    {
+      "amount_taxes": 548,
+      "amount_total": 3290,
+      "date": "2019-02-08T00:00:00+01:00",
+      "description": "Bière pour AG 2019",
+      "doc": "justificatifs/agix/2019/february/AG_1.pdf",
+      "invoice_id": "741160",
+      "issuer": "VANDB MERIGNAC",
+      "sha": "68237c0d0c24e9c85aaedcedd2c363d53151f4c2",
+      "title": "Bière pour AG 2019"
+    },
+    {
+      "amount_taxes": 1316,
+      "amount_total": 12340,
+      "date": "2019-02-08T00:00:00+01:00",
+      "description": "Repas AG 2019",
+      "doc": "justificatifs/agix/2019/february/AG_2.pdf",
+      "invoice_id": "098BF-132208",
+      "issuer": "Casa Gaia",
+      "sha": "1f7df150e7d55d29b005f864343fd3b8ba64cda7",
+      "title": "Repas AG 2019"
+    },
+    {
+      "amount_taxes": 75,
+      "amount_total": 2650,
+      "date": "2019-02-03T00:00:00+01:00",
+      "description": "Déplacement aller mission 3CCFD76",
+      "doc": "justificatifs/agix/2019/february/blabla_aller.pdf",
+      "invoice_id": "2724563159-265260180-WDYWVN-5c56dbd39d610_ses",
+      "issuer": "BlaBlaCar",
+      "sha": "f22166e68529e8e5b5365023c4b7e95fb7d2cfad",
+      "title": "Déplacement aller 3CCFD76"
+    },
+    {
+      "amount_taxes": 83,
+      "amount_total": 2900,
+      "date": "2019-02-09T00:00:00+01:00",
+      "description": "Déplacement retour mission 3CCFD76",
+      "doc": "justificatifs/agix/2019/february/blabla_retour.pdf",
+      "invoice_id": "2733399525-265260180-EOJZKJ-5c5d3b580557d_ses",
+      "issuer": "BlaBlaCar",
+      "sha": "8e66c9d37a131275672f02e12a1429f326dc74a2",
+      "title": "Déplacement retour 3CCFD76"
+    },
+    {
+      "amount_taxes": 0,
+      "amount_total": 1499,
+      "date": "2019-02-04T00:00:00+01:00",
+      "description": "Cable HDMI",
+      "doc": "justificatifs/agix/2019/february/cable_hdmi.pdf",
+      "invoice_id": "2989089",
+      "issuer": "CO.LTD Shenzhen Ouhuasheng Technology Co.,Ltd",
+      "sha": "dd784abf53bddef5f6d249ea3de6633e97c4c50b",
+      "title": "Cable HDMI"
+    },
+    {
+      "amount_taxes": 0,
+      "amount_total": 1999,
+      "date": "2018-10-29T00:00:00+01:00",
+      "description": "Fer à souder",
+      "doc": "justificatifs/agix/2019/february/fer_a_souder.pdf",
+      "invoice_id": "403-9261243-6889962",
+      "issuer": "autsca BestDrive",
+      "sha": "d5737a7702bd2105774e567d44543929392b3b09",
+      "title": "Fer à souder"
+    },
+    {
+      "amount_taxes": 0,
+      "amount_total": 999,
+      "date": "2018-12-01T00:00:00+01:00",
+      "description": "Accessoires de soudure",
+      "doc": "justificatifs/agix/2019/february/fil_a_souder.pdf",
+      "invoice_id": "YC-18120101",
+      "issuer": "SHENZHENSHI YOUCHUANGHANXIZHIPIN YOUXIANGONGSI",
+      "sha": "ac468dbd30f7091778095553912028040f819c4b",
+      "title": "Accessoires de soudure"
+    },
+    {
+      "amount_taxes": 550,
+      "amount_total": 3299,
+      "date": "2018-10-29T00:00:00+01:00",
+      "description": "Kit capteur arduino",
+      "doc": "justificatifs/agix/2019/february/kit_capteur_arduino.pdf",
+      "invoice_id": "IN181000109FR",
+      "issuer": "Shenzhenshi guoyun dianzishangwu youxiangongsi",
+      "sha": "bb8b55dff162fd03bfcb014a6797516f42ea9f17",
+      "title": "Accessoires arduino"
+    },
+    {
+      "amount_taxes": 389,
+      "amount_total": 4280,
+      "date": "2019-02-04T00:00:00+01:00",
+      "description": "Repas soir 04/02 déplacement mission 3CCFD76",
+      "doc": "justificatifs/agix/2019/february/Repas_04_soir.pdf",
+      "invoice_id": "XXXXX",
+      "issuer": "SUSHISHOP",
+      "sha": "48c68db95bcb84844602c991d9a36315e910b267",
+      "title": "Repas déplacement 3CCFD76"
+    },
+    {
+      "amount_taxes": 418,
+      "amount_total": 3650,
+      "date": "2019-02-05T00:00:00+01:00",
+      "description": "Repas soir 05/02 déplacement mission 3CCFD76",
+      "doc": "justificatifs/agix/2019/february/Repas_05_soir.pdf",
+      "invoice_id": "T2-1-454",
+      "issuer": "SIEM REAP",
+      "sha": "8fd62b5aeeda757d8ab48cd7722b48914f6e480e",
+      "title": "Repas déplacement 3CCFD76"
+    },
+    {
+      "amount_taxes": 605,
+      "amount_total": 3630,
+      "date": "2019-02-06T00:00:00+01:00",
+      "description": "Repas soir 06/02 déplacement mission 3CCFD76",
+      "doc": "justificatifs/agix/2019/february/Repas_06_soir.pdf",
+      "invoice_id": "XXXX",
+      "issuer": "SARL JACKSON",
+      "sha": "ee19447b917295a588299460ca9dbbb710cb0ac0",
+      "title": "Repas déplacement 3CCFD76"
+    },
+    {
+      "amount_taxes": 0,
+      "amount_total": 2400,
+      "date": "2019-02-07T00:00:00+01:00",
+      "description": "Repas midi 07/02 déplacement mission 3CCFD76",
+      "doc": "justificatifs/agix/2019/february/Repas_07_midi.pdf",
+      "invoice_id": "S20190004293",
+      "issuer": "La Vanille de tonton",
+      "sha": "115fbd88c7368ad75a629a8222e6cc4eebca488b",
+      "title": "Repas déplacement 3CCFD76"
+    },
+    {
+      "amount_taxes": 553,
+      "amount_total": 6155,
+      "date": "2019-02-08T00:00:00+01:00",
+      "description": "Repas midi 08/02 déplacement mission 3CCFD76",
+      "doc": "justificatifs/agix/2019/february/Repas_08_midi.pdf",
+      "invoice_id": "109",
+      "issuer": "KFC",
+      "sha": "a56c2834059e247004b3b827a6a682b7e52c50a7",
+      "title": "Repas déplacement 3CCFD76"
+    }
+  ],
+  "infos": "Matériel de soudure et déplacement mission 3CCFD76 04-08"
 }

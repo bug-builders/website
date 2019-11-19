@@ -1,0 +1,183 @@
+{
+  "claimant": "agix",
+  "claims": [
+  {
+    "title": "Déplacement retour 3CCFD76",
+    "description": "Déplacement retour mission 3CCFD76",
+    "amount_total": 6500,
+    "amount_taxes": 0,
+    "date": "2019-10-24T00:00:00+02:00",
+    "invoice_id": "29090115349300042",
+    "issuer": "SNCF",
+    "sha": "09298b7f07873ac2803a56691361a44cfafd527d",
+    "doc": "justificatifs/agix/2019/october/BORDEAUX_SAINT_JEAN-PARIS_MONTPARNASSE_1_ET_2_20-10-19_GAULTIER_FLORIAN_RRZORN_fEVfRRNM53iSbm3L0TQ0.pdf"
+  },
+  {
+    "title": "Déplacement aller asso PDC",
+    "description": "Déplacement aller mission asso PDC",
+    "amount_total": 870,
+    "amount_taxes": 145,
+    "date": "2019-10-09T00:00:00+02:00",
+    "invoice_id": "201910092707320084611",
+    "issuer": "Vinci",
+    "sha": "975b3e8b038118a6895e49fd46644fb8654feda0",
+    "doc": "justificatifs/agix/2019/october/deplacement pdc aller 1.pdf"
+  },
+  {
+    "title": "Déplacement aller asso PDC",
+    "description": "Déplacement aller mission asso PDC",
+    "amount_total": 2900,
+    "amount_taxes": 483,
+    "date": "2019-10-09T00:00:00+02:00",
+    "invoice_id": "R2821931077841000321",
+    "issuer": "ASF",
+    "sha": "bcf234a7f01725424b24b5204dec20deafd9d5b4",
+    "doc": "justificatifs/agix/2019/october/deplacement pdc aller 2.pdf"
+  },
+  {
+    "title": "Déplacement retour asso PDC",
+    "description": "Déplacement retour mission asso PDC",
+    "amount_total": 2900,
+    "amount_taxes": 483,
+    "date": "2019-10-11T00:00:00+02:00",
+    "invoice_id": "201910116019415334347",
+    "issuer": "Vinci",
+    "sha": "609e7b5c8aaf7a1e7ec4f97bf726b6bf60d10694",
+    "doc": "justificatifs/agix/2019/october/Deplacement pdc retour 1.pdf"
+  },
+  {
+    "title": "Déplacement retour asso PDC",
+    "description": "Déplacement retour mission asso PDC",
+    "amount_total": 870,
+    "amount_taxes": 145,
+    "date": "2019-10-11T00:00:00+02:00",
+    "invoice_id": "201910112702613163860",
+    "issuer": "Vinci",
+    "sha": "6ca8f8d7060d5388e95780cb0a72d5a9026a40d2",
+    "doc": "justificatifs/agix/2019/october/Deplacement pdc retour 2.pdf"
+  },
+  {
+    "title": "Déplacement aller 3CCFD76",
+    "description": "Déplacement aller mission 3CCFD76",
+    "amount_total": 1850,
+    "amount_taxes": 58,
+    "date": "2019-10-12T00:00:00+02:00",
+    "invoice_id": "3440434163-265260180-GDBSGK-5da1e92bd7bcd_ses",
+    "issuer": "BlaBlaCar",
+    "sha": "f15f4fd27ed33acbceaa2239c903d19f1dd3b1d1",
+    "doc": "justificatifs/agix/2019/october/Gmail - Votre recu de paiement pour votre reservation.pdf"
+  },
+  {
+    "title": "Repas déplacement asso PDC",
+    "description": "Repas midi 09/04 déplacement mission asso PDC",
+    "amount_total": 2000,
+    "amount_taxes": 182,
+    "date": "2019-10-09T00:00:00+02:00",
+    "invoice_id": "97",
+    "issuer": "FRAIS & DISPO",
+    "sha": "37c6bb709350031be47f4d4e4f59c2d6c10efc76",
+    "doc": "justificatifs/agix/2019/october/repas deplacement pdc 9_10.pdf"
+  },
+  {
+    "title": "Repas déplacement 3CCFD76",
+    "description": "Repas midi 14/10 déplacement mission 3CCFD76",
+    "amount_total": 5320,
+    "amount_taxes": 484,
+    "date": "2019-10-14T00:00:00+02:00",
+    "invoice_id": "20191014T1203402-110-1",
+    "issuer": "L'ESPERANCE",
+    "sha": "d01e912f68a0ec0858d6795721810085a87da122",
+    "doc": "justificatifs/agix/2019/october/Repas midi 14_10.pdf"
+  },
+  {
+    "title": "Repas déplacement 3CCFD76",
+    "description": "Repas midi 15/10 déplacement mission 3CCFD76",
+    "amount_total": 5560,
+    "amount_taxes": 505,
+    "date": "2019-10-15T00:00:00+02:00",
+    "invoice_id": "J2-1-2401",
+    "issuer": "AU COMPTOIR DU MARCHE",
+    "sha": "de9e0a57cdca7a2bd8354700a739388b9dd2cdd9",
+    "doc": "justificatifs/agix/2019/october/repas midi 15_10.pdf"
+  },
+  {
+    "title": "Repas déplacement 3CCFD76",
+    "description": "Repas midi 16/10 déplacement mission 3CCFD76",
+    "amount_total": 5616,
+    "amount_taxes": 511,
+    "date": "2019-10-16T00:00:00+02:00",
+    "invoice_id": "004",
+    "issuer": "WANYA SUSHI",
+    "sha": "7d43d9cca1095183a46b12d1279ed1a439f21478",
+    "doc": "justificatifs/agix/2019/october/repas midi 16_10.pdf"
+  },
+  {
+    "title": "Repas déplacement 3CCFD76",
+    "description": "Repas midi 17/10 déplacement mission 3CCFD76",
+    "amount_total": 5900,
+    "amount_taxes": 627,
+    "date": "2019-10-17T00:00:00+02:00",
+    "invoice_id": "010550",
+    "issuer": "PIZZA PISE",
+    "sha": "8cd17c2356899e2046200990a28a11b0535852f8",
+    "doc": "justificatifs/agix/2019/october/repas midi 17_10.pdf"
+  },
+  {
+    "title": "Repas déplacement 3CCFD76",
+    "description": "Repas midi 18/10 déplacement mission 3CCFD76",
+    "amount_total": 3575,
+    "amount_taxes": 186,
+    "date": "2019-10-18T00:00:00+02:00",
+    "invoice_id": "022530",
+    "issuer": "AUX MILLE PATES",
+    "sha": "1ae4f6d1d40814c2206c4fbe5ab034bd4092359d",
+    "doc": "justificatifs/agix/2019/october/repas midi 18_10.pdf"
+  },
+  {
+    "title": "Repas déplacement 3CCFD76",
+    "description": "Repas soir 14/10 déplacement mission 3CCFD76",
+    "amount_total": 3600,
+    "amount_taxes": 431,
+    "date": "2019-10-15T00:00:00+02:00",
+    "invoice_id": "6564/1",
+    "issuer": "CAMBRIDGE PUB",
+    "sha": "e8248b99f76223f33fd3d8389eaa166d136b067e",
+    "doc": "justificatifs/agix/2019/october/Repas soir 14_10.pdf"
+  },
+  {
+    "title": "Repas déplacement 3CCFD76",
+    "description": "Repas soir 15/10 déplacement mission 3CCFD76",
+    "amount_total": 6000,
+    "amount_taxes": 690,
+    "date": "2019-10-15T00:00:00+02:00",
+    "invoice_id": "XXXXX",
+    "issuer": "LE MURANO",
+    "sha": "08b6bc3671d688fb2e705b256e3d2ed503ca3ae8",
+    "doc": "justificatifs/agix/2019/october/repas soir 15_10.pdf"
+  },
+  {
+    "title": "Repas déplacement 3CCFD76",
+    "description": "Repas soir 16/10 déplacement mission 3CCFD76",
+    "amount_total": 2800,
+    "amount_taxes": 314,
+    "date": "2019-10-16T00:00:00+02:00",
+    "invoice_id": "J2-1-424",
+    "issuer": "SIEM REAP",
+    "sha": "a029a21d79a2aa59339164abb7fc6e6f3f3813fb",
+    "doc": "justificatifs/agix/2019/october/repas soir 16_10.pdf"
+  },
+  {
+    "title": "Repas déplacement 3CCFD76",
+    "description": "Repas soir 18/10 déplacement mission 3CCFD76",
+    "amount_total": 6800,
+    "amount_taxes": 618,
+    "date": "2019-10-18T00:00:00+02:00",
+    "invoice_id": "8",
+    "issuer": "L'ENCOCHE",
+    "sha": "7076ae121237997752917acb1515664658f8c161",
+    "doc": "justificatifs/agix/2019/october/Repas soir 18_10.pdf"
+  }
+],
+"infos": "Déplacement mission 3CCFD76 et asso PDC"
+}
+

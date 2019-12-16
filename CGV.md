@@ -30,8 +30,8 @@ Les coordonnées du Prestataire sont les suivantes :
 **Association Bug Builders**
 [Immatriculé à Bordeaux](https://bug.builders/Documents/Publication_JO.pdf), sous le numéro SIREN [837 930 890](https://www.societe.com/societe/bug-builders-837930890.html)
 Domicillié au :
-*62 rue des Rétaillons*
-*33300 Bordeaux*
+*7 Allée de Chartres*
+*33000 Bordeaux*
 
 Mail : [contact@bug.builders](mailto:contact@bug.builders)
 Des droits de douane ou autres taxes locales ou droits d'importation ou taxes d'état sont susceptibles d'être

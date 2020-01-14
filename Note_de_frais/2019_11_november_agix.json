@@ -1,0 +1,112 @@
+[
+  {
+    "title": "Airbnb FOSDEM",
+    "description": "Airbnb FOSDEM",
+    "amount_total": 27023,
+    "amount_taxes": 0,
+    "date": "2019-12-18T00:00:00+01:00",
+    "invoice_id": "RCNQXQKT3H",
+    "issuer": "Airbnb",
+    "sha": "9259ee1b56d03d755a27abdb35b4cd729a86d2ec",
+    "doc": "justificatifs/agix/2019/november/airbnb fosdem.pdf"
+  },
+  {
+    "title": "Déplacement",
+    "description": "Déplacement niort aller C611BE39",
+    "amount_total": 2000,
+    "amount_taxes": 66,
+    "date": "2019-12-15T00:00:00+01:00",
+    "invoice_id": "3630510077-265260180-TLTJFL-5df625ca07ecb_ses",
+    "issuer": "BlaBlaCar",
+    "sha": "86935fd1d3891f2cf8833771f739bab102b520fb",
+    "doc": "justificatifs/agix/2019/november/Deplacement blabla aller niort.pdf"
+  },
+  {
+    "title": "Déplacement pdc",
+    "description": "Repas soir 19/12 déplacement mission asso PDC",
+    "amount_total": 3790,
+    "amount_taxes": 455,
+    "date": "2019-12-19T00:00:00+01:00",
+    "invoice_id": "20091493",
+    "issuer": "180g",
+    "sha": "d148221cfc1c98f07360a7e2b9c388525e9aa19b",
+    "doc": "justificatifs/agix/2019/november/repas 19_12.pdf"
+  },
+  {
+    "title": "Déplacement repas C611BE39",
+    "description": "Repas soir 21/11 déplacement mission C611BE39",
+    "amount_total": 8900,
+    "amount_taxes": 1218,
+    "date": "2019-11-21T00:00:00+01:00",
+    "invoice_id": "000140",
+    "issuer": "LA NINA",
+    "sha": "8a582109099000cdb8268204cf1798694abcce26",
+    "doc": "justificatifs/agix/2019/november/repas_21_11_soir.pdf"
+  },
+  {
+    "title": "Déplacement repas C611BE39",
+    "description": "Repas soir 21/11 déplacement mission C611BE39",
+    "amount_total": 1440,
+    "amount_taxes": 157,
+    "date": "2019-11-22T00:00:00+01:00",
+    "invoice_id": "010879",
+    "issuer": "Le Gou Pei",
+    "sha": "74bee0c24baf573ec23ecbbf0c3c1c23780150db",
+    "doc": "justificatifs/agix/2019/november/repas_22_11.pdf"
+  },
+  {
+    "title": "Déplacement pdc",
+    "description": "Déplacement aller Nantes mission asso pdc",
+    "amount_total": 5300,
+    "amount_taxes": 0,
+    "date": "2019-12-12T00:00:00+01:00",
+    "invoice_id": "RVSRBJ",
+    "issuer": "SNCF",
+    "sha": "972beadc415d24442168ba921502b6ca98201ac1",
+    "doc": "justificatifs/agix/2019/november/train_aller_nantes.pdf"
+  },
+  {
+    "title": "Déplacement C611BE39",
+    "description": "Déplacement aller/retour novembre mission C611BE39",
+    "amount_total": 10400,
+    "amount_taxes": 0,
+    "date": "2019-11-18T00:00:00+01:00",
+    "invoice_id": "QGFAST",
+    "issuer": "SNCF",
+    "sha": "9ae6bbbabe0c9b2d69fd7f2f67fec257dbd035b2",
+    "doc": "justificatifs/agix/2019/november/train_niort.pdf"
+  },
+  {
+    "title": "Déplacement C611BE39",
+    "description": "Déplacement retour Niort mission C611BE39",
+    "amount_total": 4500,
+    "amount_taxes": 0,
+    "date": "2019-12-27T00:00:00+01:00",
+    "invoice_id": "UDLBJJ",
+    "issuer": "OUIGO",
+    "sha": "bc4abaa18980678f23acbfe85fca1dd3b7248e10",
+    "doc": "justificatifs/agix/2019/november/train_retour_niort.pdf"
+  },
+  {
+    "title": "Déplacement grève C611BE39",
+    "description": "Déplacement grève retour Niort mission C611BE39",
+    "amount_total": 1864,
+    "amount_taxes": 0,
+    "date": "2019-12-27T00:00:00+01:00",
+    "invoice_id": "\fxid06f8f791-98ec-42fb-b269-5a229ef5b40a",
+    "issuer": "Uber",
+    "sha": "cbfaa87f111f8b62c52db69edae11953474c2116",
+    "doc": "justificatifs/agix/2019/november/uber retour niort.pdf"
+  },
+  {
+    "title": "Déplacement grève PDC",
+    "description": "Déplacement grève aller Nantes mission asso PDC",
+    "amount_total": 1398,
+    "amount_taxes": 0,
+    "date": "2019-12-19T00:00:00+01:00",
+    "invoice_id": "xid8961e154-e4c3-4b85-894f-96b29779ac25",
+    "issuer": "Uber",
+    "sha": "73265c6f66cf8bbc606cfa775b71d9129ed11e90",
+    "doc": "justificatifs/agix/2019/november/Uber vers montparnasse pour nantes.pdf"
+  }
+]

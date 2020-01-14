@@ -12,6 +12,10 @@ layout: default
     <ul id="bbFeesUl">
     </ul>
   </fieldset>
+  <div>
+    <button id="downloadAsCSV" style="display: none">Download as CSV</button>
+  </div>
+  <br />
   <table class="pure-table pure-table-horizontal" style="width:100%; margin-bottom:2em">
     <thead>
       <tr>
@@ -24,6 +28,7 @@ layout: default
     <tbody id="bankTbody"></tbody>
   </table>
 </div>
+<script src="https://unpkg.com/papaparse@latest/papaparse.min.js"></script>
 <script>
   window.onload = async () => {
     window.onhashchange = loadBank;
@@ -81,7 +86,16 @@ layout: default
         bbFees.style.display = 'none';
       }
 
+      const entries = []
       res.transactions.forEach(transaction => {
+        let entry
+        if(typeof(transaction.label) === 'object') {
+          entry = {...transaction, ...transaction.label};
+        } else {
+          entry = {...transaction};
+        }
+        entries.push(entry)
+
         const dateTd = document.createElement('td');
         const correspondantTd = document.createElement('td');
         const amountTd = document.createElement('td');
@@ -144,6 +158,21 @@ layout: default
 
         bankTbody.appendChild(bankTr);
       })
+
+      const asCSV = Papa.unparse(entries, {columns: ['label', 'date', 'type', 'amount', 'vat_amount', 'proof']});
+      document.getElementById('downloadAsCSV').style.display = 'inline';
+      document.getElementById('downloadAsCSV').addEventListener('click', () => {
+        const csvContent = 'data:text/csv;charset=utf-8;base64,' + btoa(asCSV);
+
+        const linkElem = document.createElement('a');
+        linkElem.href = csvContent;
+        linkElem.download = 'banque.csv';
+
+        document.body.appendChild(linkElem);
+        linkElem.click();
+        document.body.removeChild(linkElem);
+      })
+
     })
   }
 </script>

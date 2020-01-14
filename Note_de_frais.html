@@ -7,6 +7,10 @@ layout: default
     <h1 class="post-title">Notes de frais</h1>
   </header>
   <ul class="pure-u-1" id="ndf">Loading...</ul>
+  <div>
+    <button id="downloadAsCSV" style="display: none">Download as CSV</button>
+  </div>
+  <br />
   <fieldset style="display:none" id="ndfDetailsFieldset">
     <legend>Details</legend>
     <p id="ndfInfosP" class="pure-u-1"></p>
@@ -26,6 +30,7 @@ layout: default
     <ul class="pure-u-7-12" style="list-style-type: none; margin-left:0px; border: 1px solid black;" id="ndfSignaturesUl"></ul>
   </fieldset>
 </div>
+<script src="https://unpkg.com/papaparse@latest/papaparse.min.js"></script>
 <script>
   const avatars = new Avatars(Avatars.sprites.identicon);
   window.onload = () => {
@@ -82,7 +87,21 @@ layout: default
 
         let total = 0;
         let taxes = 0;
+        const entries = [];
         noteDeFrais.claims.forEach((claim, i) => {
+          const entry = {
+            label: claim.title,
+            date: claim.date,
+            amount: claim.amount_total,
+            vat_amount: claim.amount_taxes,
+            proof: `https://bug.builders/${encodeURI(claim.doc)}`,
+            description: claim.description,
+            issuer: claim.issuer,
+            invoice_id: claim.invoice_id,
+          }
+
+          entries.push(entry)
+
           const justificatifSplitted = claim.doc.split('/');
           const justificatifName = justificatifSplitted[justificatifSplitted.length-1];
 
@@ -123,6 +142,21 @@ layout: default
           total += claim.amount_total;
           taxes += claim.amount_taxes;
         })
+
+        const asCSV = Papa.unparse(entries);
+        document.getElementById('downloadAsCSV').style.display = 'inline';
+        document.getElementById('downloadAsCSV').addEventListener('click', () => {
+          const csvContent = 'data:text/csv;charset=utf-8;base64,' + btoa(asCSV);
+
+          const linkElem = document.createElement('a');
+          linkElem.href = csvContent;
+          linkElem.download = ndf.replace('.json', '.csv');
+
+          document.body.appendChild(linkElem);
+          linkElem.click();
+          document.body.removeChild(linkElem);
+        })
+
 
         const claimTotalTr = document.createElement('tr');
         claimTotalTr.className = 'pure-table-odd';

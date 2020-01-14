@@ -1,4 +1,6 @@
-[
+{
+  "claimant": "agix",
+  "claims": [
   {
     "title": "Airbnb FOSDEM",
     "description": "Airbnb FOSDEM",
@@ -109,4 +111,6 @@
     "sha": "73265c6f66cf8bbc606cfa775b71d9129ed11e90",
     "doc": "justificatifs/agix/2019/november/Uber vers montparnasse pour nantes.pdf"
   }
-]
+],
+  "infos": "Déplacement mission C611BE39 et asso PDC"
+}

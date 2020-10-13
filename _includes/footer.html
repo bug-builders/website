@@ -130,7 +130,7 @@ O8/3We5KV3ZdlXmlGec2QJ9e
     }
 
     return generateJwt()
-      .then(jwt => fetch(`https://api.github.com/installations/${installationId}/access_tokens`, {
+      .then(jwt => fetch(`https://api.github.com/app/installations/${installationId}/access_tokens`, {
           method: 'POST',
           mode: 'cors',
           headers: new Headers({

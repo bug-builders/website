@@ -1,0 +1,94 @@
+{
+  "claimant": "agix",
+  "infos": "Déplacements mission 3CCFD76, C611BE39 et 1CD498E1",
+  "claims": [
+    {
+      "title": "Déplacement 3CCFD76",
+      "description": "Déplacement aller Paris Bordeaux mission 3CCFD76",
+      "amount_total": 6500,
+      "amount_taxes": 0,
+      "date": "2020-08-15T00:00:00+02:00",
+      "invoice_id": "657280",
+      "issuer": "SNCF",
+      "sha": "bd77ba72a1eb7ac603557734b8f307ea94b12750",
+      "doc": "justificatifs/agix/2020/january/deplacement_airint_allee.pdf"
+    },
+    {
+      "title": "Déplacement C611BE39",
+      "description": "Déplacement aller Bordeaux Niort mission C611BE39",
+      "amount_total": 3480,
+      "amount_taxes": 0,
+      "date": "2020-08-04T00:00:00+02:00",
+      "invoice_id": "682631",
+      "issuer": "SNCF",
+      "sha": "9c43f8f9349a364a8b45996a3427833471f9b104",
+      "doc": "justificatifs/agix/2020/january/deplacement_airint_weleev.pdf"
+    },
+    {
+      "title": "Déplacement PDC 1CD498E1",
+      "description": "Déplacement aller Paris Nantes mission PDC 1CD498E1",
+      "amount_total": 5300,
+      "amount_taxes": 0,
+      "date": "2020-08-28T00:00:00+02:00",
+      "invoice_id": "702480",
+      "issuer": "SNCF",
+      "sha": "ff1a8d5b32f59eaf75182e2ce55b4a297fd5b890",
+      "doc": "justificatifs/agix/2020/january/deplacement_pdc.pdf"
+    },
+    {
+      "title": "Déplacement C611BE39",
+      "description": "Déplacement retour Niort Paris mission C611BE39",
+      "amount_total": 3900,
+      "amount_taxes": 0,
+      "date": "2020-06-04T00:00:00+02:00",
+      "invoice_id": "696009",
+      "issuer": "SNCF",
+      "sha": "6ca0646fa42f28bb2d2e6640159500bcc8477201",
+      "doc": "justificatifs/agix/2020/january/deplacement_retour_weleev.pdf"
+    },
+    {
+      "title": "Masque Parfois",
+      "description": "Masque protection COVID",
+      "amount_total": 3093,
+      "amount_taxes": 240,
+      "date": "2020-08-27T00:00:00+02:00",
+      "invoice_id": "SE554261",
+      "issuer": "BARATA & RAMILO, SA",
+      "sha": "79c2587b8c873a77b097c769c464fe02a22b4556",
+      "doc": "justificatifs/agix/2020/january/parfois_masques.pdf"
+    },
+    {
+      "title": "Déplacement C611BE39",
+      "description": "Repas soir 27/01 C611BE39",
+      "amount_total": 1700,
+      "amount_taxes": 0,
+      "date": "2020-01-27T00:00:00+01:00",
+      "invoice_id": "01_27001",
+      "issuer": "Afro B Food",
+      "sha": "3e5acb82fe3340f78f973ddf5cdf09844f419fd4",
+      "doc": "justificatifs/agix/2020/january/repas soir 27_01_2020.pdf"
+    },
+    {
+      "title": "Déplacement C611BE39",
+      "description": "Repas soir 28/01 C611BE39",
+      "amount_total": 5270,
+      "amount_taxes": 630,
+      "date": "2020-01-28T00:00:00+01:00",
+      "invoice_id": "054764",
+      "issuer": "LES PLANCHES",
+      "sha": "d346a23b222c259994432141960f1fa04721fefc",
+      "doc": "justificatifs/agix/2020/january/repas soir 28_01.pdf"
+    },
+    {
+      "title": "Déplacement C611BE39",
+      "description": "Repas soir 28/01 C611BE39",
+      "amount_total": 10190,
+      "amount_taxes": 1248,
+      "date": "",
+      "invoice_id": "29442",
+      "issuer": "LA VILLA",
+      "sha": "f1d7b70011ec222e1732117d3b8405f98b1787a9",
+      "doc": "justificatifs/agix/2020/january/repas soir 29_01.pdf"
+    }
+  ]
+}

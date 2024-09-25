@@ -111,7 +111,7 @@ layout: default
             if(typeof(transaction.label.proof) !== 'undefined') {
               const proofA = document.createElement('a')
               proofA.target = '_blank';
-              proofA.href = transaction.label.proof;
+              proofA.href = transaction.label.proof.startsWith('http') ? transaction.label.proof : `${mainUrl}${transaction.label.proof}`;
               proofA.textContent = transaction.label.label;
               correspondantTd.appendChild(proofA);
             } else {
@@ -133,7 +133,19 @@ layout: default
 
 
         } else {
-          correspondantTd.textContent = transaction.label.substr(0, 20);
+          if(typeof(transaction.label) === 'object'){
+            if(typeof(transaction.label.proof) !== 'undefined') {
+              const proofA = document.createElement('a')
+              proofA.target = '_blank';
+              proofA.href = transaction.label.proof.startsWith('http') ? transaction.label.proof : `${mainUrl}${transaction.label.proof}`;
+              proofA.textContent = transaction.label.label.substr(0, 20);
+              correspondantTd.appendChild(proofA);
+            } else {
+              correspondantTd.textContent = transaction.label.label.substr(0, 20);
+            }
+          } else {
+            correspondantTd.textContent = transaction.label.substr(0, 20);
+          }
           vatAmountTd.textContent = '';
           type = '+';
           if(transaction.fees) {

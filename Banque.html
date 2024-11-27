@@ -37,7 +37,9 @@ layout: default
 
   async function loadBank() {
     const member = location.hash.substr(1);
-    fetch(`${mainUrl}/bank/${member}`, {
+    const locationURL = new URL(location.href)
+    const tag = locationURL.searchParams.get('tag')
+    fetch(`${mainUrl}/bank/${member}${tag ? `?tag=${tag}`:''}`, {
       method: 'GET',
       mode: 'cors'
     })

@@ -1,0 +1,276 @@
+---
+layout: null
+---
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bug Builders Réparation</title>
+<meta name="description" content="Atelier associatif de réparation d'ordinateurs, smartphones et tablettes à Bordeaux. Association loi 1901, sans actionnaires ni dividendes.">
+<link rel="icon" href="/logo.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap">
+<style>
+/* Reprend l'apparence du site existant (thème minima) : bandeau gris, bleu de marque, Open Sans. */
+:root {
+  --brand: #459ee2;
+  --brand-dark: #2d7fc1;
+  --ink: #111111;
+  --grey-dark: #424242;
+  --grey: #828282;
+  --grey-light: #e8e8e8;
+  --paper: #fdfdfd;
+  --tint: #f2f8fd;
+
+  --bs-body-font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
+  --bs-body-color: var(--ink);
+  --bs-body-bg: var(--paper);
+  --bs-link-color: var(--brand-dark);
+  --bs-link-color-rgb: 45, 127, 193;
+  --bs-link-hover-color: var(--grey-dark);
+  --bs-link-hover-color-rgb: 66, 66, 66;
+  --bs-border-color: var(--grey-light);
+}
+body { background: var(--paper); color: var(--ink); }
+h1, h2, h3, h4 { font-weight: 400; text-wrap: balance; }
+.btn-primary {
+  --bs-btn-bg: var(--brand-dark);
+  --bs-btn-border-color: var(--brand-dark);
+  --bs-btn-hover-bg: #256ca6;
+  --bs-btn-hover-border-color: #256ca6;
+  --bs-btn-active-bg: #1f5b8c;
+  --bs-btn-active-border-color: #1f5b8c;
+  --bs-btn-focus-shadow-rgb: 69, 158, 226;
+}
+.btn-outline-primary {
+  --bs-btn-color: var(--brand-dark);
+  --bs-btn-border-color: var(--brand-dark);
+  --bs-btn-hover-bg: var(--brand-dark);
+  --bs-btn-hover-border-color: var(--brand-dark);
+  --bs-btn-active-bg: var(--brand-dark);
+  --bs-btn-active-border-color: var(--brand-dark);
+}
+.container {
+  max-width: 1000px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* Bandeau du site, comme minima */
+.site-header { border-top: 5px solid var(--grey-dark); border-bottom: 1px solid var(--grey-light); background: var(--paper); }
+.site-title { font-size: 26px; font-weight: 300; letter-spacing: -1px; color: var(--grey-dark); text-decoration: none; }
+.site-title:hover { color: var(--grey-dark); }
+.site-title img { width: 36px; height: 36px; border-radius: 50%; }
+.site-nav a { color: var(--ink); text-decoration: none; }
+.site-nav a:hover { text-decoration: underline; color: var(--ink); }
+
+/* Sections */
+.eyebrow { font-size: .8rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--brand-dark); }
+.hero h1 { font-weight: 300; letter-spacing: -1px; }
+.hero h1 strong { font-weight: 700; color: var(--brand-dark); }
+.section { border-top: 1px solid var(--grey-light); }
+.section-tint { background: var(--tint); }
+
+.ticket { font-size: .95rem; }
+.ticket .card-header { background: var(--grey-dark); color: #fff; font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; }
+.ticket dt { font-weight: 400; color: var(--grey); }
+.ticket dd { font-weight: 600; }
+.ticket .zero { font-size: 1.75rem; font-weight: 700; color: var(--brand-dark); font-variant-numeric: tabular-nums; }
+
+.list-check li { padding-left: 1.4rem; position: relative; }
+.list-check li::before { content: ""; position: absolute; left: 0; top: .55em; width: .55rem; height: .55rem; border-radius: 50%; background: var(--brand); }
+
+.step-num { width: 2.25rem; height: 2.25rem; border-radius: 50%; background: var(--brand-dark); color: #fff; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; }
+
+.table td.num, .table th.num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.table .free { color: var(--brand-dark); font-weight: 700; }
+
+.site-footer { border-top: 1px solid var(--grey-light); color: var(--grey); font-size: 15px; padding-bottom: calc(30px + env(safe-area-inset-bottom, 0px)); }
+.site-footer a { color: var(--grey); }
+
+a:focus-visible, .btn:focus-visible { outline: 3px solid var(--brand); outline-offset: 2px; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container d-flex flex-wrap align-items-center justify-content-between gap-2 py-2">
+    <a class="site-title d-flex align-items-center gap-2" href="/"><img src="/logo.png" alt="" width="36" height="36">Bug builders</a>
+    <nav class="site-nav d-flex flex-wrap gap-3" aria-label="Navigation principale">
+      <a href="#reparations">Réparations</a>
+      <a href="#tarifs">Tarifs</a>
+      <a href="#association">L'association</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero container py-5">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-7">
+        <p class="eyebrow mb-2">Atelier associatif de réparation · Bordeaux</p>
+        <h1 class="display-5 mb-3">Réparer plutôt que <strong>racheter</strong>.</h1>
+        <p class="lead mb-4">Bug Builders répare ordinateurs, smartphones et tablettes. Nous sommes une association loi&nbsp;1901&nbsp;: pas d'actionnaires, pas de dividendes. Vous payez la pièce à son prix d'achat et un temps de travail juste.</p>
+        <div class="d-flex flex-wrap gap-2">
+          <a class="btn btn-primary btn-lg" href="#contact">Décrire ma panne</a>
+          <a class="btn btn-outline-primary btn-lg" href="#tarifs">Voir les tarifs</a>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="card ticket shadow-sm">
+          <div class="card-header d-flex justify-content-between"><span>Fiche atelier</span><span>Exemple</span></div>
+          <div class="card-body">
+            <dl class="row mb-0">
+              <dt class="col-4">Appareil</dt><dd class="col-8">PC portable, 2016</dd>
+              <dt class="col-4">Panne</dt><dd class="col-8">Lent, chauffe, ventilateur bruyant</dd>
+              <dt class="col-4">Diagnostic</dt><dd class="col-8">Gratuit</dd>
+              <dt class="col-4">Travaux</dt><dd class="col-8">Nettoyage, pâte thermique, passage au SSD</dd>
+              <dt class="col-4">Pièce</dt><dd class="col-8 mb-0">SSD 500&nbsp;Go, au prix d'achat</dd>
+            </dl>
+          </div>
+          <div class="card-footer bg-transparent d-flex justify-content-between align-items-baseline">
+            <span>Dividendes versés</span><span class="zero">0&nbsp;€</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="reparations" class="section py-5">
+    <div class="container">
+      <p class="eyebrow mb-2">Réparations</p>
+      <h2 class="mb-2">Ce qu'on répare</h2>
+      <p class="text-secondary mb-4">Toutes marques, sur Windows, macOS, Linux, Android et iOS.</p>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="card h-100">
+            <div class="card-body">
+              <h3 class="h5 mb-3">Ordinateurs portables et fixes</h3>
+              <ul class="list-unstyled list-check d-grid gap-2 mb-0">
+                <li>Écran, clavier, charnière cassée</li>
+                <li>Lenteur, surchauffe, ventilateur bruyant</li>
+                <li>Passage au SSD, ajout de mémoire</li>
+                <li>Virus, réinstallation du système</li>
+                <li>Passage à Linux pour redonner vie à un vieux PC</li>
+                <li>Récupération de données sur un disque en panne</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card h-100">
+            <div class="card-body">
+              <h3 class="h5 mb-3">Smartphones et tablettes</h3>
+              <ul class="list-unstyled list-check d-grid gap-2 mb-0">
+                <li>Écran fissuré ou tactile qui ne répond plus</li>
+                <li>Batterie qui ne tient plus la journée</li>
+                <li>Connecteur de charge défaillant</li>
+                <li>Caméra, haut-parleur, micro</li>
+                <li>Transfert de vos données vers un nouvel appareil</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="text-secondary mt-4 mb-0">Votre panne n'est pas dans la liste&nbsp;? Demandez quand même. Si on ne sait pas faire, on vous le dit et on vous oriente vers quelqu'un qui sait.</p>
+    </div>
+  </section>
+
+  <section id="deroulement" class="section section-tint py-5">
+    <div class="container">
+      <p class="eyebrow mb-2">Déroulement</p>
+      <h2 class="mb-4">Comment ça se passe</h2>
+      <ol class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4 list-unstyled mb-0">
+        <li class="col"><span class="step-num mb-2">1</span><h3 class="h6 fw-bold">Vous décrivez la panne</h3><p class="text-secondary mb-0">Par mail. On vous dit tout de suite si c'est dans nos cordes.</p></li>
+        <li class="col"><span class="step-num mb-2">2</span><h3 class="h6 fw-bold">Diagnostic et devis</h3><p class="text-secondary mb-0">Le diagnostic est gratuit. Vous avez un prix ferme avant toute intervention.</p></li>
+        <li class="col"><span class="step-num mb-2">3</span><h3 class="h6 fw-bold">Réparation</h3><p class="text-secondary mb-0">On commande la pièce si besoin. Vous voyez la facture du fournisseur&nbsp;: c'est le prix que vous payez.</p></li>
+        <li class="col"><span class="step-num mb-2">4</span><h3 class="h6 fw-bold">Restitution</h3><p class="text-secondary mb-0">On vous explique ce qui a été fait et comment éviter que ça recommence.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="tarifs" class="section py-5">
+    <div class="container">
+      <p class="eyebrow mb-2">Tarifs</p>
+      <h2 class="mb-2">Main d'œuvre fixe, pièces au prix d'achat</h2>
+      <p class="text-secondary mb-4">On ne fait pas de marge sur les pièces. Le prix d'une réparation, c'est la pièce plus le temps passé.</p>
+      <div class="table-responsive">
+        <table class="table table-striped align-middle mb-0">
+          <thead>
+            <tr><th scope="col">Intervention</th><th scope="col" class="num">Main d'œuvre</th><th scope="col">Pièce</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Diagnostic et devis</td><td class="num free">Gratuit</td><td class="text-secondary">—</td></tr>
+            <tr><td>Écran de smartphone</td><td class="num">30&nbsp;€</td><td class="text-secondary">au prix d'achat</td></tr>
+            <tr><td>Batterie de smartphone</td><td class="num">20&nbsp;€</td><td class="text-secondary">au prix d'achat</td></tr>
+            <tr><td>Connecteur de charge</td><td class="num">30&nbsp;€</td><td class="text-secondary">au prix d'achat</td></tr>
+            <tr><td>Nettoyage et pâte thermique (portable)</td><td class="num">35&nbsp;€</td><td class="text-secondary">—</td></tr>
+            <tr><td>Passage au SSD avec transfert des données</td><td class="num">35&nbsp;€</td><td class="text-secondary">au prix d'achat</td></tr>
+            <tr><td>Réinstallation du système (Windows ou Linux)</td><td class="num">30&nbsp;€</td><td class="text-secondary">—</td></tr>
+            <tr><td>Récupération de données</td><td class="num">dès 40&nbsp;€</td><td class="text-secondary">—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small text-secondary mt-3 mb-0">Prix TTC indicatifs, le devis fait foi. L'association paie la TVA et l'impôt sur les sociétés comme n'importe quelle entreprise. Voir nos <a href="/CGV_Reparation.html">conditions générales de vente</a>.</p>
+    </div>
+  </section>
+
+  <section id="association" class="section section-tint py-5">
+    <div class="container">
+      <p class="eyebrow mb-2">L'association</p>
+      <h2 class="mb-3">Pourquoi une association&nbsp;?</h2>
+      <p class="text-secondary mb-4" style="max-width: 42rem;">Bug Builders est une association de passionnés du numérique, créée à Bordeaux en 2018. Elle n'a pas de patron&nbsp;: les décisions se prennent au consensus entre membres.</p>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <h3 class="h5">Personne ne s'enrichit</h3>
+          <p class="text-secondary mb-0">Ni capital, ni parts, ni dividendes. L'argent encaissé paie les pièces, le salaire des membres qui réparent et les frais de fonctionnement.</p>
+        </div>
+        <div class="col">
+          <h3 class="h5">Moins de déchets</h3>
+          <p class="text-secondary mb-0">Un téléphone réparé est un téléphone qu'on ne fabrique pas. La fabrication représente l'essentiel de l'empreinte carbone d'un appareil.</p>
+        </div>
+        <div class="col">
+          <h3 class="h5">Comprendre son matériel</h3>
+          <p class="text-secondary mb-0">On prend le temps d'expliquer la panne. Si vous voulez assister à la réparation et apprendre à la faire, c'est bienvenu.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section py-5">
+    <div class="container">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-7">
+          <h2 class="mb-3">Une panne&nbsp;? Écrivez-nous.</h2>
+          <p class="text-secondary mb-0">Indiquez la marque et le modèle de l'appareil, ce qui ne marche plus et depuis quand. Une photo aide souvent.</p>
+        </div>
+        <div class="col-lg-5">
+          <dl class="mb-3">
+            <dt class="fw-normal text-secondary small">Mail</dt>
+            <dd class="fs-5 fw-semibold"><a href="mailto:contact@bug.builders?subject=R%C3%A9paration%20%3A%20&amp;body=Appareil%20(marque%2C%20mod%C3%A8le)%20%3A%0APanne%20%3A%0ADepuis%20quand%20%3A%0A">contact@bug.builders</a></dd>
+            <dt class="fw-normal text-secondary small">Où</dt>
+            <dd class="fs-5 fw-semibold mb-0">Bordeaux, sur rendez-vous</dd>
+          </dl>
+          <a class="btn btn-primary btn-lg" href="mailto:contact@bug.builders?subject=R%C3%A9paration%20%3A%20&amp;body=Appareil%20(marque%2C%20mod%C3%A8le)%20%3A%0APanne%20%3A%0ADepuis%20quand%20%3A%0A">Décrire ma panne par mail</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer pt-4">
+  <div class="container d-flex flex-wrap justify-content-between gap-3">
+    <div>
+      <div>Bug builders · Association loi 1901 à activité commerciale non lucrative</div>
+      <div>SIRET : <a href="https://www.societe.com/societe/bug-builders-837930890.html" target="_blank" rel="noopener noreferrer">837 930 890 00020</a></div>
+    </div>
+    <nav class="d-flex flex-wrap gap-3 align-items-start" aria-label="Informations légales">
+      <a href="/CGV_Reparation.html">CGV</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>

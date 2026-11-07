@@ -1,4 +1,8 @@
-
+---
+layout: home
+title: L'association
+permalink: /association.html
+---
 > Association régie par l'application de la loi du 1er juillet 1901 et du décret du 16 août 1901.
 
 __Association à activité commerciale non lucrative.__

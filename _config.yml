@@ -6,3 +6,33 @@ repository: bug-builders/website
 github_username: bug-builders
 description: Association à gestion intéressée
 siret: 837 930 890 00020
+
+# Seuls l'accueil (index.html) et les CGV réparation sont publiés.
+# Les documents de l'association restent dans le dépôt mais ne sont plus servis sur bug.builders.
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - _posts
+  - association.md
+  - Banque.html
+  - CGV.md
+  - CGV.md.sig
+  - Contrats
+  - Contrats.html
+  - Customer.html
+  - Devis.html
+  - Documents
+  - Factures
+  - justificatifs
+  - Note_de_frais
+  - Note_de_frais.html
+  - Reglement.js
+  - Reglement.md
+  - Reglement.md.sig
+  - Statuts.md
+  - assets/main.scss
+  - assets/pure-min.css
+  - assets/grids-responsive-min.css
+  - assets/avatars.min.js
+  - assets/signature_pad.min.js
+  - assets/sprites.min.js

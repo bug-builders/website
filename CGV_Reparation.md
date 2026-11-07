@@ -1,6 +1,5 @@
 ---
-layout: vitrine-sign
-signatory: '{"agix": "Florian Gaultier", "dlajarretie": "Damien Lajarretie"}'
+layout: vitrine-page
 title: CGV Réparation
 ---
 

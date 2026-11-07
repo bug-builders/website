@@ -1,0 +1,93 @@
+/* Reprend l'apparence du site existant (thème minima) : bandeau gris, bleu de marque, Open Sans. */
+:root {
+  --brand: #459ee2;
+  --brand-dark: #2d7fc1;
+  --ink: #111111;
+  --grey-dark: #424242;
+  --grey: #828282;
+  --grey-light: #e8e8e8;
+  --paper: #fdfdfd;
+  --tint: #f2f8fd;
+
+  --bs-body-font-family: "Open Sans", "Helvetica Neue", Arial, sans-serif;
+  --bs-body-color: var(--ink);
+  --bs-body-bg: var(--paper);
+  --bs-link-color: var(--brand-dark);
+  --bs-link-color-rgb: 45, 127, 193;
+  --bs-link-hover-color: var(--grey-dark);
+  --bs-link-hover-color-rgb: 66, 66, 66;
+  --bs-border-color: var(--grey-light);
+}
+body { background: var(--paper); color: var(--ink); }
+h1, h2, h3, h4 { font-weight: 400; text-wrap: balance; }
+.btn-primary {
+  --bs-btn-bg: var(--brand-dark);
+  --bs-btn-border-color: var(--brand-dark);
+  --bs-btn-hover-bg: #256ca6;
+  --bs-btn-hover-border-color: #256ca6;
+  --bs-btn-active-bg: #1f5b8c;
+  --bs-btn-active-border-color: #1f5b8c;
+  --bs-btn-focus-shadow-rgb: 69, 158, 226;
+}
+.btn-outline-primary {
+  --bs-btn-color: var(--brand-dark);
+  --bs-btn-border-color: var(--brand-dark);
+  --bs-btn-hover-bg: var(--brand-dark);
+  --bs-btn-hover-border-color: var(--brand-dark);
+  --bs-btn-active-bg: var(--brand-dark);
+  --bs-btn-active-border-color: var(--brand-dark);
+}
+.container {
+  max-width: 1000px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* Bandeau du site, comme minima */
+.site-header { border-top: 5px solid var(--grey-dark); border-bottom: 1px solid var(--grey-light); background: var(--paper); }
+.site-title { font-size: 26px; font-weight: 300; letter-spacing: -1px; color: var(--grey-dark); text-decoration: none; }
+.site-title:hover { color: var(--grey-dark); }
+.site-title img { width: 36px; height: 36px; border-radius: 50%; }
+.site-nav a { color: var(--ink); text-decoration: none; }
+.site-nav a:hover { text-decoration: underline; color: var(--ink); }
+
+/* Sections */
+.eyebrow { font-size: .8rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--brand-dark); }
+.hero h1 { font-weight: 300; letter-spacing: -1px; }
+.hero h1 strong { font-weight: 700; color: var(--brand-dark); }
+.section { border-top: 1px solid var(--grey-light); }
+.section-tint { background: var(--tint); }
+
+.ticket { font-size: .95rem; }
+.ticket .card-header { background: var(--grey-dark); color: #fff; font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; }
+.ticket dt { font-weight: 400; color: var(--grey); }
+.ticket dd { font-weight: 600; }
+.ticket .zero { font-size: 1.75rem; font-weight: 700; color: var(--brand-dark); font-variant-numeric: tabular-nums; }
+
+.list-check li { padding-left: 1.4rem; position: relative; }
+.list-check li::before { content: ""; position: absolute; left: 0; top: .55em; width: .55rem; height: .55rem; border-radius: 50%; background: var(--brand); }
+
+.step-num { width: 2.25rem; height: 2.25rem; border-radius: 50%; background: var(--brand-dark); color: #fff; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; }
+
+.table td.num, .table th.num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.table .free { color: var(--brand-dark); font-weight: 700; }
+
+.site-footer { border-top: 1px solid var(--grey-light); color: var(--grey); font-size: 15px; padding-bottom: calc(30px + env(safe-area-inset-bottom, 0px)); }
+.site-footer a { color: var(--grey); }
+
+a:focus-visible, .btn:focus-visible { outline: 3px solid var(--brand); outline-offset: 2px; }
+
+/* Pages document (CGV) */
+.doc { max-width: 46rem; }
+.doc h1 { font-size: 2rem; font-weight: 300; letter-spacing: -1px; line-height: 1.2; margin-bottom: 1.5rem; }
+.doc h2 { font-size: 1.25rem; font-weight: 600; margin: 2.5rem 0 .75rem; padding-top: 1rem; border-top: 1px solid var(--grey-light); scroll-margin-top: 1rem; }
+.doc p, .doc ul { margin-bottom: .9rem; }
+.doc ul { padding-left: 1.4rem; }
+.doc li { margin-bottom: .25rem; }
+.doc li::marker { color: var(--brand); }
+.doc blockquote { margin: 0 0 1rem; padding: 1.25rem 1.5rem; background: var(--tint); border-radius: 4px; }
+
+#postSignatureFieldSet { border-top: 1px solid var(--grey-light); padding-top: 1rem; }
+#postSignatureFieldSet legend { font-size: .8rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--grey); float: none; margin-bottom: .5rem; }
+#postSignaturesUl { padding-left: 0; margin: 0; }
+#postSignaturesUl li { display: flex; align-items: center; gap: .75rem; padding: .25rem 0 !important; line-height: 1.5 !important; }

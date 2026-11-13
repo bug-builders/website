@@ -28,7 +28,7 @@ Sauf preuve du contraire, les données enregistrées dans le système informatiq
 
 Les coordonnées du Prestataire sont les suivantes :
 **Association Bug Builders**
-[Immatriculé à Bordeaux](https://bug.builders/Documents/Publication_JO.pdf), sous le numéro SIREN [837 930 890](https://www.societe.com/societe/bug-builders-837930890.html)
+[Immatriculé à Bordeaux](https://bug.builders/Documents/Publication_JO.pdf), sous le numéro SIREN [837 930 890](https://www.pappers.fr/entreprise/bug-builders-837930890)
 Domicillié au :
 *7 Allée de Chartres*
 *33000 Bordeaux*

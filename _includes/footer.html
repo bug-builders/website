@@ -21,7 +21,7 @@
       </div>
 
       <div class="footer-col footer-col-3">
-        <p>SIRET : <a href="https://www.societe.com/societe/bug-builders-837930890.html" target="_blank" rel="noopener noreferrer">{{ site.siret | escape }}</a></p>
+        <p>SIRET : <a href="https://www.pappers.fr/entreprise/bug-builders-837930890" target="_blank" rel="noopener noreferrer">{{ site.siret | escape }}</a></p>
       </div>
     </div>
 
@@ -320,9 +320,7 @@ O8/3We5KV3ZdlXmlGec2QJ9e
   }
 
   function b64DecodeUnicode(str) {
-    return decodeURIComponent(Array.prototype.map.call(atob(str), function(c) {
-        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
-    }).join(''))
+    return decodeURIComponent(Array.prototype.map.call(atob(str), (c) => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''))
   }
 </script>
 </footer>
